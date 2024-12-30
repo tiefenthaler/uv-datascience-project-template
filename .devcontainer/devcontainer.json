@@ -1,0 +1,75 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "dat.dev-container-uv-datascience",
+	// Build image using docker compose based on build specs in docker-compose.yml
+	"dockerComposeFile": ["./docker-compose.yml"],
+	"service": "myproject",
+	"runServices": ["myproject"],
+	"workspaceFolder": "/workspace",
+	// Avoid dubious ownership in repository in dev container,
+	// see https://github.com/microsoft/vscode-remote-release/issues/6810 or https://www.kenmuse.com/blog/avoiding-dubious-ownership-in-dev-containers/
+	"postCreateCommand": {
+		"git": "git config --global --add safe.directory /workspace"
+	},
+	"postStartCommand": {
+		"uv-add-tomlsort": "uv add toml-sort",
+		"uv-sync": "uv sync --no-install-project",
+		"uv-add-project-dependencies": "uv add --editable ./src/",
+		"uv-sync-project": "uv sync"
+	},
+	"customizations": {
+        // When connecting to a docker container your local VS Code starts an instance without extensions to ensure isolation and consistency.
+        // Therefore extensions can be specified here for automatic installation when connecting.
+        "vscode": {
+			"settings": { 
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				},
+				// Define root directory for Jupyter Notebook
+				"jupyter.notebookFileRoot": "${fileDirname}/workspace"
+			},
+            // Use the VS Code Extensions "Identifier" to define extensions
+            "extensions": [
+				// Python
+                "ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter",
+				// Docker
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers",
+				"ms-vscode-remote.remote-ssh-edit",
+				"ms-vscode-remote.remote-ssh",
+				// Formatting and Linting
+				"charliermarsh.ruff",
+				"davidanson.vscode-markdownlint",
+				"xshrim.txt-syntax",
+				"tamasfe.even-better-toml",
+				"streetsidesoftware.code-spell-checker",
+				// Data
+				"alexcvzz.vscode-sqlite",
+				"grapecity.gc-excelviewer",
+				"mechatroner.rainbow-csv",
+				"zainchen.json",
+				"yzane.markdown-pdf",
+				"ms-toolsai.datawrangler",
+				"yzhang.markdown-all-in-one",
+				// Cloud
+				//"ms-azuretools.vscode-docker",
+				// Git
+				"github.remotehub",
+				// AI Coding Assistant
+				"github.copilot",
+				"github.copilot-chat"
+            ]
+        }
+    },
+	"containerEnv": {
+        "DISPLAY": "dummy",
+        "PYTHONUNBUFFERED": "True",
+        "UV_LINK_MODE": "copy",
+        "UV_PROJECT_ENVIRONMENT": "/home/vscode/workspace/.venv"
+    },
+	"remoteUser": "vscode"
+}

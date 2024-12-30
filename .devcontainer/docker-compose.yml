@@ -1,0 +1,26 @@
+version: "3.8" # Specifies which version of the Docker Compose file format to use
+  
+services: # Top level element to configure the arguments of multiple services
+  myproject: # "project" refers to the name of your project/application for which configurations are defined. Multiple projects can be configured.
+    build: # Tells Docker Compose to build the Docker image using the Dockerfile in the specified directory.
+      context: .
+      dockerfile: ./Dockerfile.debug
+      args:
+        UV_VER: "0.5.5"
+        DEBIAN_VER: "bookworm"
+      cache_from:
+        - type=cache,target=/root/.cache/uv
+    image: dat/dev-container-uv-datascience # Explicit way to define the image name
+    # networks:
+    #   - app-net
+    volumes: # Volumes are persistent data stores (outside container), mounted to be usable by the container
+      - ../:/workspace:delegated # use the :delegated option to exclude the .venv directory from being mounted
+      - /workspace/.venv
+      # - ./uv.lock:/workspace/uv.lock
+      # - ./pyproject.toml:/workspace/pyproject.toml
+    environment:
+      - UV_COMPILE_BYTECODE=1
+      - UV_LINK_MODE=copy
+    working_dir: /workspace
+    command:
+      - sh -c "chmod -R 777 /workspace && tail -f /dev/null" # Set permissions on the working directory for root user
