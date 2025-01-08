@@ -1,2 +1,5 @@
 # Exclude the project virtual environment from image builds
 .venv
+.vscode
+.devcontainer
+ruff.toml
