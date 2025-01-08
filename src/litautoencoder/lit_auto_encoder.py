@@ -1,5 +1,6 @@
 import lightning as L
-from torch import optim, nn, utils, Tensor, rand
+from torch import nn, optim
+
 
 # define the LightningModule
 class LitAutoEncoder(L.LightningModule):
@@ -9,8 +10,7 @@ class LitAutoEncoder(L.LightningModule):
         self.decoder = decoder
 
     def training_step(self, batch, batch_idx):
-        # training_step defines the train loop.
-        # it is independent of forward
+        # Training_step defines the train loop, it is independent of forward.
         x, y = batch
         x = x.view(x.size(0), -1)
         z = self.encoder(x)

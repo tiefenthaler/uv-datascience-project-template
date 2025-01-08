@@ -1,12 +1,13 @@
 import os
-from fastapi import FastAPI, HTTPException, Response
-from fastapi.responses import PlainTextResponse
-from torch import optim, nn, utils, Tensor, rand
-from torchvision.datasets import MNIST
-from torchvision.transforms import ToTensor
+
 import lightning as L
 import uvicorn
+from fastapi import FastAPI, HTTPException, Response
 from pydantic import BaseModel, conint
+from torch import nn, rand, utils
+from torchvision.datasets import MNIST
+from torchvision.transforms import ToTensor
+
 from src.litautoencoder.lit_auto_encoder import LitAutoEncoder
 
 app = FastAPI()
@@ -16,9 +17,11 @@ encoder = None
 decoder = None
 is_model_trained = False  # Track model training status
 
+
 # Input validation model
 class NumberFakeImages(BaseModel):
     n_fake_images: conint(ge=1, le=10)  # Between 1 and 10 fake images allowed
+
 
 # Training function to initialize models
 def train_litautoencoder():
@@ -41,6 +44,7 @@ def train_litautoencoder():
 
     is_model_trained = True  # Mark model as trained
 
+
 # ROOT endpoint
 @app.get("/")
 def read_root():
@@ -49,7 +53,8 @@ def read_root():
     - To train the model, send a POST request to '/train' without providing any additional input.
     - To get encodings for random fake images, POST to '/embed' with JSON input: {'n_fake_images': [1-10]} in the request body.
     """
-    return Response(content=message, media_type="text/plain") 
+    return Response(content=message, media_type="text/plain")
+
 
 # POST endpoint to train the autoencoder
 @app.post("/train")
@@ -62,22 +67,29 @@ def train_model():
     train_litautoencoder()
     return {"message": "Model training completed successfully."}
 
+
 # POST endpoint to embed fake images using the trained autoencoder
 @app.post("/embed")
 def embed(input_data: NumberFakeImages):
     global encoder, decoder
 
     if encoder is None or decoder is None:
-        raise HTTPException(status_code=500, detail="Model not initialized. Train the model first.")
+        raise HTTPException(
+            status_code=500, detail="Model not initialized. Train the model first."
+        )
 
     n_fake_images = input_data.n_fake_images
     checkpoint_path = "./lightning_logs/version_0/checkpoints/epoch=0-step=100.ckpt"
 
     if not os.path.exists(checkpoint_path):
-        raise HTTPException(status_code=500, detail="Checkpoint file not found. Train the model first.")
+        raise HTTPException(
+            status_code=500, detail="Checkpoint file not found. Train the model first."
+        )
 
     # Load the trained autoencoder from the checkpoint
-    autoencoder = LitAutoEncoder.load_from_checkpoint(checkpoint_path, encoder=encoder, decoder=decoder)
+    autoencoder = LitAutoEncoder.load_from_checkpoint(
+        checkpoint_path, encoder=encoder, decoder=decoder
+    )
     encoder_model = autoencoder.encoder
     encoder_model.eval()
 
