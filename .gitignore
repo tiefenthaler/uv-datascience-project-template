@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+# VS Code
+.vscode/
+
+# Data
+lightning_logs/
+MNIST/
+
+# MacOS
+.DS_Store
