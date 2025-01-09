@@ -38,3 +38,10 @@ no_sort_tables = true
 sort_inline_arrays = true
 spaces_before_inline_comment = 4
 spaces_indent_inline_array = 4
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/litautoencoder"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
