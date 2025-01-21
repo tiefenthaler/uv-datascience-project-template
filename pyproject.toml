@@ -5,13 +5,13 @@ description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) f
 readme = "README.md"
 requires-python = ">=3.12.0, <3.13.0"
 dependencies = [
-    "fastapi>=0.115.6",
+    "fastapi[standard]>=0.115.6",
     "lightning>=2.4.0",
     "pydantic>=2.10.4",
-    "toml-sort>=0.24.2",
     "torch>=2.4.1",
     "torchvision>=0.20.1",
-    "uvicorn>=0.34.0"
+    # "litautoencoder" # local package, add to [tool.hatch.build.targets.wheel.packages]
+    "uvicorn>=0.34.0",
 ]
 
 [dependency-groups]
@@ -39,9 +39,9 @@ sort_inline_arrays = true
 spaces_before_inline_comment = 4
 spaces_indent_inline_array = 4
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/litautoencoder"]
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/litautoencoder"]

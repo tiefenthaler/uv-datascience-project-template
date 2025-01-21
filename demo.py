@@ -24,7 +24,7 @@ class NumberFakeImages(BaseModel):
 
 
 # Training function to initialize models
-def train_litautoencoder():
+def train_litautoencoder() -> None:
     global encoder, decoder, is_model_trained
 
     # Define the encoder and decoder architecture
@@ -47,7 +47,7 @@ def train_litautoencoder():
 
 # ROOT endpoint
 @app.get("/")
-def read_root():
+def read_root() -> Response:
     message = """
     ⚡⚡⚡ Welcome to the LitAutoEncoder API! ⚡⚡⚡
     - To train the model, send a POST request to '/train' without providing any additional input.
@@ -58,7 +58,7 @@ def read_root():
 
 # POST endpoint to train the autoencoder
 @app.post("/train")
-def train_model():
+def train_model() -> dict[str, str]:
     global is_model_trained
 
     if is_model_trained:
