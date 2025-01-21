@@ -8,6 +8,7 @@ This guide provides instructions on how to use Docker Compose with `uv` to creat
   - [Overview](#overview)
   - [Docker and Docker Compose](#docker-and-docker-compose)
     - [Dockerfile](#dockerfile)
+      - [Multi-Stage Dockerfile](#multi-stage-dockerfile)
     - [Docker Compose](#docker-compose)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
     - [pyproject.toml](#pyprojecttoml)
@@ -27,7 +28,7 @@ This project demonstrates how to set up a machine learning application using Fas
 
 ### Dockerfile
 
-The `Dockerfile.debug` is used to build the Docker image for the project. It includes the following steps:
+The `Dockerfile` is used to build the Docker image for the project. It includes the following steps:
 
 1. Define build-time arguments for the base container images and workspace name.
 2. Use a Python image with `uv` pre-installed.
@@ -39,22 +40,26 @@ The `Dockerfile.debug` is used to build the Docker image for the project. It inc
 8. Set the default command to run the FastAPI application.
 
 ```dockerfile
-# filepath: Dockerfile.debug
+# filepath: Dockerfile
 # ...existing code...
 ```
+
+#### Multi-Stage Dockerfile
+
+To build the multistage image for a container optimized final image without uv use the `multistage.Dockerfile`.
 
 ### Docker Compose
 
 The `docker-compose.yml` file is used to define and run multi-container Docker applications. It includes the following configurations:
 
-1. Build the image from the `Dockerfile.debug`.
+1. Build the image from the `Dockerfile`.
 2. Define the image name.
 3. Host the FastAPI application on port 8000.
 4. Mount the current directory to the app directory in the container.
 5. Set environment variables.
 6. Define the default command to start the FastAPI application.
 
-```dockercompose
+```yml
 # filepath: docker-compose.yml
 # ...existing code...
 ```
@@ -124,22 +129,34 @@ This file defines the FastAPI application and the endpoints. It includes:
 
 - Build the docker image and start a container:
 
+To build all services when multiple services are defined in `docker-compose.yml` ("app" and "app-optimized-docker"). Note that in the give example both services us the same port and only one service at a time should be used.
+
 ```bash
 docker-compose up --build
 ```
 
-- Test the endpoint with curl:
-
-- Get docs of the request options of the FastAPI app:
+or to build a single service only "app" respectively "app-optimized-docker".
 
 ```bash
-curl -X GET http://0.0.0.0:8000/docs
+docker-compose up --build app
 ```
+
+```bash
+docker-compose up --build app-optimized-docker
+```
+
+- Test the endpoint with curl:
 
 - Welcome root endpoint
 
 ```bash
 curl -X GET http://0.0.0.0:8000/
+```
+
+- Get docs of the request options of the FastAPI app:
+
+```bash
+curl -X GET http://0.0.0.0:8000/docs
 ```
 
 - Test the endpoint with curl by training the model first, followed by requesting predictions for n fake images
@@ -176,7 +193,7 @@ curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d 
 
 The `devcontainer.json` file includes post-create and post-start commands to configure the development environment.
 
-```jsonc
+```json
 # filepath: .devcontainer/devcontainer.json
 # ...existing code...
 ```
