@@ -1,5 +1,9 @@
-# Exclude the project virtual environment from image builds
+# Exclude the project virtual environment from image builds.
 .venv
+# Exclude Dev settings.
 .vscode
 .devcontainer
 ruff.toml
+# Exclude local application data.
+lightning_logs
+MNIST

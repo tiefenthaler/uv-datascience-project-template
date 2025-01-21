@@ -1,9 +1,19 @@
+# The x-args section defines a reusable set of arguments using YAML anchors.
+# - Used to pass build arguments ("UV_VER") to the Dockerfile.
+# TODO: only for .devcontainer - WORKSPACE_NAME argument is defined once and reused across multiple configurations within the docker-compose.yml file.
+
+x-args: &default-args
+  WORKSPACE_NAME: "app"
+  UV_VER: "python3.12-bookworm"
+
 services:
   app:
     # Build the image from the Dockerfile in the current directory
     build:
       context: .
-      dockerfile: Dockerfile.debug
+      dockerfile: Dockerfile
+      args:
+        <<: *default-args # The <<: *default-args syntax merges the default-args into the args section of the build configuration.
     image: lit_autoencoder_app # Explicit way to define the image name
 
     # Host the FastAPI application on port 8000
@@ -11,15 +21,33 @@ services:
       - "8000:8000"
     
     # Mount the current directory to the app directory in the container
-    volumes:
-      - .:/app
+    # volumes:
+    #   - .:/app
     
-    environment:
-      - PYTHONPATH=/app/src
+    # environment:
+      # - WORKSPACE_NAME=app
+      # - PATH="/app/.venv/bin:$PATH"
+      # - PYTHONPATH=/app/src
 
     # Use environment variables from an external file
     # env_file:
     #   - .env
 
-    # Default command to start the FastAPI application
+    # Default command to start the FastAPI application.
+    command: ["uvicorn", "demo:app", "--host", "0.0.0.0", "--port", "8000"]
+
+  app-optimized-docker:
+    # Build the image from the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: multistage.Dockerfile
+      args:
+        <<: *default-args # The <<: *default-args syntax merges the default-args into the args section of the build configuration.
+    image: lit_autoencoder_app # Explicit way to define the image name
+
+    # Host the FastAPI application on port 8000
+    ports:
+      - "8000:8000"
+
+    # Default command to start the FastAPI application.
     command: ["uvicorn", "demo:app", "--host", "0.0.0.0", "--port", "8000"]
