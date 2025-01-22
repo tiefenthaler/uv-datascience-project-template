@@ -1,7 +1,7 @@
+# Description: Docker Compose configuration file for the FastAPI application.
+
 # The x-args section defines a reusable set of arguments using YAML anchors.
 # - Used to pass build arguments ("UV_VER") to the Dockerfile.
-# TODO: only for .devcontainer - WORKSPACE_NAME argument is defined once and reused across multiple configurations within the docker-compose.yml file.
-
 x-args: &default-args
   WORKSPACE_NAME: "app"
   UV_VER: "python3.12-bookworm"
