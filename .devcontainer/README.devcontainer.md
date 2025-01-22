@@ -92,6 +92,7 @@ tomoki1207.pdf # PDF viewer
 xshrim.txt-syntax # Syntax highlighting for plain text files
 yzane.markdown-pdf # Generate PDF from Markdown files
 yzhang.markdown-all-in-one # All-in-one Markdown extension
+exiasr.hadolint # A Dockerfile linter
 ```
 
 Additional python packages for development:

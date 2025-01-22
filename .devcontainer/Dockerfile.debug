@@ -1,7 +1,7 @@
 # Use a python image with uv pre-installed and a Debian base image including the VS Code devcontainer base image.
 
 # Define a build-time argument with a default value for base container images.
-ARG UV_VER=python3.12
+ARG UV_VER=0.5.5
 ARG DEBIAN_VER=bookworm
 # Define a build-time argument with a default value for the workspace name.
 ARG WORKSPACE_NAME=workspace
@@ -13,15 +13,27 @@ FROM ghcr.io/astral-sh/uv:$UV_VER AS uv
 FROM mcr.microsoft.com/vscode/devcontainers/base:$DEBIAN_VER
 
 # Grant the vscode user sudo privileges for dev purposes.
-USER root
+# USER root
 
 # Install the project into ARG `WORKSPACE_NAME`
 WORKDIR /${WORKSPACE_NAME}
 
-# Copies files or directories from the uv stage into the final stage,
-# and ensures that the ownership of the copied files is adjusted to the user and group in the final image,
-# and making its functionality or binaries available in the final container.
-COPY --from=uv --chown=vscode: /uv /uvx /bin/
+# Install/Update linux packages; install common dev tools like: git, process tools, ...
+# hadolint ignore=DL3008
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends\
+    # git \
+    procps \
+    build-essential \
+    curl \
+    swig \
+    wget \
+    # To reduce the image size, it is recommended refresh the package cache as follows.
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# ADD LINE BELOW, for separate installation of git (installed per default by base containers).
+# RUN git config --global --add safe.directory /workspace
 
 # Enable bytecode compilation for faster startup.
 # ENV UV_COMPILE_BYTECODE=1
@@ -29,34 +41,27 @@ COPY --from=uv --chown=vscode: /uv /uvx /bin/
 # Copy from the cache instead of linking since it's a mounted volume.
 # ENV UV_LINK_MODE=copy
 
-# Install/Update linux packages.
-RUN apt-get update
-# Install git, process tools, ...
-# REMOVE: RUN apt-get update && apt-get install -y git
-RUN apt-get update && apt-get install -y \
-    git \
-    procps \
-    build-essential \
-    curl \
-    swig \
-    wget
-# RUN git config --global --add safe.directory /workspace
+# Copies files or directories from the uv stage into the final stage,
+# and ensures that the ownership of the copied files is adjusted to the user and group in the final image,
+# and making its functionality or binaries available in the final container.
+COPY --from=uv --chown=vscode: /uv /uvx /bin/
+
+### SOF (Start Of Commands) for using the container for development without VS Code Dev Containers ###
 
 # Copy the necessary files into the container.
 # COPY uv.lock pyproject.toml /${WORKSPACE_NAME}/
 
-# RUN --mount=type=cache,target=/root/.cache/uv
-#     --mount=type=bind,source=/${WORKSPACE_NAME}/uv.lock,target=/${WORKSPACE_NAME}/uv.lock \
-#     --mount=type=bind,source=/${WORKSPACE_NAME}/pyproject.toml,target=/${WORKSPACE_NAME}/pyproject.toml \
+# RUN --mount=type=cache,target=/root/.cache/uv \
+    # --mount=type=bind,source=/${WORKSPACE_NAME}/uv.lock,target=/${WORKSPACE_NAME}/uv.lock \
+    # --mount=type=bind,source=/${WORKSPACE_NAME}/pyproject.toml,target=/${WORKSPACE_NAME}/pyproject.toml \
     # Production setup.
     # uv sync --frozen --no-install-project --no-dev
     # Development setup.
-    # uv sync --no-install-project
-# RUN uv sync --no-install-project
+    # uv sync --frozen --no-install-project
 
 # Then, add the rest of the project source code and install it.
 # Installing separately from its dependencies allows optimal layer caching.
-# ADD . /${WORKSPACE_NAME}
+# ADD .. /${WORKSPACE_NAME}
 # RUN --mount=type=cache,target=/root/.cache/uv \
     # Production setup.
     # uv sync --frozen --no-dev
@@ -65,7 +70,9 @@ RUN apt-get update && apt-get install -y \
 #     uv sync
 
 # Place executables in the environment at the front of the path.
-ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"
+# ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"
+
+### EOF (End Of Commands) for using the container for development without VS Code Dev Containers ###
 
 # The code to run when container is started:
 # Common practice to keep the Docker container running without performing any significant action.
