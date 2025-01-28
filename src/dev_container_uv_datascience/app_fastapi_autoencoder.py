@@ -1,14 +1,13 @@
 import os
+from typing import Any
 
-import lightning as L
 import uvicorn
 from fastapi import FastAPI, HTTPException, Response
 from pydantic import BaseModel, conint
-from torch import nn, rand, utils
-from torchvision.datasets import MNIST
-from torchvision.transforms import ToTensor
+from torch import rand
 
-from src.litautoencoder.lit_auto_encoder import LitAutoEncoder
+from .lit_auto_encoder import LitAutoEncoder
+from .train_autoencoder import train_litautoencoder
 
 app = FastAPI()
 
@@ -20,38 +19,19 @@ is_model_trained = False  # Track model training status
 
 # Input validation model
 class NumberFakeImages(BaseModel):
-    n_fake_images: conint(ge=1, le=10)  # Between 1 and 10 fake images allowed
-
-
-# Training function to initialize models
-def train_litautoencoder() -> None:
-    global encoder, decoder, is_model_trained
-
-    # Define the encoder and decoder architecture
-    encoder = nn.Sequential(nn.Linear(28 * 28, 64), nn.ReLU(), nn.Linear(64, 3))
-    decoder = nn.Sequential(nn.Linear(3, 64), nn.ReLU(), nn.Linear(64, 28 * 28))
-
-    # Initialize the LitAutoEncoder
-    autoencoder = LitAutoEncoder(encoder, decoder)
-
-    # Load the MNIST dataset
-    dataset = MNIST(os.getcwd(), download=True, transform=ToTensor())
-    train_loader = utils.data.DataLoader(dataset)
-
-    # Train the autoencoder
-    trainer = L.Trainer(limit_train_batches=100, max_epochs=1)
-    trainer.fit(model=autoencoder, train_dataloaders=train_loader)
-
-    is_model_trained = True  # Mark model as trained
+    n_fake_images: conint(ge=1, le=10)  # type: ignore # Between 1 and 10 fake images allowed
 
 
 # ROOT endpoint
 @app.get("/")
 def read_root() -> Response:
+    """Root endpoint that provides information about the API."""
+
     message = """
     ⚡⚡⚡ Welcome to the LitAutoEncoder API! ⚡⚡⚡
     - To train the model, send a POST request to '/train' without providing any additional input.
-    - To get encodings for random fake images, POST to '/embed' with JSON input: {'n_fake_images': [1-10]} in the request body.
+    - To get encodings for random fake images, POST to '/embed' with JSON input: 
+      {'n_fake_images': [1-10]} in the request body.
     """
     return Response(content=message, media_type="text/plain")
 
@@ -59,18 +39,31 @@ def read_root() -> Response:
 # POST endpoint to train the autoencoder
 @app.post("/train")
 def train_model() -> dict[str, str]:
-    global is_model_trained
+    """Train the autoencoder model.
+
+    Returns:
+        dict[str, str]: A message indicating the training status.
+    """
+    global encoder, decoder, is_model_trained
 
     if is_model_trained:
         return {"message": "Model is already trained."}
 
-    train_litautoencoder()
+    encoder, decoder, is_model_trained = train_litautoencoder()
     return {"message": "Model training completed successfully."}
 
 
 # POST endpoint to embed fake images using the trained autoencoder
 @app.post("/embed")
-def embed(input_data: NumberFakeImages):
+def embed(input_data: NumberFakeImages) -> dict[str, Any]:
+    """Embed fake images using the trained autoencoder.
+
+    Args:
+        input_data (NumberFakeImages): Input data containing the number of fake images to embed.
+
+    Returns:
+        dict[str, Any]: A dictionary containing the embeddings of the fake images.
+    """
     global encoder, decoder
 
     if encoder is None or decoder is None:

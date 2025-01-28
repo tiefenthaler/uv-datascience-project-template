@@ -3,17 +3,20 @@ name = "dev-container-uv-datascience"
 version = "0.1.0"
 description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI"
 readme = "README.md"
+license = {text = "MIT"}
+urls = {repository = "https://github.com/tiefenthaler/dev-container-uv-datascience"}
 requires-python = ">=3.12.0, <3.13.0"
 dependencies = [
     "fastapi[standard]>=0.115.6",
     "lightning>=2.4.0",
     "pydantic>=2.10.4",
+    "requests>=2.32.3",
     "torch>=2.4.1",
     "torchvision>=0.20.1",
-    # "litautoencoder" # local package, add to [tool.hatch.build.targets.wheel.packages]
     "uvicorn>=0.34.0",
 ]
 
+# DEV SETTING
 [dependency-groups]
 dev = [
     "jupyterlab>=4.3.1",
@@ -24,13 +27,25 @@ lint = [
     "ruff>=0.8.1",
     "toml-sort>=0.24.2"
 ]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocstrings[python]>=0.15.0",
+]
 
+# DEV SETTING: The tool.uv.sources table extends the standard dependency tables with alternative dependency sources, 
+# which are used during development. Allows for editable installs.
+# The sources table is used to specify the source directories for the project.
+[tool.uv.sources]
+dev-container-uv-datascience = { path = "./src/dev_container_uv_datascience" } # { path = "./dist/dev_container_uv_datascience-0.1.0-py3-none-any.whl" }
+
+# DEV SETTING
 [tool.ruff]
 # ruff.toml file is used.
 # To determine the appropriate settings for each Python file, 
 # Ruff looks for the first pyproject.toml, ruff.toml, or .ruff.toml file in the file's directory or any parent directory,
 # while prioritizing ruff.toml.
 
+# DEV SETTING
 # NOTE: to sort, run: "uv run toml-sort pyproject.toml"
 [tool.tomlsort]
 in_place = true
@@ -44,4 +59,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/litautoencoder"]
+packages = ["src/dev_container_uv_datascience"]
