@@ -1,25 +1,24 @@
 // For format details, see https://aka.ms/devcontainer.json.
 {
-	"name": "dat.dev-container-uv-datascience",
+	"name": "${localEnv:LOGNAME}.dev-container-uv.${localWorkspaceFolderBasename}",
 	// Build image using docker compose based on build specs in docker-compose.yml
 	"dockerComposeFile": ["./docker-compose.yml"],
 	"service": "myproject",
-	"runServices": ["myproject"],
-	"workspaceFolder": "/workspace",
-	// Avoid dubious ownership in repository in dev container,
-	// see https://github.com/microsoft/vscode-remote-release/issues/6810 or https://www.kenmuse.com/blog/avoiding-dubious-ownership-in-dev-containers/
+	"runServices": ["myproject"],	
+	"workspaceFolder": "/vscode/workspace", // SET THIS to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
 	"postCreateCommand": {
-		// "git": "git config --global --add safe.directory /workspace",
 		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-add-project-dependencies-editable"+"uv-sync-project": if you want to properly install source dependencies.
-		"uv-sync--frozen--no-install-project": "uv sync --frozen --no-install-project"
-		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-add-project-dependencies-editable"+"uv-sync-project": if you want to properly install source dependencies.
+		// "uv-sync--frozen--no-install-project": "uv sync --frozen --no-install-project"
+		// "uv-sync--frozen--no-install-workspace": "uv sync --frozen --no-install-workspace"
+		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen--no-install-project": if you want to properly install source dependencies.
 		// "uv-sync--frozen": "uv sync --frozen"
+		// "uv-add-project-dependencies-editable": "uv add --editable ./src/dev_container_uv_datascience"
+		// "uv-add-project-dependencies-editable": "uv add --editable ./src/"
+		// "uv-sync-project": "uv sync"
 	},
 	"postStartCommand": {
-		// "uv-add-tomlsort": "uv add toml-sort",
-		// "uv-sync": "uv sync --no-install-project",
-		"uv-add-project-dependencies-editable": "uv add --editable ./src/",
-		"uv-sync-project": "uv sync"
+		// "uv-add-project-dependencies-editable": "uv add --editable ./packages/litautoencoder",
+		// "uv-sync--frozen": "uv sync --frozen"
 		// Optional: If applicable, add the following lines for installations.
 		// "uv-run-pre-commit-install": "uv run pre-commit install"
 	},
@@ -37,7 +36,6 @@
 						"path": "/bin/bash"
 					}
 				},
-				// Define root directory for Jupyter Notebook.
 				"jupyter.notebookFileRoot": "${workspaceRoot}"
 			},
             // Use the VS Code Extensions "Identifier" to define extensions.
@@ -79,7 +77,7 @@
         "DISPLAY": "dummy",
         "PYTHONUNBUFFERED": "True",
         "UV_LINK_MODE": "copy",
-        "UV_PROJECT_ENVIRONMENT": "/home/workspace/.venv"
+        "UV_PROJECT_ENVIRONMENT": "/home/vscode/workspace/.venv" // SET THIS to name the project folder to your local project folder name: "UV_PROJECT_ENVIRONMENT": "/home/vscode/${localWorkspaceFolderBasename}/.venv"
     },
 	"remoteUser": "vscode"
 }

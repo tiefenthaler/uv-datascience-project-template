@@ -1,28 +1,51 @@
 # Use a python image with uv pre-installed and a Debian base image including the VS Code devcontainer base image.
 
 # Define a build-time argument with a default value for base container images.
-ARG UV_VER=0.5.5
+ARG UV_VER=0.5.24
 ARG DEBIAN_VER=bookworm
 # Define a build-time argument with a default value for the workspace name.
-ARG WORKSPACE_NAME=workspace
+# ARG WORKSPACE_NAME_=${WORKSPACE_NAME}
+ARG WORKSPACE_NAME_=workspace
+ARG PROJECT_NAME_=${PROJECT_NAME}
 
 # Multi-Stage Build: Despite using two base images, only one container is built and run.
 # The final container is based on the second image, while copying content from the uv stage into the final stage.
 # FROM ghcr.io/astral-sh/uv:python3.12-bookworm
 FROM ghcr.io/astral-sh/uv:$UV_VER AS uv
+
+### SOF (Start Of Commands) for using the container for development without VS Code Dev Containers ###
+
+# Enable bytecode compilation for faster startup. Copy from the cache instead of linking since it's a mounted volume.
+# ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
+# WORKDIR /vscode/${WORKSPACE_NAME_}
+# RUN --mount=type=cache,target=/root/.cache/uv \
+    # --mount=type=bind,source=/${PROJECT_NAME_}/uv.lock,target=/vscode/${WORKSPACE_NAME_}/uv.lock \
+    # --mount=type=bind,source=/${PROJECT_NAME_}/pyproject.toml,target=/vscode/${WORKSPACE_NAME_}/pyproject.toml \
+    # Production setup.
+    # uv sync --frozen --no-install-project --no-dev
+    # Development setup.
+    # uv sync --frozen --no-install-project
+# Then, add the rest of the project source code and install it.
+# Installing separately from its dependencies allows optimal layer caching.
+# ADD .. /vscode/${WORKSPACE_NAME_}
+# RUN --mount=type=cache,target=/root/.cache/uv \
+    # Production setup.
+    # uv sync --frozen --no-dev
+    # Development setup, with editable install of source code.
+# RUN uv add --editable ./src/ \
+#     uv sync
+
+### EOF (End Of Commands) for using the container for development without VS Code Dev Containers ###
+
 FROM mcr.microsoft.com/vscode/devcontainers/base:$DEBIAN_VER
 
-# Grant the vscode user sudo privileges for dev purposes.
+# Grant the vscode user sudo privileges for dev purposes (for build).
 # USER root
-
-# Install the project into ARG `WORKSPACE_NAME`
-WORKDIR /${WORKSPACE_NAME}
 
 # Install/Update linux packages; install common dev tools like: git, process tools, ...
 # hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends\
-    # git \
     procps \
     build-essential \
     curl \
@@ -33,46 +56,17 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # ADD LINE BELOW, for separate installation of git (installed per default by base containers).
-# RUN git config --global --add safe.directory /workspace
-
-# Enable bytecode compilation for faster startup.
-# ENV UV_COMPILE_BYTECODE=1
-
-# Copy from the cache instead of linking since it's a mounted volume.
-# ENV UV_LINK_MODE=copy
+# RUN git config --global --add safe.directory /vscode/${WORKSPACE_NAME_}
 
 # Copies files or directories from the uv stage into the final stage,
 # and ensures that the ownership of the copied files is adjusted to the user and group in the final image,
 # and making its functionality or binaries available in the final container.
 COPY --from=uv --chown=vscode: /uv /uvx /bin/
 
-### SOF (Start Of Commands) for using the container for development without VS Code Dev Containers ###
+WORKDIR /vscode/${WORKSPACE_NAME_}
 
-# Copy the necessary files into the container.
-# COPY uv.lock pyproject.toml /${WORKSPACE_NAME}/
-
-# RUN --mount=type=cache,target=/root/.cache/uv \
-    # --mount=type=bind,source=/${WORKSPACE_NAME}/uv.lock,target=/${WORKSPACE_NAME}/uv.lock \
-    # --mount=type=bind,source=/${WORKSPACE_NAME}/pyproject.toml,target=/${WORKSPACE_NAME}/pyproject.toml \
-    # Production setup.
-    # uv sync --frozen --no-install-project --no-dev
-    # Development setup.
-    # uv sync --frozen --no-install-project
-
-# Then, add the rest of the project source code and install it.
-# Installing separately from its dependencies allows optimal layer caching.
-# ADD .. /${WORKSPACE_NAME}
-# RUN --mount=type=cache,target=/root/.cache/uv \
-    # Production setup.
-    # uv sync --frozen --no-dev
-    # Development setup, with editable install of source code.
-# RUN uv add --editable ./src/ \
-#     uv sync
-
-# Place executables in the environment at the front of the path.
-# ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"
-
-### EOF (End Of Commands) for using the container for development without VS Code Dev Containers ###
+# Place executables in the environment at the front of the path. Required for the uv command during potential additional build commands using uv that are not related to installations, like uv run ... .
+ENV PATH="/vscode/${WORKSPACE_NAME_}/.venv/bin:$PATH"
 
 # The code to run when container is started:
 # Common practice to keep the Docker container running without performing any significant action.
