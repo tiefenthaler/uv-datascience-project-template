@@ -35,6 +35,10 @@ FROM ghcr.io/astral-sh/uv:$UV_VER AS uv
 # RUN uv add --editable ./src/ \
 #     uv sync
 
+# Once the project is installed, you can either activate the project virtual environment by placing its binary directory at the front of the path.
+# Required for the uv command during potential additional build commands using uv that are not related to installations, like uv run ... .
+# ENV PATH="/vscode/${WORKSPACE_NAME_}/.venv/bin:$PATH"
+
 ### EOF (End Of Commands) for using the container for development without VS Code Dev Containers ###
 
 FROM mcr.microsoft.com/vscode/devcontainers/base:$DEBIAN_VER
@@ -64,9 +68,6 @@ RUN apt-get update \
 COPY --from=uv --chown=vscode: /uv /uvx /bin/
 
 WORKDIR /vscode/${WORKSPACE_NAME_}
-
-# Place executables in the environment at the front of the path. Required for the uv command during potential additional build commands using uv that are not related to installations, like uv run ... .
-ENV PATH="/vscode/${WORKSPACE_NAME_}/.venv/bin:$PATH"
 
 # The code to run when container is started:
 # Common practice to keep the Docker container running without performing any significant action.

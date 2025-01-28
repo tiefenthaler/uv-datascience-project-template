@@ -1,2 +1,6 @@
 # Exclude the project virtual environment from image builds.
-../.venv
+**/.venv
+# Python realted files.
+**/__pycache__
+**/.pytest_cache
+.ruff_cache
