@@ -40,8 +40,22 @@ target-version = "py312"
 
 [lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
-select = ["E4", "E7", "E9", "F"]
-ignore = []
+select = [
+    "E",    # pycodestyle
+    # "E4",
+    # "E7",
+    # "E9",
+    "N",    # pep8-naming
+    "F",    # pyflakes
+    "D",    # pydocstyle
+]
+ignore = [
+    "D100",  # Missing docstring in public module
+    "D101",  # Missing docstring in public class
+    "D107",  # Missing docstring in __init__
+    "D202",  # No blank lines allowed after function docstring
+    "D413",  # Missing blank line after last section
+]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
@@ -57,3 +71,6 @@ line-ending = "auto"
 indent-style = "space" # Default is "4" spaces.
 docstring-code-format = true
 docstring-code-line-length = 120 # use "dynamic" to use the line-length value from "line-length".
+
+[per-file-ignores]
+"tests/**" = ["D103"]  # Ignore missing docstrings in tests
