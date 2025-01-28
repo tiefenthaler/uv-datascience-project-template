@@ -20,21 +20,8 @@ services:
     ports:
       - "8000:8000"
     
-    # Mount the current directory to the app directory in the container
-    # volumes:
-    #   - .:/app
-    
-    # environment:
-      # - WORKSPACE_NAME=app
-      # - PATH="/app/.venv/bin:$PATH"
-      # - PYTHONPATH=/app/src
-
-    # Use environment variables from an external file
-    # env_file:
-    #   - .env
-
     # Default command to start the FastAPI application.
-    command: ["uvicorn", "demo:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
   app-optimized-docker:
     # Build the image from the Dockerfile in the current directory
@@ -50,4 +37,4 @@ services:
       - "8000:8000"
 
     # Default command to start the FastAPI application.
-    command: ["uvicorn", "demo:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

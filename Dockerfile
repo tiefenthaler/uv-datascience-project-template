@@ -41,4 +41,4 @@ ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"
 ENTRYPOINT []
 
 # Run the FastAPI application by default with `uvicorn`.
-CMD ["uvicorn", "demo:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

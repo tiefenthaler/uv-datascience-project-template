@@ -14,8 +14,10 @@ This guide provides instructions on how to use Docker Compose with `uv` to creat
     - [pyproject.toml](#pyprojecttoml)
   - [Custom Code in src Folder](#custom-code-in-src-folder)
     - [lit\_auto\_encoder.py](#lit_auto_encoderpy)
+    - [train\_autoencoder.py](#train_autoencoderpy)
   - [FastAPI Application](#fastapi-application)
-    - [demo.py](#demopy)
+    - [app\_fastapi\_autoencoder.py](#app_fastapi_autoencoderpy)
+    - [main.py](#mainpy)
   - [Production Setup for the Machine Learning FastAPI App hosted in the Docker container](#production-setup-for-the-machine-learning-fastapi-app-hosted-in-the-docker-container)
   - [Development in Dev Container](#development-in-dev-container)
     - [Post-Create and Post-Start Commands](#post-create-and-post-start-commands)
@@ -88,26 +90,35 @@ The `src` folder contains the custom code for the machine learning project. The 
 
 ### lit_auto_encoder.py
 
-This file defines the `LitAutoEncoder` class, which is a LightningModule for training an autoencoder using PyTorch Lightning. The `LitAutoEncoder` class includes:
+This file defines the `LitAutoEncoder` class, which is a LightningModule an autoencoder using PyTorch Lightning. The `LitAutoEncoder` class includes:
 
 1. An `__init__` method to initialize the encoder and decoder.
 2. A `training_step` method to define the training loop.
 3. A `configure_optimizers` method to set up the optimizer.
 
 ```python
-# filepath: src/litautoencoder/lit_auto_encoder.py
+# filepath: src/dev_container_uv_datascience/lit_auto_encoder.py
+# ...existing code...
+```
+
+### train_autoencoder.py
+
+This file defines the training function `train_litautoencoder` to initialize and train the model on the MNIST dataset using PyTorch Lightning.
+
+```python
+# filepath: src/dev_container_uv_datascience/train_autoencoder.py
 # ...existing code...
 ```
 
 ## FastAPI Application
 
-The FastAPI application is defined in the `demo.py` file. It includes the following endpoints:
+The FastAPI application is defined in the `app_fastapi_autoencoder.py` file. It includes the following endpoints:
 
 1. `GET /`: Root endpoint that provides a welcome message and instructions.
 2. `POST /train`: Endpoint to train the autoencoder model.
 3. `POST /embed`: Endpoint to embed fake images using the trained autoencoder.
 
-### demo.py
+### app_fastapi_autoencoder.py
 
 This file defines the FastAPI application and the endpoints. It includes:
 
@@ -120,8 +131,15 @@ This file defines the FastAPI application and the endpoints. It includes:
 7. An `embed` function to handle the embedding endpoint.
 8. The application entry point to run the FastAPI application.
 
+### main.py
+
+This file defines the uvicorn server to run the FastAPI AutoEncoder application and the endpoints. It includes:
+
+1. Importing necessary libraries and modules, including the source code of the project.
+2. The application entry point to run the FastAPI application.
+
 ```python
-# filepath: demo.py
+# filepath: main.py
 # ...existing code...
 ```
 
@@ -168,7 +186,7 @@ curl -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{
 
 ## Development in Dev Container
 
-- Run the server: `uv run /workspace/demo.py`
+- Run the server: `uv run /workspace/main.py`
 - Test the standard endpoints with curl:
 - Get docs of the request options of the FastAPI app
 
