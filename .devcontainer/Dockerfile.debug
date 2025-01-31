@@ -1,4 +1,8 @@
+# Dockerfile for development purposes.
+# ------------------------------------
 # Use a python image with uv pre-installed and a Debian base image including the VS Code devcontainer base image.
+# To use the image without VS CODE IDE, add lines as indicated (adjust docker-compose.yml as well as documented).
+# ---------------------------------
 
 # Define a build-time argument with a default value for base container images.
 ARG UV_VER=0.5.24
@@ -44,7 +48,7 @@ FROM ghcr.io/astral-sh/uv:$UV_VER AS uv
 FROM mcr.microsoft.com/vscode/devcontainers/base:$DEBIAN_VER
 
 # Grant the vscode user sudo privileges for dev purposes (for build).
-# USER root
+# USER root # Default user of the used image is "vscode".
 
 # Install/Update linux packages; install common dev tools like: git, process tools, ...
 # hadolint ignore=DL3008

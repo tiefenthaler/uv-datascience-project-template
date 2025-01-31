@@ -4,3 +4,5 @@
 **/__pycache__
 **/.pytest_cache
 .ruff_cache
+# MacOS
+.DS_Store

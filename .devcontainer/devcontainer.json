@@ -1,25 +1,34 @@
+// UV | VS Code - Setup.
+//---------------------
+// This config is setup to be only specific to VS Code.
+// Other configs that do not relate to VS Code are defined in the docker-compose.yml file.
+// This enables the dev container setup to be used with other IDEs, ignoring this file.
+//---------------------
+// Default and dynamic properties for the devcontainer setup:
+// - Default service: "myproject", relates to the service defined in the docker-compose.yml.
+// - Default "workspaceFolder" is set to "workspace" (within the "/vscode/" folder in the container).
+// 	 - This can be adjusted to the localWorkspaceFolderBasename, by replacing lines with comments indicated with "// SET THIS, ...".
 // For format details, see https://aka.ms/devcontainer.json.
+//---------------------
+
 {
 	"name": "${localEnv:LOGNAME}.dev-container-uv.${localWorkspaceFolderBasename}",
 	// Build image using docker compose based on build specs in docker-compose.yml
 	"dockerComposeFile": ["./docker-compose.yml"],
 	"service": "myproject",
 	"runServices": ["myproject"],	
-	"workspaceFolder": "/vscode/workspace", // SET THIS to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/vscode/workspace", // SET THIS, to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
 	"postCreateCommand": {
-		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-add-project-dependencies-editable"+"uv-sync-project": if you want to properly install source dependencies.
-		"uv-sync--frozen--no-install-project": "uv sync --frozen --no-install-project"
-		// "uv-sync--frozen--no-install-workspace": "uv sync --frozen --no-install-workspace"
-		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen--no-install-project": if you want to properly install source dependencies.
-		// "uv-sync--frozen": "uv sync --frozen"
-		// "uv-add-project-dependencies-editable": "uv add --editable ./src/dev_container_uv_datascience"
-		// "uv-add-project-dependencies-editable": "uv add --editable ./src/"
-		// "uv-sync-project": "uv sync"
+		// Set the permissions for the mounted volume for vscode user.
+		"set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv", // SET THIS, to name the project folder to your local project folder name: "sudo chown -R vscode:vscode /vscode/${localWorkspaceFolderBasename}/.venv",
+		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (providing a  .whl).
+		"uv-sync--frozen": "uv sync --frozen" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
+		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (providing a .whl).
+		// "uv-sync-project": "uv sync" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 	},
 	"postStartCommand": {
-		// "uv-add-project-dependencies-editable": "uv add --editable ./packages/litautoencoder",
-		// "uv-sync--frozen--no-install-project": "uv sync --frozen --no-install-project",
-		// "uv-sync--frozen": "uv sync --frozen"
+		// Set the permissions for the mounted volume for vscode user.
+		"set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv" // SET THIS, to name the project folder to your local project folder name: "sudo chown -R vscode:vscode /vscode/${localWorkspaceFolderBasename}/.venv",
 		// Optional: If applicable, add the following lines for installations.
 		// "uv-run-pre-commit-install": "uv run pre-commit install"
 	},
@@ -38,7 +47,7 @@
 					}
 				},
 				"jupyter.notebookFileRoot": "${workspaceRoot}",
-				"python.pythonPath": "/home/vscode/workspace/.venv/bin/python" // SET THIS to name the project folder to your local project folder name: "python.pythonPath": "/home/vscode/${localWorkspaceFolderBasename}/.venv/bin/python"
+				"python.pythonPath": "/home/vscode/workspace/.venv/bin/python" // SET THIS, to name the project folder to your local project folder name: "python.pythonPath": "/home/vscode/${localWorkspaceFolderBasename}/.venv/bin/python"
 			},
             // Use the VS Code Extensions "Identifier" to define extensions.
             "extensions": [
@@ -70,16 +79,11 @@
 				// Git
 				"github.remotehub",
 				// AI Coding Assistant
-				"github.copilot",
-				"github.copilot-chat"
+				// "github.copilot",
+				// "github.copilot-chat"
+				"tabnine.tabnine-vscode"
             ]
         }
-    },
-	"containerEnv": {
-        "DISPLAY": "dummy",
-        "PYTHONUNBUFFERED": "True",
-        "UV_LINK_MODE": "copy",
-        "UV_PROJECT_ENVIRONMENT": "/home/vscode/workspace/.venv" // SET THIS to name the project folder to your local project folder name: "UV_PROJECT_ENVIRONMENT": "/home/vscode/${localWorkspaceFolderBasename}/.venv"
     },
 	"remoteUser": "vscode"
 }
