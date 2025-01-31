@@ -4,10 +4,20 @@
 **/__pycache__
 **/.pytest_cache
 .ruff_cache
+.tests/
 # Exclude Dev settings.
 .vscode
 .devcontainer
 ruff.toml
-# Exclude local application data.
+# Git
+.git
+# Docker
+.dockerignore
+# MacOS
+.DS_Store
+# Project
+README.md
+LICENSE
+dist/
 lightning_logs
 MNIST
