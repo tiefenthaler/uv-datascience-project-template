@@ -1,5 +1,8 @@
 # An example using multi-stage image builds to create a final image without uv.
+# -----------------------------------------------------------------------------
+# Defines an optimized image to reduce image size.
 # Custom python code should be a packaged application.
+# ----------------------------------------------------
 
 # Define a build-time argument with a default value for base container images.
 ARG UV_VER=python3.12-bookworm-slim
@@ -15,12 +18,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-dev
 # Then, add the rest of the project source code and install it. See `Dockerfile` for details.
-# ADD THIS to copy the entire project directory instead of specific files only.
 COPY . /${WORKSPACE_NAME}
-# COPY src /${WORKSPACE_NAME}/src
-# COPY demo.py /${WORKSPACE_NAME}/demo.py
-# COPY uv.lock /${WORKSPACE_NAME}/uv.lock
-# COPY pyproject.toml /${WORKSPACE_NAME}/pyproject.toml
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
 
@@ -36,4 +34,4 @@ COPY --from=builder --chown=${WORKSPACE_NAME}:${WORKSPACE_NAME} /${WORKSPACE_NAM
 ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"
 
 # Run the FastAPI application by default with `uvicorn`.
-CMD ["uvicorn", "demo:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

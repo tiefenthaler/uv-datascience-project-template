@@ -1,4 +1,9 @@
-# Description: Docker Compose configuration file for the FastAPI application.
+# Docker Compose configuration file for the FastAPI application.
+# --------------------------------------------------------------
+# Both service reflect the same purpose, so only one service should be used at a time.
+# - The service "app" defines the image in a way, where both base images are integrated.
+# - The service "app-optimized-docker" defines an optimized image to reduce image size.
+# -------------------------------------------------------------------------------------
 
 # The x-args section defines a reusable set of arguments using YAML anchors.
 # - Used to pass build arguments ("UV_VER") to the Dockerfile.

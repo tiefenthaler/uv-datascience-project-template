@@ -1,6 +1,10 @@
-# Purpose: Dockerfile for a production setup python application incl. custom packages using uv.
+# Dockerfile for a production setup python application incl. custom source package using uv.
+# ------------------------------------------------------------------------------------------
+# The image is defined in a way, where both base images are integrated.
+# Custom python code should be a packaged application.
 # For more information, see: https://docs.astral.sh/uv/concepts/projects/init/
 #   and see: https://docs.astral.sh/uv/concepts/projects/workspaces/
+# ------------------------------------------------------------------
 
 # Define a build-time argument with a default value for base container images.
 ARG UV_VER=python3.12-bookworm
@@ -25,17 +29,13 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # Production setup: Copy application and related package source code and install it.
 #     For an even more robust setup, consider installing packages using a wheel file.
 # Installing separately from its dependencies allows optimal layer caching.
-# ADD THIS to copy the entire project directory instead of specific files only.
 COPY . /${WORKSPACE_NAME}
 # Use the uv interface to install the packages.
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
 
-# Add executables and source to environment paths:
-#    - to ensure that these executables are used instead of any system-wide versions.
-#    TODO: remove: - to ensure that Python can locate and import the modules in your src directory.
+# Add executables to environment paths, to ensure that these executables are used instead of any system-wide versions.
 ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"
-# ENV PYTHONPATH="/${WORKSPACE_NAME}/src:$PYTHONPATH"
 
 # Reset the entrypoint, don't invoke `uv`, ensure container won't run any command by default.
 ENTRYPOINT []
