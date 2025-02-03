@@ -19,16 +19,12 @@
 	"runServices": ["myproject"],	
 	"workspaceFolder": "/vscode/workspace", // SET THIS, to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
 	"postCreateCommand": {
-		// Set the permissions for the mounted volume for vscode user.
-		"set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv", // SET THIS, to name the project folder to your local project folder name: "sudo chown -R vscode:vscode /vscode/${localWorkspaceFolderBasename}/.venv",
 		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (by building a .whl).
 		"uv-sync--frozen": "uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies, still in editable mode (by building a .whl).
 		// "uv-sync-project": "uv sync --no-sources" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 	},
 	"postStartCommand": {
-		// Set the permissions for the mounted volume for vscode user.
-		"set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv" // SET THIS, to name the project folder to your local project folder name: "sudo chown -R vscode:vscode /vscode/${localWorkspaceFolderBasename}/.venv",
 		// Optional: If applicable, add the following lines for installations.
 		// "uv-run-pre-commit-install": "uv run pre-commit install"
 	},
