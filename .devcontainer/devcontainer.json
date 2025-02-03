@@ -4,33 +4,29 @@
 // Other configs that do not relate to VS Code are defined in the docker-compose.yml file.
 // This enables the dev container setup to be used with other IDEs, ignoring this file.
 //---------------------
-// Default and dynamic properties for the devcontainer setup:
+// Default properties for the devcontainer setup:
 // - Default service: "myproject", relates to the service defined in the docker-compose.yml.
 // - Default "workspaceFolder" is set to "workspace" (within the "/vscode/" folder in the container).
-// 	 - This can be adjusted to the localWorkspaceFolderBasename, by replacing lines with comments indicated with "// SET THIS, ...".
 // For format details, see https://aka.ms/devcontainer.json.
 //---------------------
 
 {
-	"name": "${localEnv:LOGNAME}.dev-container-uv.${localWorkspaceFolderBasename}",
+	"name": "dev-container-name",
 	// Build image using docker compose based on build specs in docker-compose.yml
 	"dockerComposeFile": ["./docker-compose.yml"],
 	"service": "myproject",
 	"runServices": ["myproject"],	
-	"workspaceFolder": "/vscode/workspace", // SET THIS, to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/vscode/workspace",
 	"postCreateCommand": {
 		// Set the permissions for the mounted volume for vscode user.
-		"set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv", // SET THIS, to name the project folder to your local project folder name: "sudo chown -R vscode:vscode /vscode/${localWorkspaceFolderBasename}/.venv",
-		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (by building a .whl).
-		"uv-sync--frozen": "uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
-		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies, still in editable mode (by building a .whl).
+		// "set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv",
+		"uv-sync--frozen": "uv sync --frozen --no-install-project" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
+		// "uv-sync--frozen": "uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 		// "uv-sync-project": "uv sync --no-sources" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 	},
 	"postStartCommand": {
 		// Set the permissions for the mounted volume for vscode user.
-		"set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv" // SET THIS, to name the project folder to your local project folder name: "sudo chown -R vscode:vscode /vscode/${localWorkspaceFolderBasename}/.venv",
-		// Optional: If applicable, add the following lines for installations.
-		// "uv-run-pre-commit-install": "uv run pre-commit install"
+		// "set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv"
 	},
 	"features": {
         "ghcr.io/dhoeric/features/hadolint:1": {}
@@ -46,42 +42,17 @@
 						"path": "/bin/bash"
 					}
 				},
-				"jupyter.notebookFileRoot": "${workspaceRoot}",
-				"python.pythonPath": "/home/vscode/workspace/.venv/bin/python" // SET THIS, to name the project folder to your local project folder name: "python.pythonPath": "/home/vscode/${localWorkspaceFolderBasename}/.venv/bin/python"
+				"python.pythonPath": "/home/vscode/workspace/.venv/bin/python"
 			},
             // Use the VS Code Extensions "Identifier" to define extensions.
             "extensions": [
 				// Python
                 "ms-python.python",
-				"ms-toolsai.jupyter",
 				// Docker
 				"ms-azuretools.vscode-docker",
 				"ms-vscode-remote.remote-containers",
 				"ms-vscode-remote.remote-ssh-edit",
-				"ms-vscode-remote.remote-ssh",
-				"exiasr.hadolint",
-				// Formatting and Linting
-				"charliermarsh.ruff",
-				"davidanson.vscode-markdownlint",
-				"xshrim.txt-syntax",
-				"tamasfe.even-better-toml",
-				"streetsidesoftware.code-spell-checker",
-				// Data
-				"alexcvzz.vscode-sqlite",
-				"grapecity.gc-excelviewer",
-				"mechatroner.rainbow-csv",
-				"zainchen.json",
-				"yzane.markdown-pdf",
-				"ms-toolsai.datawrangler",
-				"yzhang.markdown-all-in-one",
-				// Cloud
-				//"ms-azuretools.vscode-docker",
-				// Git
-				"github.remotehub",
-				// AI Coding Assistant
-				// "github.copilot",
-				// "github.copilot-chat"
-				"tabnine.tabnine-vscode"
+				"ms-vscode-remote.remote-ssh"
             ]
         }
     },

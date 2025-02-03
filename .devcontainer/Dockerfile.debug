@@ -5,12 +5,11 @@
 # ---------------------------------
 
 # Define a build-time argument with a default value for base container images.
-ARG UV_VER=0.5.24
+ARG UV_VER=0.5.26
 ARG DEBIAN_VER=bookworm
 # Define a build-time argument with a default value for the workspace name.
-# ARG WORKSPACE_NAME_=${WORKSPACE_NAME}
 ARG WORKSPACE_NAME_=workspace
-ARG PROJECT_NAME_=${PROJECT_NAME}
+# ARG PROJECT_NAME_=dev-container-uv-datascience
 
 # Multi-Stage Build: Despite using two base images, only one container is built and run.
 # The final container is based on the second image, while copying content from the uv stage into the final stage.
@@ -56,9 +55,6 @@ RUN apt-get update \
     # To reduce the image size, it is recommended refresh the package cache as follows.
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-# ADD LINE BELOW, for separate installation of git (installed per default by base containers).
-# RUN git config --global --add safe.directory /vscode/${WORKSPACE_NAME_}
 
 # Copies files or directories from the uv stage into the final stage,
 # and ensures that the ownership of the copied files is adjusted to the user and group in the final image,
