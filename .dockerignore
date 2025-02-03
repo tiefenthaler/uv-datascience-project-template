@@ -4,7 +4,7 @@
 **/__pycache__
 **/.pytest_cache
 .ruff_cache
-.tests/
+tests/
 # Exclude Dev settings.
 .vscode
 .devcontainer
@@ -16,7 +16,6 @@ ruff.toml
 # MacOS
 .DS_Store
 # Project
-README.md
 LICENSE
 dist/
 lightning_logs
