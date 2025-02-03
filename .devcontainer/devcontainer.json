@@ -21,12 +21,8 @@
 		// Set the permissions for the mounted volume for vscode user.
 		// "set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv",
 		"uv-sync--frozen": "uv sync --frozen --no-install-project" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
-		// "uv-sync--frozen": "uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
-		// "uv-sync-project": "uv sync --no-sources" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 	},
 	"postStartCommand": {
-		// Set the permissions for the mounted volume for vscode user.
-		// "set-permission-for-vscodeuser-to-mount-volume-venv": "sudo chown -R vscode:vscode /vscode/workspace/.venv"
 	},
 	"features": {
         "ghcr.io/dhoeric/features/hadolint:1": {}
