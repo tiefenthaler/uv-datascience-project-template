@@ -6,7 +6,7 @@ from dev_container_uv_datascience.lit_auto_encoder import LitAutoEncoder
 
 
 @pytest.fixture
-def autoencoder() -> LitAutoEncoder[nn.Sequential, nn.Sequential]:
+def autoencoder() -> LitAutoEncoder:
     encoder = nn.Sequential(nn.Linear(28 * 28, 64), nn.ReLU(), nn.Linear(64, 3))
     decoder = nn.Sequential(nn.Linear(3, 64), nn.ReLU(), nn.Linear(64, 28 * 28))
     return LitAutoEncoder(encoder, decoder)
