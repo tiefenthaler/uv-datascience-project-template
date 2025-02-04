@@ -1,0 +1,52 @@
+
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python ${{ matrix.python-version }} with uv
+        uses: ./.github/actions/setup-python-with-uv
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run pytest
+      # Generate a JUnit XML report (standard format for test results), used by CI action.
+      # Takes the output and sends it to 'tee', to writes it to both standard output and to file.
+        run: |
+          set -o pipefail
+          uv run pytest --junitxml=pytest.xml | tee .test_reports/pytest-coverage.txt
+
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@v1
+        with:
+          pytest-coverage-path: .test_reports/pytest-coverage.txt
+          junitxml-path: .test_reports/pytest.xml
+
+      - name: Creating coverage folder
+        run: mkdir -p .test_reports/coverage
+
+      - name: Coverage Bagdge
+        uses: tj-actions/coverage-badge-py@v2
+        with:
+          output: .test_reports/coverage/coverage.svg
+
+      - name: Publish coverage report to coverage-badge branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: coverage-badge
+          folder: .test_reports/coverage
