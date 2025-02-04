@@ -21,29 +21,36 @@ dependencies = [
 dev = [
     "jupyterlab>=4.3.1",
     "pytest>=8.1.1",
-    "uv>=0.5.5"
+    "pytest-cov>=6.0.0",
+    "uv>=0.5.5",
 ]
 lint = [
+    "pyright>=1.1.393",
     "ruff>=0.8.1",
-    "toml-sort>=0.24.2"
+    "toml-sort>=0.24.2",
 ]
 docs = [
     "mkdocs>=1.6.1",
     "mkdocstrings[python]>=0.15.0",
 ]
 
-# DEV SETTING: The tool.uv.sources table extends the standard dependency tables with alternative dependency sources, 
+# DEV SETTING
+# The tool.uv.sources table extends the standard dependency tables with alternative dependency sources, 
 # which are used during development. Allows for editable installs.
-# The sources table is used to specify the source directories for the project.
 [tool.uv.sources]
 dev-container-uv-datascience = { path = "./src/dev_container_uv_datascience" } # { path = "./dist/dev_container_uv_datascience-0.1.0-py3-none-any.whl" }
 
 # DEV SETTING
 [tool.ruff]
 # ruff.toml file is used.
-# To determine the appropriate settings for each Python file, 
-# Ruff looks for the first pyproject.toml, ruff.toml, or .ruff.toml file in the file's directory or any parent directory,
-# while prioritizing ruff.toml.
+
+# DEV SETTING
+[tool.pytest]
+# pytest.ini file is used, including pytest-cov.
+
+# DEV SETTING
+[tool.pyright]
+# pyrightconfig.json file is used. NOTE: Ensure to set the python version correctly.
 
 # DEV SETTING
 # NOTE: to sort, run: "uv run toml-sort pyproject.toml"

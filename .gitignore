@@ -1,5 +1,6 @@
 # Python-generated files
 __pycache__/
+.pytest_cache
 *.py[oc]
 build/
 dist/
@@ -18,3 +19,8 @@ MNIST/
 
 # MacOS
 .DS_Store
+
+# Coverage
+.coverage
+.coverage.*
+.coverage_report/
