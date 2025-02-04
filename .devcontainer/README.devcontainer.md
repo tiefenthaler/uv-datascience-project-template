@@ -85,6 +85,7 @@ The below extensions are installed for VS Code in the dev container, as defined 
 alexcvzz.vscode-sqlite # SQLite query execution and browsing
 charliermarsh.ruff # Python linter and code formatter
 davidanson.vscode-markdownlint # Markdown linter
+exiasr.hadolint # A Dockerfile linter
 grapecity.gc-excelviewer # Excel file viewer
 hediet.vscode-drawio # Draw.io integration
 jeff-hykin.polacode-2019 # Generate code blocks from images
@@ -94,6 +95,7 @@ ms-python.python # Python language support
 ms-python.vscode-pylance # Python language server for enhanced code analysis
 ms-toolsai.datawrangler # Data transformation and cleaning tool
 ms-toolsai.jupyter # Jupyter Notebooks
+ms-pyright.pyright # Static type checker
 richie5um2.vscode-sort-json # Sorts JSON objects
 streetsidesoftware.code-spell-checker # Spell checker for multiple languages
 tamasfe.even-better-toml # Enhanced TOML language support
@@ -101,7 +103,6 @@ tomoki1207.pdf # PDF viewer
 xshrim.txt-syntax # Syntax highlighting for plain text files
 yzane.markdown-pdf # Generate PDF from Markdown files
 yzhang.markdown-all-in-one # All-in-one Markdown extension
-exiasr.hadolint # A Dockerfile linter
 ```
 
 Additional python packages for development:

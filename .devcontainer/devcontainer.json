@@ -62,6 +62,7 @@
 				"xshrim.txt-syntax",
 				"tamasfe.even-better-toml",
 				"streetsidesoftware.code-spell-checker",
+				"ms-pyright.pyright",
 				// Data
 				"alexcvzz.vscode-sqlite",
 				"grapecity.gc-excelviewer",
