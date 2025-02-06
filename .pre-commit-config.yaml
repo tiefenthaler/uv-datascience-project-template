@@ -1,5 +1,6 @@
 # Pre-commit configuration file.
-# Run "uv run pre-commit run --all-files" to run all hooks.
+# Run "uv run pre-commit install" to install pre-commit hooks. This sets up the hooks to run automatically before each commit.
+# Run "uv run pre-commit run --all-files" to run all hooks manually.
 
 default_stages: [pre-commit]
 
