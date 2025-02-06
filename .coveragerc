@@ -23,5 +23,5 @@ fail_under = 75
 show_missing = True
 
 # HTML report settings.
-# [html]
-# directory = .test_reports/coverage/html
+[html]
+directory = .test_reports/coverage/html
