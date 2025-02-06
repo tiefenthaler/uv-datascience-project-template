@@ -28,8 +28,10 @@ jobs:
       # Generate a JUnit XML report (standard format for test results), used by CI action.
       # Takes the output and sends it to 'tee', to writes it to both standard output and to file.
         run: |
+          mkdir -p .test_reports
+          chmod 755 .test_reports
           set -o pipefail
-          uv run pytest --junitxml=pytest.xml | tee .test_reports/pytest-coverage.txt
+          uv run pytest --junitxml=.test_reports/pytest.xml | tee .test_reports/pytest-coverage.txt
 
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@v1
