@@ -16,6 +16,7 @@ wheels/
 # Data
 lightning_logs/
 MNIST/
+.test_reports/
 
 # MacOS
 .DS_Store

@@ -1,0 +1,27 @@
+# INI Syntax
+
+[run]
+# Requires a .test_reports directory, which will be automatically created by tests/conftest.py.
+data_file = .test_reports/coverage/.coverage
+source = 
+    src
+branch = True
+# parallel = True
+# Optional: Exclude files from coverage reporting
+omit =
+    .tox/*
+    .venv/*
+    __pycache__/*
+    .git/*
+
+# Overall report settings.
+[report]
+fail_under = 75
+
+# Terminal report settings.
+[term]
+show_missing = True
+
+# HTML report settings.
+# [html]
+# directory = .test_reports/coverage/html
