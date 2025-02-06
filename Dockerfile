@@ -31,10 +31,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # Installing separately from its dependencies allows optimal layer caching.
 COPY . /${WORKSPACE_NAME}
 # Use the uv interface to install the packages.
-# - --no-sources: the packages will be build and installed from distribution, needed since src and build is condigured by the pyproject.toml.
-# - --no-editable: the packages will be installed in non-editable mode for production.
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-sources --no-dev --no-editable
+    # If a build system is defined in the pyproject.toml, it will be used to build the package.
+    uv sync --frozen --no-dev
+    # If a build system is defined in the pyproject.toml and you do not want to build the packages.
+    # Use "--no-editable" to install the package from source code, but without a dependency on the originating source code.
+    # uv sync --frozen --no-dev --no-editable
 
 # Add executables to environment paths, to ensure that these executables are used instead of any system-wide versions.
 ENV PATH="/${WORKSPACE_NAME}/.venv/bin:$PATH"

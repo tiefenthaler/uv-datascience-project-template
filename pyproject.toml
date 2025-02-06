@@ -10,10 +10,9 @@ dependencies = [
     "fastapi[standard]>=0.115.6",
     "lightning>=2.4.0",
     "pydantic>=2.10.4",
-    "requests>=2.32.3",
     "torch>=2.4.1",
     "torchvision>=0.20.1",
-    "uvicorn>=0.34.0"
+    "uvicorn>=0.34.0",
 ]
 
 # DEV SETTING
@@ -35,19 +34,23 @@ docs = [
 ]
 
 # DEV SETTING
-# The tool.uv.sources table extends the standard dependency tables with alternative dependency sources,
-# which are used during development. Allows for editable installs.
-[tool.uv]
-[tool.uv.sources]
-dev-container-uv-datascience = {path = "./src/dev_container_uv_datascience"}    # { path = "./dist/dev_container_uv_datascience-0.1.0-py3-none-any.whl" }
+# The tool.uv.sources table extends the standard dependency tables with additional alternative dependency sources,
+# besides src/, which are used during development. Allows for editable installs for those as well.
+# [tool.uv]
+# [tool.uv.sources]
+# x-y-z = {path = "./packages/x_y_z"}    # { path = "./dist/x_y_z-0.1.0-py3-none-any.whl" }
 
 # DEV SETTING
 # ruff.toml file is used.
 [tool.ruff]
 
 # DEV SETTING
-# pytest.ini file is used, including pytest-cov.
+# pytest.ini file is used.
 [tool.pytest]
+
+# DEV SETTING
+# .coveragerc file is used. A pytest fixture in .conftest.py is used to create coverage file/report directory.
+[tool.coverage]
 
 # DEV SETTING
 # pyrightconfig.json file is used. NOTE: Ensure to set the python version correctly.
