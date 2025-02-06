@@ -72,7 +72,7 @@ def embed(input_data: NumberFakeImages) -> dict[str, Any]:
         )
 
     n_fake_images = input_data.n_fake_images
-    checkpoint_path = "./lightning_logs/version_0/checkpoints/epoch=0-step=100.ckpt"
+    checkpoint_path = "./lightning_logs/LitAutoEncoder/version_0/checkpoints/epoch=0-step=100.ckpt"
 
     if not os.path.exists(checkpoint_path):
         raise HTTPException(

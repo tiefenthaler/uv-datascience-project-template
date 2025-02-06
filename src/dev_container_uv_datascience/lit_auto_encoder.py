@@ -23,7 +23,7 @@ class LitAutoEncoder(L.LightningModule):
         x_hat = self.decoder(z)
         loss = nn.functional.mse_loss(x_hat, x)
         # Logging to TensorBoard (if installed) by default
-        self.log("train_loss", loss)
+        # self.log("train_loss", loss)
         return loss
 
     def configure_optimizers(self) -> optim.Adam:
