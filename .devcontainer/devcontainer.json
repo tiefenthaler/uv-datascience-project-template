@@ -22,7 +22,7 @@
 		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (by building a .whl).
 		"uv-sync--frozen": "uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies, still in editable mode (by building a .whl).
-		// "uv-sync-project": "uv sync --no-sources" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
+		// "uv-sync-project": "uv sync --frozen" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
 	},
 	"postStartCommand": {
 		// Optional: If applicable, add the following lines for installations.
@@ -76,9 +76,9 @@
 				// Git
 				"github.remotehub",
 				// AI Coding Assistant
-				// "github.copilot",
-				// "github.copilot-chat"
-				"tabnine.tabnine-vscode"
+				"github.copilot",
+				"github.copilot-chat"
+				// "tabnine.tabnine-vscode"
             ]
         }
     },
