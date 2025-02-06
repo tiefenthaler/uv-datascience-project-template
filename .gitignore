@@ -25,3 +25,6 @@ MNIST/
 .coverage
 .coverage.*
 .coverage_report/
+
+# Ruff
+.ruff_cache
