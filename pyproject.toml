@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI"
 readme = "README.md"
 license = {text = "MIT"}
-authors = [{name = "David Tiefenthaler"}]
+authors = [
+    {name = "David Tiefenthaler"}
+]
 urls = {repository = "https://github.com/tiefenthaler/dev-container-uv-datascience"}
 keywords = [
     "python", 
@@ -33,6 +35,7 @@ dev = [
     "pyright>=1.1.393",
     "ruff>=0.9.4",
     "toml-sort>=0.24.2",
+    "ipykernel>=6.29.5",
 ]
 docs = [
     "mkdocs>=1.6.1",
