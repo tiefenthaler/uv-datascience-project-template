@@ -21,12 +21,10 @@ dev = [
     "jupyterlab>=4.3.1",
     "pytest-cov>=6.0.0",
     "pytest>=8.1.1",
-    "uv>=0.5.5"
-]
-lint = [
+    "uv>=0.5.5",
     "pyright>=1.1.393",
-    "ruff>=0.8.1",
-    "toml-sort>=0.24.2"
+    "ruff>=0.9.4",
+    "toml-sort>=0.24.2",
 ]
 docs = [
     "mkdocs>=1.6.1",
@@ -34,9 +32,11 @@ docs = [
 ]
 
 # DEV SETTING
+[tool.uv]
+default-groups = ["dev"]
+
 # The tool.uv.sources table extends the standard dependency tables with additional alternative dependency sources,
 # besides src/, which are used during development. Allows for editable installs for those as well.
-# [tool.uv]
 # [tool.uv.sources]
 # x-y-z = {path = "./packages/x_y_z"}    # { path = "./dist/x_y_z-0.1.0-py3-none-any.whl" }
 

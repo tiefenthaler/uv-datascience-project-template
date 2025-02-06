@@ -1,10 +1,11 @@
 {
     "pythonVersion": "3.12",
     "pythonPlatform": "All",
-    "venv": ".venv",
+    "venvPath": "./.venv",
     "typeCheckingMode": "standard",
     "include": [
-        "tools"
+        "src/",
+        "tests/"
     ],
     "exclude": [
         "**/__pycache__",
