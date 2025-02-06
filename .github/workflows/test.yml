@@ -34,7 +34,7 @@ jobs:
           uv run pytest --cov --junitxml=.test_reports/pytest.xml | tee .test_reports/pytest-coverage.txt
 
       - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@v1
+        uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: .test_reports/pytest-coverage.txt
           junitxml-path: .test_reports/pytest.xml
