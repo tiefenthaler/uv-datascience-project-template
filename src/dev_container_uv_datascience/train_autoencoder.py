@@ -1,7 +1,7 @@
 import os
 from typing import Literal
 
-import lightning as L
+import lightning as L  # noqa: N812
 from lightning.pytorch.loggers import CSVLogger
 from torch import nn, utils
 from torch.nn import Sequential
