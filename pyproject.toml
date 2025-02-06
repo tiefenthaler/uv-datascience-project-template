@@ -35,7 +35,8 @@ dev = [
     "pytest>=8.1.1",
     "ruff>=0.9.4",
     "toml-sort>=0.24.2",
-    "uv>=0.5.26"
+    "uv>=0.5.26",
+    "pre-commit>=4.1.0",
 ]
 docs = [
     "mkdocs>=1.6.1",

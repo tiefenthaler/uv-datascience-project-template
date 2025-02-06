@@ -1,10 +1,13 @@
+# Pre-commit configuration file.
+# Run "uv run pre-commit run --all-files" to run all hooks.
+
 default_stages: [pre-commit]
 
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.9.2
     hooks:
-      - id: ruff-linter
+      - id: ruff
         name: Ruff check
         description: "Run 'ruff check' for extremely fast Python linting"
         args: [--fix]
