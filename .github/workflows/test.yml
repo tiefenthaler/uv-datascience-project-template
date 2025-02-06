@@ -31,7 +31,7 @@ jobs:
           mkdir -p .test_reports
           chmod 755 .test_reports
           set -o pipefail
-          uv run pytest --junitxml=.test_reports/pytest.xml | tee .test_reports/pytest-coverage.txt
+          uv run pytest --cov --junitxml=.test_reports/pytest.xml | tee .test_reports/pytest-coverage.txt
 
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@v1
