@@ -2,6 +2,8 @@
 
 This guide provides instructions on how to use Docker Compose with `uv` to create a container for a machine learning Python project that uses FastAPI for a production setup.
 
+[Project Documentation](https://tiefenthaler.github.io/dev-container-uv-datascience/)
+
 ## Table of Contents
 
 - [Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI](#tutorial-project-for-1-data-science-in-a-dev-container-and-2-for-a-machine-learning-application-in-production-using-docker-uv-and-fastapi)

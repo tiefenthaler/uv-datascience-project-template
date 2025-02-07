@@ -4,6 +4,7 @@ nav:
   - API Reference:
       - Autoencoder: api/autoencoder.md
       - Training: api/training.md
+      - FastAPI: api/fastapi_app.md
 theme:
   name: material
 plugins:
