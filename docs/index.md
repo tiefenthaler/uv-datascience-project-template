@@ -1,6 +1,6 @@
-# Dev Container UV Data Science
+# UV Data Science Project Template
 
-Welcome to the documentation for the Dev Container UV Data Science project. This project demonstrates how to set up a data science environment using Docker, UV, and FastAPI.
+Welcome to the documentation for UV Data Science Project Template. This project demonstrates how to set up a data science environment using Docker, UV, FastAPI, along with other tools for developing python projects.
 
 <!-- Include the content of README.md -->
 {%
