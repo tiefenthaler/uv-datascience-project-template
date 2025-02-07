@@ -1,3 +1,3 @@
 # Autoencoder
 
-::: dev_container_uv_datascience.lit_auto_encoder
+::: uv_datascience_project_template.lit_auto_encoder

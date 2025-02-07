@@ -1,5 +1,5 @@
 [project]
-name = "dev-container-uv-datascience"
+name = "uv-datascience-project-template"
 version = "0.1.0"
 description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI"
 readme = "README.md"
@@ -7,7 +7,7 @@ license = {text = "MIT"}
 authors = [
     {name = "David Tiefenthaler"}
 ]
-urls = {repository = "https://github.com/tiefenthaler/dev-container-uv-datascience"}
+urls = {repository = "https://github.com/tiefenthaler/uv-datascience-project-template"}
 keywords = [
     "data science project",
     "docker",
@@ -75,7 +75,7 @@ spaces_before_inline_comment = 4
 spaces_indent_inline_array = 4
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/dev_container_uv_datascience"]
+packages = ["src/uv_datascience_project_template"]
 
 [build-system]
 requires = ["hatchling"]

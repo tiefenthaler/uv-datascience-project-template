@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from dev_container_uv_datascience.app_fastapi_autoencoder import app, train_litautoencoder
+from uv_datascience_project_template.app_fastapi_autoencoder import app, train_litautoencoder
 
 client = TestClient(app)
 

@@ -1,3 +1,3 @@
 # FastAPI App
 
-::: dev_container_uv_datascience.app_fastapi_autoencoder
+::: uv_datascience_project_template.app_fastapi_autoencoder

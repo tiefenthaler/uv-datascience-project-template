@@ -2,7 +2,7 @@ import pytest
 import torch
 from torch import nn
 
-from dev_container_uv_datascience.lit_auto_encoder import LitAutoEncoder
+from uv_datascience_project_template.lit_auto_encoder import LitAutoEncoder
 
 
 @pytest.fixture

@@ -1,6 +1,6 @@
 import uvicorn
 
-from dev_container_uv_datascience.app_fastapi_autoencoder import app
+from uv_datascience_project_template.app_fastapi_autoencoder import app
 
 # Application entry point
 if __name__ == "__main__":

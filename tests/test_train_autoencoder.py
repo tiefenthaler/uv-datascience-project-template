@@ -1,4 +1,4 @@
-from dev_container_uv_datascience.train_autoencoder import train_litautoencoder
+from uv_datascience_project_template.train_autoencoder import train_litautoencoder
 
 
 def test_train_litautoencoder() -> None:
