@@ -214,7 +214,7 @@ The `devcontainer.json` file includes post-create and post-start commands to con
 
 ```json
 # filepath: .devcontainer/devcontainer.json
-# ...existing code...
+# ...existing code snippet...
 ```
 
 This guide provides a comprehensive overview of setting up and running the machine learning FastAPI project using Docker Compose and `uv`. Follow the instructions to build and run the application in both development and production environments.
