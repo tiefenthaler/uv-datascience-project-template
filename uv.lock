@@ -353,67 +353,6 @@ wheels = [
 ]
 
 [[package]]
-name = "dev-container-uv-datascience"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "fastapi", extra = ["standard"] },
-    { name = "lightning" },
-    { name = "pydantic" },
-    { name = "torch" },
-    { name = "torchvision" },
-    { name = "uvicorn" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "ipykernel" },
-    { name = "jupyterlab" },
-    { name = "pre-commit" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "toml-sort" },
-    { name = "uv" },
-]
-docs = [
-    { name = "mkdocs" },
-    { name = "mkdocs-include-markdown-plugin" },
-    { name = "mkdocs-material" },
-    { name = "mkdocstrings", extra = ["python"] },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.6" },
-    { name = "lightning", specifier = ">=2.4.0" },
-    { name = "pydantic", specifier = ">=2.10.4" },
-    { name = "torch", specifier = ">=2.4.1" },
-    { name = "torchvision", specifier = ">=0.20.1" },
-    { name = "uvicorn", specifier = ">=0.34.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "ipykernel", specifier = ">=6.29.5" },
-    { name = "jupyterlab", specifier = ">=4.3.1" },
-    { name = "pre-commit", specifier = ">=4.1.0" },
-    { name = "pyright", specifier = ">=1.1.393" },
-    { name = "pytest", specifier = ">=8.1.1" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
-    { name = "ruff", specifier = ">=0.9.4" },
-    { name = "toml-sort", specifier = ">=0.24.2" },
-    { name = "uv", specifier = ">=0.5.26" },
-]
-docs = [
-    { name = "mkdocs", specifier = ">=1.6.1" },
-    { name = "mkdocs-include-markdown-plugin", specifier = ">=7.1.3" },
-    { name = "mkdocs-material", specifier = ">=9.6.3" },
-    { name = "mkdocstrings", extras = ["python"], specifier = ">=0.15.0" },
-]
-
-[[package]]
 name = "distlib"
 version = "0.3.9"
 source = { registry = "https://pypi.org/simple" }
@@ -2373,6 +2312,67 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/56/83/49ef68d21f9924b6efadbd68bece223d238a32aef939d382a3bde9fdb3b4/uv-0.5.29-py3-none-win32.whl", hash = "sha256:25e7f1850a71846b52aa8ed58640aa2082e16bc84995e8ff438e4bb916968159", size = 15571908 },
     { url = "https://files.pythonhosted.org/packages/a1/25/304b5b400e612c9262fb5d06568ec0c813f40afe10908faeb9bafbf7d0f6/uv-0.5.29-py3-none-win_amd64.whl", hash = "sha256:d19ecc416fc069fbf767b2fd022789b2d93832b8d45702e34daf714dea1e5851", size = 16923471 },
     { url = "https://files.pythonhosted.org/packages/94/5e/0132a00365066b058d096c008f8ef7dc36bb00a5676efae97dc919669c78/uv-0.5.29-py3-none-win_arm64.whl", hash = "sha256:e8a5e18487c33a0c29867da123ef0f035ee1ba880640fcbf8743ca80d7158ed0", size = 15693104 },
+]
+
+[[package]]
+name = "uv-datascience-project-template"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "fastapi", extra = ["standard"] },
+    { name = "lightning" },
+    { name = "pydantic" },
+    { name = "torch" },
+    { name = "torchvision" },
+    { name = "uvicorn" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ipykernel" },
+    { name = "jupyterlab" },
+    { name = "pre-commit" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "toml-sort" },
+    { name = "uv" },
+]
+docs = [
+    { name = "mkdocs" },
+    { name = "mkdocs-include-markdown-plugin" },
+    { name = "mkdocs-material" },
+    { name = "mkdocstrings", extra = ["python"] },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.6" },
+    { name = "lightning", specifier = ">=2.4.0" },
+    { name = "pydantic", specifier = ">=2.10.4" },
+    { name = "torch", specifier = ">=2.4.1" },
+    { name = "torchvision", specifier = ">=0.20.1" },
+    { name = "uvicorn", specifier = ">=0.34.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "ipykernel", specifier = ">=6.29.5" },
+    { name = "jupyterlab", specifier = ">=4.3.1" },
+    { name = "pre-commit", specifier = ">=4.1.0" },
+    { name = "pyright", specifier = ">=1.1.393" },
+    { name = "pytest", specifier = ">=8.1.1" },
+    { name = "pytest-cov", specifier = ">=6.0.0" },
+    { name = "ruff", specifier = ">=0.9.4" },
+    { name = "toml-sort", specifier = ">=0.24.2" },
+    { name = "uv", specifier = ">=0.5.26" },
+]
+docs = [
+    { name = "mkdocs", specifier = ">=1.6.1" },
+    { name = "mkdocs-include-markdown-plugin", specifier = ">=7.1.3" },
+    { name = "mkdocs-material", specifier = ">=9.6.3" },
+    { name = "mkdocstrings", extras = ["python"], specifier = ">=0.15.0" },
 ]
 
 [[package]]
