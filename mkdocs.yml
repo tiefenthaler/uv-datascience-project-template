@@ -16,7 +16,7 @@ nav:
       - Training: api/training.md
       - FastAPI: api/fastapi_app.md
   - Notebooks:
-    - Main: ../../notebooks/app_without_fastapi.ipynb
+    - Main: ../notebooks/app_without_fastapi.ipynb
 theme:
   name: material
 plugins:
