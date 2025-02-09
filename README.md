@@ -1,4 +1,4 @@
-# Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI
+****# Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI
 
 This guide provides instructions on how to use Docker Compose with `uv` to create a container for a machine learning Python project that uses FastAPI for a production setup.
 
@@ -6,24 +6,25 @@ This guide provides instructions on how to use Docker Compose with `uv` to creat
 
 ## Table of Contents
 
-- [Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI](#tutorial-project-for-1-data-science-in-a-dev-container-and-2-for-a-machine-learning-application-in-production-using-docker-uv-and-fastapi)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Docker and Docker Compose](#docker-and-docker-compose)
-    - [Dockerfile](#dockerfile)
-      - [Multi-Stage Dockerfile](#multi-stage-dockerfile)
-    - [Docker Compose](#docker-compose)
-  - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
-    - [pyproject.toml](#pyprojecttoml)
-  - [Custom Code in src Folder](#custom-code-in-src-folder)
-    - [lit\_auto\_encoder.py](#lit_auto_encoderpy)
-    - [train\_autoencoder.py](#train_autoencoderpy)
-  - [FastAPI Application](#fastapi-application)
-    - [app\_fastapi\_autoencoder.py](#app_fastapi_autoencoderpy)
-    - [main.py](#mainpy)
-  - [Production Setup for the Machine Learning FastAPI App hosted in the Docker container](#production-setup-for-the-machine-learning-fastapi-app-hosted-in-the-docker-container)
-  - [Development in Dev Container](#development-in-dev-container)
-    - [Post-Create and Post-Start Commands](#post-create-and-post-start-commands)
+- [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+- [Docker and Docker Compose](#docker-and-docker-compose)
+  - [Dockerfile](#dockerfile)
+    - [Multi-Stage Dockerfile](#multi-stage-dockerfile)
+  - [Docker Compose](#docker-compose)
+- [Using uv to Manage the Project](#using-uv-to-manage-the-project)
+  - [pyproject.toml](#pyprojecttoml)
+- [Custom Code in src Folder](#custom-code-in-src-folder)
+  - [lit\_auto\_encoder.py](#lit_auto_encoderpy)
+  - [train\_autoencoder.py](#train_autoencoderpy)
+- [FastAPI Application](#fastapi-application)
+  - [app\_fastapi\_autoencoder.py](#app_fastapi_autoencoderpy)
+  - [main.py](#mainpy)
+- [Production Setup for the Machine Learning FastAPI App hosted in the Docker container](#production-setup-for-the-machine-learning-fastapi-app-hosted-in-the-docker-container)
+  - [**Build** the docker image and **run** a container:](#build-the-docker-image-and-run-a-container)
+  - [Test the endpoint with curl](#test-the-endpoint-with-curl)
+- [Development in Dev Container](#development-in-dev-container)
+  - [Post-Create and Post-Start Commands](#post-create-and-post-start-commands)
 
 ## Overview
 
@@ -148,67 +149,69 @@ This file defines the uvicorn server to run the FastAPI AutoEncoder application 
 
 ## Production Setup for the Machine Learning FastAPI App hosted in the Docker container
 
-- Build the docker image and start a container:
+<!--docs-ref-docker-prod-build-start-->
+### **Build** the docker image and **run** a container:
 
-To build all services when multiple services are defined in `docker-compose.yml` ("app" and "app-optimized-docker"). Note that in the give example both services us the same port and only one service at a time should be used.
+Build and run a specific or all services when multiple services ("app" and "app-optimized-docker") are defined in `docker-compose.yml`. Note that in the give example both services us the same port and only one service at a time should be used.
 
-```bash
-docker-compose up --build
-```
+  ```bash
+  docker-compose up --build
+  ```
 
-or to build a single service only "app" respectively "app-optimized-docker".
+  or to build a single service only "app" respectively "app-optimized-docker".
 
-```bash
-docker-compose up --build app
-```
+  ```bash
+  docker-compose up --build app
+  ```
 
-```bash
-docker-compose up --build app-optimized-docker
-```
+  ```bash
+  docker-compose up --build app-optimized-docker
+  ```
 
-- Test the endpoint with curl:
+### Test the endpoint with curl
 
 - Welcome root endpoint
 
-```bash
-curl -X GET http://0.0.0.0:8000/
-```
+  ```bash
+  curl -X GET http://0.0.0.0:8000/
+  ```
 
 - Get docs of the request options of the FastAPI app:
 
-```bash
-curl -X GET http://0.0.0.0:8000/docs
-```
+  ```bash
+  curl -X GET http://0.0.0.0:8000/docs
+  ```
 
 - Test the endpoint with curl by training the model first, followed by requesting predictions for n fake images
 
-```bash
-curl -X POST http://0.0.0.0:8000/train \
-curl -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}'
-```
+  ```bash
+  curl -X POST http://0.0.0.0:8000/train \
+  curl -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}'
+  ```
+<!--docs-ref-docker-prod-build-end-->
 
 ## Development in Dev Container
 
 - Run the server: `uv run /workspace/main.py`
 - Test the standard endpoints with curl:
-- Get docs of the request options of the FastAPI app
+  - Get docs of the request options of the FastAPI app
 
-```bash
-curl -X GET http://localhost:8000/docs
-```
+    ```bash
+    curl -X GET http://localhost:8000/docs
+    ```
 
-- Welcome root request of the FastAPI app, providing an app description
+  - Welcome root request of the FastAPI app, providing an app description
 
-```bash
-curl -X GET http://localhost:8000/
-```
+    ```bash
+    curl -X GET http://localhost:8000/
+    ```
 
-- Test the machine learning endpoints with curl:
+  - Test the machine learning endpoints with curl:
 
-```bash
-curl -X POST http://localhost:8000/train \
-curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
-```
+    ```bash
+    curl -X POST http://localhost:8000/train \
+    curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
+    ```
 
 ### Post-Create and Post-Start Commands
 
