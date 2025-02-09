@@ -135,7 +135,7 @@ plugins:
 Generate General Documentation: For example use the `index.md` to reference your `README.md` file.
 **`docs/index.md`:**
 
-```Markdown
+```Text
 # Dev Container UV Data Science
 
 Welcome to the documentation for the Dev Container UV Data Science project. This project demonstrates how to set up a data science environment using Docker, UV, and FastAPI.
