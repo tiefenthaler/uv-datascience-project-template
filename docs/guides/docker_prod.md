@@ -33,19 +33,21 @@ The Docker setup is designed to create a lean, efficient, and secure production 
 ### Key Components
 
 1. **`Dockerfile`:** Defines the steps to build the Docker image. It includes:
-    * Base image selection.
-    * Dependency installation using `uv`.
-    * Copying application code.
-    * Setting environment variables.
-    * Defining the entry point and command.
 
-1. **`multistage.Dockerfile`:** Defines an optimized image to reduce image size. Custom python code should be a packaged application.
+   - Base image selection.
+   - Dependency installation using `uv`.
+   - Copying application code.
+   - Setting environment variables.
+   - Defining the entry point and command.
 
-1. **`docker-compose.yml`:** Defines the services, networks, and volumes for the application. It includes:
-    * Service definitions for the application.
-    * Port mappings.
-    * Environment variables.
-    * Build configurations.
+2. **`multistage.Dockerfile`:** Defines an optimized image to reduce image size. Custom python code should be a packaged application.
+
+3. **`docker-compose.yml`:** Defines the services, networks, and volumes for the application. It includes:
+
+   - Service definitions for the application.
+   - Port mappings.
+   - Environment variables.
+   - Build configurations.
 
 ## `Dockerfile` Explained
 
@@ -78,12 +80,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 Installs the project dependencies using `uv sync`:
 
-* `--frozen` ensures that the exact versions specified in `uv.lock` are used.
-* `--no-install-project` prevents the project itself from being installed at this stage.
-* `--no-dev` excludes development dependencies.
-* `--mount=type=cache,target=/root/.cache/uv` caches the uv environment.
-* `--mount=type=bind,source=uv.lock,target=uv.lock` binds the uv.lock file to the container.
-* `--mount=type=bind,source=pyproject.toml,target=pyproject.toml` binds the pyproject.toml file to the container.
+- `--frozen` ensures that the exact versions specified in `uv.lock` are used.
+- `--no-install-project` prevents the project itself from being installed at this stage.
+- `--no-dev` excludes development dependencies.
+- `--mount=type=cache,target=/root/.cache/uv` caches the uv environment.
+- `--mount=type=bind,source=uv.lock,target=uv.lock` binds the uv.lock file to the container.
+- `--mount=type=bind,source=pyproject.toml,target=pyproject.toml` binds the pyproject.toml file to the container.
 
 ### 4. Copying Application Code
 
@@ -169,10 +171,10 @@ x-args: &default-args
 
 Builds and runs the application using the standard Dockerfile.
 
-* Defines the `app` service, which is built from the `Dockerfile` in the current directory.
-* The `args` section passes build arguments to the `Dockerfile`.
-* The `ports` section maps port 8000 on the host to port 8000 on the container.
-* The `command` section specifies the command to run when the container starts.
+- Defines the `app` service, which is built from the `Dockerfile` in the current directory.
+- The `args` section passes build arguments to the `Dockerfile`.
+- The `ports` section maps port 8000 on the host to port 8000 on the container.
+- The `command` section specifies the command to run when the container starts.
 
 ```yaml
 services:
@@ -192,10 +194,10 @@ services:
 
 Builds and runs the application using the multi-stage Dockerfile.
 
-* Defines the `app-optimized-docker` service, which is built from the `multistage.Dockerfile` in the current directory.
-* The `args` section passes build arguments to the `multistage.Dockerfile`.
-* The `ports` section maps port 8000 on the host to port 8000 on the container.
-* The `command` section specifies the command to run when the container starts.
+- Defines the `app-optimized-docker` service, which is built from the `multistage.Dockerfile` in the current directory.
+- The `args` section passes build arguments to the `multistage.Dockerfile`.
+- The `ports` section maps port 8000 on the host to port 8000 on the container.
+- The `command` section specifies the command to run when the container starts.
 
 ```yaml
 services:
@@ -223,13 +225,13 @@ services:
 
 To build and run the application using Docker Compose, use the following commands:
 
-* Build and run all services:
+- Build and run all services:
 
 ```shell
 docker-compose up --build
 ```
 
-* Build and run a specific service (e.g., app or app-optimized-docker):
+- Build and run a specific service (e.g., app or app-optimized-docker):
 
 ```shell
 docker-compose up --build app
@@ -250,12 +252,12 @@ Embed fake images:
 
 ## Best Practices
 
-* **Use Multi-Stage Builds:** Multi-stage builds help to reduce the final image size by only including the necessary artifacts.
-* **Use `.dockerignore`:** Exclude unnecessary files and directories from the Docker build context to improve build performance and reduce image size.
-* **Minimize Layers:** Combine multiple commands into a single `RUN` command to reduce the number of layers in the image.
-* **Use Non-Root User:** Run the application as a non-root user to improve security.
-* **Use Environment Variables:** Use environment variables to configure the application at runtime.
-* **Use a Volume:** Use a volume to persist data between container restarts.
+- **Use Multi-Stage Builds:** Multi-stage builds help to reduce the final image size by only including the necessary artifacts.
+- **Use `.dockerignore`:** Exclude unnecessary files and directories from the Docker build context to improve build performance and reduce image size.
+- **Minimize Layers:** Combine multiple commands into a single `RUN` command to reduce the number of layers in the image.
+- **Use Non-Root User:** Run the application as a non-root user to improve security.
+- **Use Environment Variables:** Use environment variables to configure the application at runtime.
+- **Use a Volume:** Use a volume to persist data between container restarts.
 
 ## Conclusion
 

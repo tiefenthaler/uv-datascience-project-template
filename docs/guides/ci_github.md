@@ -23,21 +23,21 @@ This project uses GitHub Actions for CI Workflows. Upon each push or pull reques
 
 1. **Linting:**
 
-   * **Ruff:** The code is checked for stylistic errors, potential bugs, and adherence to coding standards using [Ruff](https://github.com/astral-sh/ruff). This includes both linting and formatting checks.
-   * **Hadolint:** The `Dockerfile` and `.devcontainer/Dockerfile.debug` are checked for errors and best practices using [Hadolint](https://github.com/hadolint/hadolint).
+   - **Ruff:** The code is checked for stylistic errors, potential bugs, and adherence to coding standards using [Ruff](https://github.com/astral-sh/ruff). This includes both linting and formatting checks.
+   - **Hadolint:** The `Dockerfile` and `.devcontainer/Dockerfile.debug` are checked for errors and best practices using [Hadolint](https://github.com/hadolint/hadolint).
 
 1. **Type Checking:**
 
-   * **Pyright:** Static type checking is performed using [Pyright](https://github.com/microsoft/pyright) to catch type-related errors.
+   - **Pyright:** Static type checking is performed using [Pyright](https://github.com/microsoft/pyright) to catch type-related errors.
 
 1. **Testing:**
 
-    * **Pytest:** Unit tests are executed using [Pytest](https://docs.pytest.org/en/stable/) to verify the correctness of individual components.
-    * **Pytest-Coverage:** Coverage reports are generated and posted as comments on pull requests using [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/).
+   - **Pytest:** Unit tests are executed using [Pytest](https://docs.pytest.org/en/stable/) to verify the correctness of individual components.
+   - **Pytest-Coverage:** Coverage reports are generated and posted as comments on pull requests using [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/).
 
 1. **Building:**
 
-   * **Docker:** The project's Docker image is built to ensure that all dependencies are correctly resolved and that the application can be containerized successfully. This includes building both the main `Dockerfile` and the development container `Dockerfile.debug`.
+   - **Docker:** The project's Docker image is built to ensure that all dependencies are correctly resolved and that the application can be containerized successfully. This includes building both the main `Dockerfile` and the development container `Dockerfile.debug`.
 
 1. **Documentation Deployment:** The project documentation is automatically built and deployed to GitHub Pages using [mkdocs](https://www.mkdocs.org/).
 
@@ -51,14 +51,14 @@ This project utilizes custom GitHub Actions to encapsulate reusable steps within
 
 This action sets up a Python environment using the `uv` package manager. It handles:
 
-* Installing `uv`.
-* Pinning the specified Python version.
-* Caching `uv` files to speed up subsequent runs.
-* Installing project dependencies using `uv sync`.
+- Installing `uv`.
+- Pinning the specified Python version.
+- Caching `uv` files to speed up subsequent runs.
+- Installing project dependencies using `uv sync`.
 
 ### `setup-git-config`
 
 This action configures Git user name and email. It is used to:
 
-* Set the Git user name to `github-actions[bot]`.
-* Set the Git user email to `41898282+github-actions[bot]@users.noreply.github.com`.
+- Set the Git user name to `github-actions[bot]`.
+- Set the Git user email to `41898282+github-actions[bot]@users.noreply.github.com`.

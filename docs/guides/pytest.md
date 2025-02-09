@@ -22,10 +22,10 @@ This guide explains how to use `pytest` for testing and `coverage.py` for measur
 
 ### Key Features
 
-* **Simple Syntax:** Pytest uses a simple and intuitive syntax for writing tests.
-* **Test Discovery:** It automatically discovers test files and test functions.
-* **Fixtures:** Fixtures provide a way to set up and tear down test environments.
-* **Plugins:** A rich ecosystem of plugins extends pytest's functionality.
+- **Simple Syntax:** Pytest uses a simple and intuitive syntax for writing tests.
+- **Test Discovery:** It automatically discovers test files and test functions.
+- **Fixtures:** Fixtures provide a way to set up and tear down test environments.
+- **Plugins:** A rich ecosystem of plugins extends pytest's functionality.
 
 ## Running Tests
 
@@ -52,10 +52,10 @@ uv run pytest tests/test_module.py::test_function
 
 ### Key Features
 
-* **Line Coverage:** Measures which lines of code were executed during testing.
-* **Branch Coverage:** Measures which branches in the code were taken during testing.
-* **Integration with Pytest:** Seamless integration with pytest for running tests and collecting coverage data.
-* **Reporting:** Generates reports in various formats, including HTML, XML, and text.
+- **Line Coverage:** Measures which lines of code were executed during testing.
+- **Branch Coverage:** Measures which branches in the code were taken during testing.
+- **Integration with Pytest:** Seamless integration with pytest for running tests and collecting coverage data.
+- **Reporting:** Generates reports in various formats, including HTML, XML, and text.
 
 ## Running Tests with Coverage
 
@@ -74,29 +74,29 @@ This command will run all tests and collect coverage data for the `src` director
 The `.coveragerc` file configures how `coverage.py` collects and reports coverage data.  
 Key settings include:
 
-* `data_file`: Specifies the location where coverage data is stored. In this project, it's set to `.test_reports/coverage/.coverage`.
-* `source`: Specifies the source directories to measure coverage for. In this project, it's set to `src`.
-* `branch`: Enables branch coverage.
-* `omit`: Specifies files to exclude from coverage reporting.
-* `report`: This will create an HTML report in the `.test_reports/coverage/html` directory. You can then open the `index.html` file in your browser to view the report.
-  * XML Report: In the CI Workflow a XML report will be created in the `.test_reports/coverage/coverage.xml` file, which can be used for integration with CI/CD systems.
+- `data_file`: Specifies the location where coverage data is stored. In this project, it's set to `.test_reports/coverage/.coverage`.
+- `source`: Specifies the source directories to measure coverage for. In this project, it's set to `src`.
+- `branch`: Enables branch coverage.
+- `omit`: Specifies files to exclude from coverage reporting.
+- `report`: This will create an HTML report in the `.test_reports/coverage/html` directory. You can then open the `index.html` file in your browser to view the report.
+  - XML Report: In the CI Workflow a XML report will be created in the `.test_reports/coverage/coverage.xml` file, which can be used for integration with CI/CD systems.
 
 ### pytest.ini or pyproject.toml
 
 Pytest can be configured using a `pytest.ini` file or a `pyproject.toml` file. This project uses a `pytest.ini` file.
 
-* `testpaths`: Specifies the directories to search for tests.
-* `addopts`: Specifies command-line options to always use when running pytest.
-* `filterwarnings`: To handle warnings during testing.
+- `testpaths`: Specifies the directories to search for tests.
+- `addopts`: Specifies command-line options to always use when running pytest.
+- `filterwarnings`: To handle warnings during testing.
 
 ## Usage in This Project
 
 This project is set up to automatically collect coverage data when running tests. The `.coveragerc` file is configured to:
 
-* Store coverage data in the `.test_reports/coverage/` directory.
-* Measure coverage for the `src` directory.
-* Generate Terminal reports in the `.test_reports/coverage/` directory.
-* Generate HTML reports in the `.test_reports/coverage/html` directory.
+- Store coverage data in the `.test_reports/coverage/` directory.
+- Measure coverage for the `src` directory.
+- Generate Terminal reports in the `.test_reports/coverage/` directory.
+- Generate HTML reports in the `.test_reports/coverage/html` directory.
 
 ## Example Workflow
 
