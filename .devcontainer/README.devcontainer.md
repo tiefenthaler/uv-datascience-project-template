@@ -1,8 +1,8 @@
-# 1. VSCode Dev-Container (Docker) Setup for Data Science Projects
+# 1. VSCode Dev-Container (Docker) Setup for Data Science Projects using UV
 
 This is a [**containerized dev setup**](https://code.visualstudio.com/docs/devcontainers/containers) respectively related for using [**remote containers**](https://code.visualstudio.com/docs/remote/containers) to work on data science / machine learning projects using **[UV](https://docs.astral.sh/uv/), [Git](https://git-scm.com/) with [VSCode](https://code.visualstudio.com/)**.
 
-The repository contains a setup of a local development container using docker compose and VS Code to develop data science projects in a consistent and robust but yet in a simple and customizable way. The Repo provides the configurations and installations for your container, so you can straight get started with your data science work while enjoying the benefits of using docker containers.
+The repository contains a setup of a local development container using docker compose and VS Code to develop data science projects with UV in a consistent and robust but yet in a simple and customizable way. The Repo provides the configurations and installations for your container, so you can straight get started with your data science work while enjoying the benefits of using docker containers.
 
 Find a detailed [**Guide**]() about this VSCode Dev-Container for Data Science on Medium.
 
@@ -13,7 +13,7 @@ Find a detailed [**Guide**]() about this VSCode Dev-Container for Data Science o
 **Section 3 provides a short description to get started using the Dev Container.**  
 **Section 4 gives an overview of VS Code Extensions I use to develop Data Science Projects.**
 
-- [1. VSCode Dev-Container (Docker) Setup for Data Science Projects](#1-vscode-dev-container-docker-setup-for-data-science-projects)
+- [1. VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](#1-vscode-dev-container-docker-setup-for-data-science-projects-using-uv)
   - [1.1. Table of Contents](#11-table-of-contents)
 - [2. Dev Container Main Configurations and Installations](#2-dev-container-main-configurations-and-installations)
   - [Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json](#setup-organization-within-dockerfiledebug--docker-composeyml--devcontainerjson)
@@ -43,8 +43,8 @@ Multi-Stage Build: Despite using two base images, only one container is built. T
 Those files define the dev container setup for data science projects. The list below gives a short overview of the single files. Details can be found in the comments in the single files.
 
 - **Dockerfile.debug:** This file defines the base image for your development container and the steps needed to configure it. Think of it as the blueprint for your container's operating system, dependencies, and tools. It's the foundation upon which everything else is built.
-- **docker-compose.yml:** (Optional, but often used) This file is used when you have multiple containers that need to work together for your development environment.  It defines how these containers interact, their dependencies, and their network configuration. Even if only a single service is used, it defines the additional configuration specific for your data science projects like volume mapping or ports which is optional and therefore not defined in the Dockerfile.debug.
-- **devcontainer.json:** It configures VS Code (or other supporting IDEs) to use the Docker container as your development environment. It links the Dockerfile (or docker-compose.yml) to VS Code and defines various settings like VS Code extensions or the default environment used by VS Code.
+- **docker-compose.yml:** (Optional, but often used) This file is used when you have multiple containers that need to work together for your development environment. It defines how these containers interact, their dependencies, and their network configuration. Even if only a single service is used, it defines the additional configuration specific for your data science projects like volume mapping or ports which is optional and therefore not defined in the Dockerfile.debug. This enables the dev container setup to be used with other IDEs then VS Code.
+- **devcontainer.json:** It configures VS Code (or other supporting IDEs) to use the Docker container as your development environment. It links the Dockerfile (or docker-compose.yml) to VS Code and defines various settings like VS Code extensions or the default environment used by VS Code that are only related to use the given IDE.
 
 # 3. Getting Started
 
@@ -86,21 +86,27 @@ alexcvzz.vscode-sqlite # SQLite query execution and browsing
 charliermarsh.ruff # Python linter and code formatter
 davidanson.vscode-markdownlint # Markdown linter
 exiasr.hadolint # A Dockerfile linter
+github.copilot # AI-powered code completion
+github.copilot-chat # Chat with your AI coding assistant
+github.remotehub # Manage your GitHub repositories
 grapecity.gc-excelviewer # Excel file viewer
 hediet.vscode-drawio # Draw.io integration
 jeff-hykin.polacode-2019 # Generate code blocks from images
 mechatroner.rainbow-csv # Colorizes CSV files for better readability
 ms-azuretools.vscode-docker # Docker extension for VS Code
+ms-pyright.pyright # Static type checker
 ms-python.python # Python language support
 ms-python.vscode-pylance # Python language server for enhanced code analysis
 ms-toolsai.datawrangler # Data transformation and cleaning tool
 ms-toolsai.jupyter # Jupyter Notebooks
 ms-pyright.pyright # Static type checker
+oliversen.chatgpt-docstrings
 richie5um2.vscode-sort-json # Sorts JSON objects
 streetsidesoftware.code-spell-checker # Spell checker for multiple languages
 tamasfe.even-better-toml # Enhanced TOML language support
 tomoki1207.pdf # PDF viewer
 xshrim.txt-syntax # Syntax highlighting for plain text files
+zainchen.json # JSON language support (likely provides syntax highlighting, validation, etc.)
 yzane.markdown-pdf # Generate PDF from Markdown files
 yzhang.markdown-all-in-one # All-in-one Markdown extension
 ```
@@ -110,4 +116,20 @@ Additional python packages for development:
 - toml-sort
 - ruff
 - pytest
+- pytest-cov
+- pre-commit
+- pyright
 - jupyterlab
+
+Additional python packages for project and code documentation:
+
+- mkdocs
+- mkdocs-include-markdown-plugin
+- mkdocs-material
+- mkdocstrings[python]
+
+Additional tools to support development:
+
+- GitHub
+- GitHub Actions and Workflows for CI
+- GitHub Pages (to host your documentation)

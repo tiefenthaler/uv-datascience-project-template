@@ -1,6 +1,6 @@
 // UV | VS Code - Setup.
 //---------------------
-// This config is setup to be only specific to VS Code.
+// This config is set up to be only specific to VS Code.
 // Other configs that do not relate to VS Code are defined in the docker-compose.yml file.
 // This enables the dev container setup to be used with other IDEs, ignoring this file.
 //---------------------
@@ -63,6 +63,7 @@
 				"tamasfe.even-better-toml",
 				"streetsidesoftware.code-spell-checker",
 				"ms-pyright.pyright",
+				"ms-python.vscode-pylance",
 				// Data
 				"alexcvzz.vscode-sqlite",
 				"grapecity.gc-excelviewer",
@@ -77,8 +78,11 @@
 				"github.remotehub",
 				// AI Coding Assistant
 				"github.copilot",
-				"github.copilot-chat"
+				"github.copilot-chat",
 				// "tabnine.tabnine-vscode"
+				// Other
+				"richie5um2.vscode-sort-json",
+				"oliversen.chatgpt-docstrings"
             ]
         }
     },
