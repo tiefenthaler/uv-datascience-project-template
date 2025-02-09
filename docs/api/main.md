@@ -1,3 +1,7 @@
 # Main
 
-::: ../../main.py
+```Python
+{%
+    include-markdown "../../main.py"
+%}
+```
