@@ -27,6 +27,7 @@ plugins:
         python:
           options:
             docstring_style: google
+            show_source: True
   - mkdocs-jupyter:
       ignore_h1_titles: True # Ignore using first h1 as title, instead use filename.
   
