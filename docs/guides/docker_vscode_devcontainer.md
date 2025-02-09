@@ -2,5 +2,5 @@
 
 <!-- Include the content of README.md -->
 {%
-    <!-- include-markdown "../../.devcontainer/README.devcontainer.md" -->
+    include-markdown "../../.devcontainer/README.devcontainer.md"
 %}
