@@ -2,15 +2,15 @@ site_name: UV Data Science Project Template
 nav:
   - Home: index.md
   - Guides:
-    - Ruff: guides/ruff.md
     - UV: guides/uv.md
-    - PyTest: guides/pytest.md
+    - Ruff: guides/ruff.md
     - PyRight: guides/pyright.md
+    - PyTest: guides/pytest.md
     - Pre-Commit: guides/pre_commit.md
+    - CI-GitHub: guides/ci_github.md
     - MkDocs: guides/mkdocs.md
     - Docker-Production: guides/docker_prod.md
     - Docker-VSCode-DevContainer: guides/docker_vscode_devcontainer.md
-    - CI-GitHub: guides/ci_github.md
   - Source Code API Reference:
       - Autoencoder: api/autoencoder.md
       - Training: api/training.md
