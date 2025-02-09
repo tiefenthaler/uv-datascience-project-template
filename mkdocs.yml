@@ -11,15 +11,12 @@ nav:
     - MkDocs: guides/mkdocs.md
     - Docker-Production: guides/docker_prod.md
     - Docker-VSCode-DevContainer: guides/docker_vscode_devcontainer.md
-  - Project Configuration:
-    - pyproject.toml: pyproject.md
   - Source Code API Reference:
-      - Main: api/main.md
       - Autoencoder: api/autoencoder.md
       - Training: api/training.md
       - FastAPI: api/fastapi_app.md
   - Notebooks:
-    - Main: notebooks/app_without_fastapi.ipynb
+    - Main: ../../notebooks/app_without_fastapi.ipynb
 theme:
   name: material
 plugins:
