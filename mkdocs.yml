@@ -16,7 +16,7 @@ nav:
       - Training: api/training.md
       - FastAPI: api/fastapi_app.md
   - Notebooks:
-    - Main: ../notebooks/app_without_fastapi.ipynb
+    - Main: notebooks/app_without_fastapi.ipynb
 theme:
   name: material
 plugins:
@@ -29,5 +29,5 @@ plugins:
             docstring_style: google
             show_source: true
   - mkdocs-jupyter:
-      ignore_h1_titles: true # Ignore using first h1 as title, instead use filename.
+      # ignore_h1_titles: true # Ignore using first h1 as title, instead use filename.
   
