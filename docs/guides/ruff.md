@@ -33,10 +33,10 @@ The `ruff.toml` file specifies the settings for Ruff. Here's a breakdown of the 
 - `line-length`: Sets the maximum line length for the project (currently 99 characters).
 - `target-version`: Specifies the target Python version (currently Python 3.12).
 - `lint.select`: Defines the set of rules that Ruff should enforce. This includes:
-  - `E`: pycodestyle errors
-  - `N`: pep8-naming conventions
-  - `F`: pyflakes
-  - `D`: pydocstyle
+    - `E`: pycodestyle errors
+    - `N`: pep8-naming conventions
+    - `F`: pyflakes
+    - `D`: pydocstyle
 - `lint.ignore`: Specifies rules that should be ignored. This project ignores several pydocstyle rules related to missing docstrings in certain contexts.
 - `fixable`: Specifies rules that Ruff can automatically fix.
 - `dummy-variable-rgx`: Configures the regular expression for dummy variable names.

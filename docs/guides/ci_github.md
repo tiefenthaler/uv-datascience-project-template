@@ -23,23 +23,23 @@ This project uses GitHub Actions for CI Workflows. Upon each push or pull reques
 
 1. **Linting:**
 
-   - **Ruff:** The code is checked for stylistic errors, potential bugs, and adherence to coding standards using [Ruff](https://github.com/astral-sh/ruff). This includes both linting and formatting checks.
-   - **Hadolint:** The `Dockerfile` and `.devcontainer/Dockerfile.debug` are checked for errors and best practices using [Hadolint](https://github.com/hadolint/hadolint).
+      - **Ruff:** The code is checked for stylistic errors, potential bugs, and adherence to coding standards using [Ruff](https://github.com/astral-sh/ruff). This includes both linting and formatting checks.
+      - **Hadolint:** The `Dockerfile` and `.devcontainer/Dockerfile.debug` are checked for errors and best practices using [Hadolint](https://github.com/hadolint/hadolint).
 
-1. **Type Checking:**
+2. **Type Checking:**
 
-   - **Pyright:** Static type checking is performed using [Pyright](https://github.com/microsoft/pyright) to catch type-related errors.
+      - **Pyright:** Static type checking is performed using [Pyright](https://github.com/microsoft/pyright) to catch type-related errors.
 
-1. **Testing:**
+3. **Testing:**
 
-   - **Pytest:** Unit tests are executed using [Pytest](https://docs.pytest.org/en/stable/) to verify the correctness of individual components.
-   - **Pytest-Coverage:** Coverage reports are generated and posted as comments on pull requests using [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/).
+      - **Pytest:** Unit tests are executed using [Pytest](https://docs.pytest.org/en/stable/) to verify the correctness of individual components.
+      - **Pytest-Coverage:** Coverage reports are generated and posted as comments on pull requests using [Pytest-cov](https://pytest-cov.readthedocs.io/en/latest/).
 
-1. **Building:**
+4. **Building:**
 
-   - **Docker:** The project's Docker image is built to ensure that all dependencies are correctly resolved and that the application can be containerized successfully. This includes building both the main `Dockerfile` and the development container `Dockerfile.debug`.
+      - **Docker:** The project's Docker image is built to ensure that all dependencies are correctly resolved and that the application can be containerized successfully. This includes building both the main `Dockerfile` and the development container `Dockerfile.debug`.
 
-1. **Documentation Deployment:** The project documentation is automatically built and deployed to GitHub Pages using [mkdocs](https://www.mkdocs.org/).
+5. **Documentation Deployment:** The project documentation is automatically built and deployed to GitHub Pages using [mkdocs](https://www.mkdocs.org/).
 
 You can check the status of the latest CI run on the GitHub repository under the "Actions" tab.
 

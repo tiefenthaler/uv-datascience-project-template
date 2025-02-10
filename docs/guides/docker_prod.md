@@ -21,8 +21,6 @@ This document provides an in-depth guide to the Docker production setup used in 
     - [1. Standard Services](#1-standard-services)
     - [2. Optimized Docker Service](#2-optimized-docker-service)
   - [Build and Run and Test the Docker Application](#build-and-run-and-test-the-docker-application)
-  - [Build Legacy](#build-legacy)
-  - [Testing the Application - Legacy](#testing-the-application---legacy)
   - [Best Practices](#best-practices)
   - [Conclusion](#conclusion)
 
@@ -220,35 +218,6 @@ services:
     start="<!--docs-ref-docker-prod-build-start-->"
     end="<!--docs-ref-docker-prod-build-end-->"
 %}
-
-## Build Legacy
-
-To build and run the application using Docker Compose, use the following commands:
-
-- Build and run all services:
-
-```shell
-docker-compose up --build
-```
-
-- Build and run a specific service (e.g., app or app-optimized-docker):
-
-```shell
-docker-compose up --build app
-docker-compose up --build app-optimized-docker
-```
-
-## Testing the Application - Legacy
-
-You can test the FastAPI application endpoints using curl:
-
-Root endpoint:
-
-Documentation endpoint:
-
-Train the model:
-
-Embed fake images:
 
 ## Best Practices
 
