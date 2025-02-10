@@ -36,12 +36,12 @@ Key Configuration Options Used in this Project:
 - `nav`: The navigation structure of the site. This defines the table of contents.
 - `theme`: The theme used for the site. We use the material theme.
 - `plugins`: A list of plugins used by MkDocs.
-  - `search`: The built-in search plugin adds a search box to the site.
-  - `include-markdown`: This plugin allows you to include Markdown files within other Markdown files. This is useful for reusing content across multiple pages.
-  - `mkdocstrings`: This plugin generates documentation from Python docstrings. It is used to generate the "Source Code API Reference" section in the navigation.
-  - `mkdocs-jupyter`: This plugin allows you to include Jupyter notebooks in your MkDocs documentation.
+    - `search`: The built-in search plugin adds a search box to the site.
+    - `include-markdown`: This plugin allows you to include Markdown files within other Markdown files. This is useful for reusing content across multiple pages.
+    - `mkdocstrings`: This plugin generates documentation from Python docstrings. It is used to generate the "Source Code API Reference" section in the navigation.
+    - `mkdocs-jupyter`: This plugin allows you to include Jupyter notebooks in your MkDocs documentation.
 - `extra_css`:
-  - `stylesheets/extra.css`: Custom CSS file to style the documentation.
+    - `stylesheets/extra.css`: Custom CSS file to style the documentation.
 
 ## Using mkdocstrings
 

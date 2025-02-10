@@ -8,11 +8,6 @@ Find the [**Documentation**](https://tiefenthaler.github.io/uv-datascience-proje
 
 ## Table of Contents
 
-**Section 1 provides a brief overview of the purpose of the Dev Container.**  
-**Section 2 describes the Dev Container main configurations and installations.**  
-**Section 3 provides a short description to get started using the Dev Container.**  
-**Section 4 gives an overview of VS Code Extensions I use to develop Data Science Projects.**
-
 - [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](#vscode-dev-container-docker-setup-for-data-science-projects-using-uv)
   - [Table of Contents](#table-of-contents)
   - [Dev Container Main Configurations and Installations](#dev-container-main-configurations-and-installations)
@@ -29,14 +24,14 @@ Using a Python image with UV pre-installed, which includes Python, as well as a 
 Multi-Stage Build: Despite using two base images, only one container is built. The final container is based on the second image, while copying content from the UV stage into the final stage.
 
 - **UV**, an extremely fast Python package, virtual environment and project manager.
-  - 🚀 A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and more.
-  - ⚡️ 10-100x faster than pip.
-  - 🐍 Installs and manages Python versions.
-  - 🛠️ Runs and installs Python applications.
-  - ❇️ Runs single-file scripts, with support for inline dependency metadata.
-  - 🗂️ Provides comprehensive project management, with a universal lockfile.
-  - 🔩 Includes a pip-compatible interface for a performance boost with a familiar CLI.
-  - 🏢 Supports Cargo-style workspaces for scalable projects.
+    - 🚀 A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and more.
+    - ⚡️ 10-100x faster than pip.
+    - 🐍 Installs and manages Python versions.
+    - 🛠️ Runs and installs Python applications.
+    - ❇️ Runs single-file scripts, with support for inline dependency metadata.
+    - 🗂️ Provides comprehensive project management, with a universal lockfile.
+    - 🔩 Includes a pip-compatible interface for a performance boost with a familiar CLI.
+    - 🏢 Supports Cargo-style workspaces for scalable projects.
 - **Volume Mapping**: A volume will be used to map a directory on your local file system to a directory inside the Docker container. This way, any changes you make to your code locally will be immediately reflected inside the container, where you can run and test the code.
 - **Git:** A distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.
 - **VS Code**, including extensions like Python, Jupyter Notebooks, Docker, PyLance, Ruff and more. Find my list of VS Code **Extensions** for Data Science Projects in [this](#vs-code-extensions-for-data-science-projects) section below.
@@ -271,25 +266,25 @@ Those files define the dev container setup for data science projects. The list b
 - Install Docker Desktop.
 - Install VSCode.
 - Install VSCode Extensions.
-  - Install VSCode remote container extension: [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+    - Install VSCode remote container extension: [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 - Start dev container:  F1 + "Open folder in container ...".
 - To try the setup:
-  - Run demo.py in the Python virtual environment (used as default, see `devcontainer.json`).
-  - Your application will be available at <http://localhost:8000>.
-    - Welcome root request of the FastAPI app, providing an app description.
+    - Run demo.py in the Python virtual environment (used as default, see `devcontainer.json`).
+    - Your application will be available at <http://localhost:8000>.
+        - Welcome root request of the FastAPI app, providing an app description.
 
-      ```bash
-      curl -X GET http://localhost:8000/
-      ```
+            ```bash
+            curl -X GET http://localhost:8000/
+            ```
 
-    - Test the machine learning endpoints with curl:
+        - Test the machine learning endpoints with curl:
 
-      ```bash
-      curl -X POST http://localhost:8000/train \
-      curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
-      ```
+            ```bash
+            curl -X POST http://localhost:8000/train \
+            curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
+            ```
 
-  - For more information about the application, see the [README](https://tiefenthaler.github.io/uv-datascience-project-template/) in the root directory of the repository.
+    - For more information about the application, see the [README](https://tiefenthaler.github.io/uv-datascience-project-template/) in the root directory of the repository.
 
 Optional Steps:
 

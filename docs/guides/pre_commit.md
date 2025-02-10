@@ -45,8 +45,8 @@ The pre-commit hooks are configured in the `.pre-commit-config.yaml` file. This 
 Here's a breakdown of the hooks used in this project:
 
 - **Ruff**: A fast Python linter and formatter. It checks for code style issues and automatically fixes them. Refer to the `ruff.toml` file for the configurations.
-  - **Ruff Check**: Runs the Ruff linter to identify issues. The `--fix` argument automatically fixes fixable issues. `--exit-non-zero-after-fix` will cause the hook to fail if ruff makes changes.
-  - **Ruff Format**: Runs the Ruff formatter to format the code. The `--diff` argument displays a diff of the changes instead of applying them directly.
+    - **Ruff Check**: Runs the Ruff linter to identify issues. The `--fix` argument automatically fixes fixable issues. `--exit-non-zero-after-fix` will cause the hook to fail if ruff makes changes.
+    - **Ruff Format**: Runs the Ruff formatter to format the code. The `--diff` argument displays a diff of the changes instead of applying them directly.
 - **Pyright**: A static type checker for Python. It checks for type errors in the code. Refer to the `pyrightconfig.json` file for the configurations.
 - **Hadolint**: A linter for Dockerfiles. It checks for common issues and best practices in Dockerfiles. The `--config .hadolint.yaml` argument specifies a configuration file for Hadolint.
 

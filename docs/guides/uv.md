@@ -1,4 +1,4 @@
-# UV, An extremely fast Python package and project manager, written in Rust
+# UV, an extremely fast Python package and project manager, written in Rust
 
 [UV](https://docs.astral.sh/uv/) is used as a fast and efficient package manager for this project, replacing tools like pip, virtualenv, and pip-tools. It significantly speeds up the installation of dependencies and management of the virtual environment, making the development process smoother and faster. UV ensures consistent dependency resolution and environment setup across different development environments.
 

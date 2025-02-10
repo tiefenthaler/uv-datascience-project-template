@@ -260,22 +260,22 @@ Build and run a specific or all services when multiple services ("app" and "app-
 
 - Welcome root endpoint
 
-  ```bash
-  curl -X GET http://0.0.0.0:8000/
-  ```
+    ```bash
+    curl -X GET http://0.0.0.0:8000/
+    ```
 
 - Get docs of the request options of the FastAPI app:
 
-  ```bash
-  curl -X GET http://0.0.0.0:8000/docs
-  ```
+    ```bash
+    curl -X GET http://0.0.0.0:8000/docs
+    ```
 
 - Test the endpoint with curl by training the model first, followed by requesting predictions for n fake images
 
-  ```bash
-  curl -X POST http://0.0.0.0:8000/train \
-  curl -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}'
-  ```
+    ```bash
+    curl -X POST http://0.0.0.0:8000/train \
+    curl -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}'
+    ```
 <!--docs-ref-docker-prod-build-end-->
 
 ## Development in Dev Container
@@ -284,24 +284,24 @@ See [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](htt
 
 - Run the server: `uv run /workspace/main.py`
 - Test the standard endpoints with curl:
-  - Get docs of the request options of the FastAPI app
+    - Get docs of the request options of the FastAPI app
 
-    ```bash
-    curl -X GET http://localhost:8000/docs
-    ```
+        ```bash
+        curl -X GET http://localhost:8000/docs
+        ```
 
-  - Welcome root request of the FastAPI app, providing an app description
+    - Welcome root request of the FastAPI app, providing an app description
 
-    ```bash
-    curl -X GET http://localhost:8000/
-    ```
+        ```bash
+        curl -X GET http://localhost:8000/
+        ```
 
-  - Test the machine learning endpoints with curl:
+    - Test the machine learning endpoints with curl:
 
-    ```bash
-    curl -X POST http://localhost:8000/train \
-    curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
-    ```
+        ```bash
+        curl -X POST http://localhost:8000/train \
+        curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
+        ```
 
 ## Conclusion
 
