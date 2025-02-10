@@ -26,7 +26,7 @@
 	},
 	"postStartCommand": {
 		// Optional: If applicable, add the following lines for installations.
-		// "uv-run-pre-commit-install": "uv run pre-commit install"
+		"uv-run-pre-commit-install": "uv run pre-commit install"
 	},
 	"features": {
         "ghcr.io/dhoeric/features/hadolint:1": {}

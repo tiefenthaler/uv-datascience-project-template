@@ -38,7 +38,6 @@ services: # Top level element to configure the arguments of multiple services.
         source: ..
         target: /vscode/${WORKSPACE_NAME}
       # Mount the virtual environment separately, so the developer's environment doesn't end up in the container.
-      # UV 
       - type: volume
         source: venv
         target: /vscode/${WORKSPACE_NAME}/.venv
@@ -49,7 +48,7 @@ services: # Top level element to configure the arguments of multiple services.
     # environment:
 
     # Runtime environment variable, passed to devcontainer.json. Not available for volumes, networks, or build arguments.
-    # Since docker detects a .env file during build per default, the .env file will be loaded anyways. Set explicitly for clarity to indicate that the environment variable are used.
+    # Since docker detects a .env file during build per default, the .env file will be loaded anyways. Set explicitly for clarity to indicate that the environment variables are used.
     env_file:
       - path: .env
         required: true

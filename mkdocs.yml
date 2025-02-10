@@ -1,7 +1,9 @@
 site_name: UV Data Science Project Template
+repo_url: https://github.com/tiefenthaler/uv-datascience-project-template
 nav:
   - Home: index.md
   - Guides:
+    - guides/index.md
     - UV: guides/uv.md
     - Ruff: guides/ruff.md
     - PyRight: guides/pyright.md
@@ -12,13 +14,21 @@ nav:
     - Docker-Production: guides/docker_prod.md
     - Docker-VSCode-DevContainer: guides/docker_vscode_devcontainer.md
   - Source Code API Reference:
+      - api/index.md
       - Autoencoder: api/autoencoder.md
       - Training: api/training.md
       - FastAPI: api/fastapi_app.md
   # NOTE: Does not support nested lists.
-  - Notebooks - Main: notebooks/app_without_fastapi.ipynb
+  - Notebooks: 
+    - Jupyter Notebook - App: notebooks/app_without_fastapi.ipynb
 theme:
   name: material
+  features:
+    - navigation.indexes
+    - navigation.sections # TODO: Check, if this is needed.
+    - navigation.expand
+    - navigation.path
+    - navigation.top
 plugins:
   - search
   - include-markdown
@@ -30,4 +40,7 @@ plugins:
             show_source: true
   - mkdocs-jupyter:
       # ignore_h1_titles: true # Ignore using first h1 as title, instead use filename.
-  
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - pymdownx.superfences
