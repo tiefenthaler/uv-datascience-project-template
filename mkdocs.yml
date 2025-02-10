@@ -16,7 +16,7 @@ nav:
       - Training: api/training.md
       - FastAPI: api/fastapi_app.md
   # NOTE: Does not support nested lists.
-  - Notebooks - Main: ../notebooks/app_without_fastapi.ipynb
+  - Notebooks - Main: notebooks/app_without_fastapi.ipynb
 theme:
   name: material
 plugins:
