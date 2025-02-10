@@ -11,11 +11,12 @@ repos:
       - id: ruff
         name: Ruff check
         description: "Run 'ruff check' for extremely fast Python linting"
-        args: [--fix]
+        args: [--fix, --exit-non-zero-on-fix] # Apply fixes and exit with non-zero if fix is not possible.
 
       - id: ruff-format
         name: Ruff format
         description: "Run 'ruff format' for extremely fast Python formatting"
+        args: [--diff] # Show diff instead of applying changes directly.
 
   - repo: local
     hooks:
@@ -35,3 +36,5 @@ repos:
         language: system
         types: ["dockerfile"]
         entry: hadolint
+        # args:
+        #   ["--config", ".hadolint.yaml"] # Use a configuration file for hadolint.

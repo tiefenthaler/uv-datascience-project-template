@@ -77,3 +77,6 @@ docstring-code-line-length = 120 # use "dynamic" to use the line-length value fr
 
 [per-file-ignores]
 "tests/**" = ["D103"]  # Ignore missing docstrings in tests
+
+[pydocstyle]
+convention = "google"

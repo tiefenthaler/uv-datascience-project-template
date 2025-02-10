@@ -1,6 +1,6 @@
 # 1. VSCode Dev-Container (Docker) Setup for Data Science Projects using UV
 
-This is a [**containerized dev setup**](https://code.visualstudio.com/docs/devcontainers/containers) respectively related for using [**remote containers**](https://code.visualstudio.com/docs/remote/containers) to work on data science / machine learning projects using **[UV](https://docs.astral.sh/uv/), [Git](https://git-scm.com/) with [VSCode](https://code.visualstudio.com/)**.
+This is a [**containerized dev setup**](https://code.visualstudio.com/docs/devcontainers/containers) respectively related for using [**remote containers**](https://code.visualstudio.com/docs/remote/containers) to work on data science / machine learning projects using **[UV](https://docs.astral.sh/uv/), [Git](https://git-scm.com/)** with **[VSCode](https://code.visualstudio.com/)**.
 
 The repository contains a setup of a local development container using docker compose and VS Code to develop data science projects with UV in a consistent and robust but yet in a simple and customizable way. The Repo provides the configurations and installations for your container, so you can straight get started with your data science work while enjoying the benefits of using docker containers.
 
