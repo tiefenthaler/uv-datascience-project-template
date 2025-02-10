@@ -1,0 +1,34 @@
+/* 
+  This CSS code defines a responsive grid layout for a webpage.
+
+  .md-grid {
+    - Sets the maximum width of the grid to 100% of the container.
+    - Centers the grid by setting the left and right margins to auto.
+    - Adds padding of 20px on the left and right sides of the grid.
+
+  @media (min-width: 1200px) {
+    - When the viewport width is 1200px or wider, the maximum width of the grid is set to 1200px.
+  }
+*/
+.md-grid {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 1200px) {
+  .md-grid {
+    max-width: 1200px;
+  }
+}
+
+/* Additional styles to make the content wide */
+.md-content {
+  max-width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .md-content {
+    max-width: 1200px;
+  }
+}

@@ -6,7 +6,7 @@ MkDocs is a fast, simple and downright gorgeous static site generator that's gea
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Using mkdocstrings](#using-mkdocstrings)
-    - [Using mkdocs-jupyter](#using-mkdocs-jupyter)
+  - [Using mkdocs-jupyter](#using-mkdocs-jupyter)
   - [Create Documentation](#create-documentation)
     - [Init documentation](#init-documentation)
     - [Create mkdocs Configuration File](#createmkdocsconfiguration-file)
@@ -20,10 +20,11 @@ MkDocs is a fast, simple and downright gorgeous static site generator that's gea
 
 MkDocs and the related extensions are used:
 
-- mkdocs
-- mkdocs-include-markdown-plugin
-- mkdocs-material
-- mkdocstrings[python]
+- [mkdocs](https://www.mkdocs.org/)
+- [mkdocs-include-markdown-plugin](https://github.com/mondeja/mkdocs-include-markdown-plugin#documentation)
+- [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
+- [mkdocstrings](https://mkdocstrings.github.io/)
+- [mkdocs-jupyter](https://github.com/danielfrg/mkdocs-jupyter)
 
 ## Configuration
 
@@ -37,6 +38,10 @@ Key Configuration Options Used in this Project:
 - `plugins`: A list of plugins used by MkDocs.
   - `search`: The built-in search plugin adds a search box to the site.
   - `include-markdown`: This plugin allows you to include Markdown files within other Markdown files. This is useful for reusing content across multiple pages.
+  - `mkdocstrings`: This plugin generates documentation from Python docstrings. It is used to generate the "Source Code API Reference" section in the navigation.
+  - `mkdocs-jupyter`: This plugin allows you to include Jupyter notebooks in your MkDocs documentation.
+- `extra_css`:
+  - `stylesheets/extra.css`: Custom CSS file to style the documentation.
 
 ## Using mkdocstrings
 
@@ -59,7 +64,7 @@ def my_function(arg1, arg2):
 
 The mkdocstrings plugin will automatically generate documentation for this function, including the arguments, return value, and description. The "Source Code API Reference" section in the navigation is generated using this plugin.
 
-### Using mkdocs-jupyter
+## Using mkdocs-jupyter
 
 The mkdocs-jupyter plugin allows you to include Jupyter notebooks in your MkDocs documentation. To include a notebook, simply add it to the nav section of your mkdocs.yml file. The plugin will automatically convert the notebook to HTML and include it in your documentation. This is very useful for tutorials. For example:
 
@@ -138,14 +143,9 @@ Generate General Documentation: For example use the `index.md` to reference your
 ```Markdown
 # Dev Container UV Data Science
 
-Welcome to the documentation for the Dev Container UV Data Science project. This project demonstrates how to set up a data science environment using Docker, UV, and FastAPI.
+Welcome to the documentation for the Dev Container UV Data Science project.
 
 <!-- Include the content of README.md -->
-{%
-    include-markdown "../../README.md"
-    start="<!--docs-placeholder-start-->"
-    end="<!--docs-placeholder-end-->"
-%}
 ```
 
 ### Generate API Documentation
@@ -189,7 +189,7 @@ uv run mkdocs build
 To serve the documentation locally, run the command below. This will start a local web server that you can use to view the documentation.
 
 ```bash
-mkdocs serve
+uv run mkdocs serve
 ```
 
 ## Deploying the Documentation
