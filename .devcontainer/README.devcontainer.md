@@ -15,15 +15,15 @@ Find the [**Documentation**](https://tiefenthaler.github.io/uv-datascience-proje
 
 - [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](#vscode-dev-container-docker-setup-for-data-science-projects-using-uv)
   - [Table of Contents](#table-of-contents)
-- [Dev Container Main Configurations and Installations](#dev-container-main-configurations-and-installations)
-  - [Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json](#setup-organization-within-dockerfiledebug--docker-composeyml--devcontainerjson)
-- [Getting Started](#getting-started)
-- [VS Code Extensions for Data Science Projects](#vs-code-extensions-for-data-science-projects)
-  - [Additional python packages for development](#additional-python-packages-for-development)
-  - [Additional python packages for project and code documentation](#additional-python-packages-for-project-and-code-documentation)
-  - [Additional tools to support development](#additional-tools-to-support-development)
+  - [Dev Container Main Configurations and Installations](#dev-container-main-configurations-and-installations)
+    - [Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json](#setup-organization-within-dockerfiledebug--docker-composeyml--devcontainerjson)
+  - [Getting Started](#getting-started)
+  - [VS Code Extensions for Data Science Projects](#vs-code-extensions-for-data-science-projects)
+    - [Additional python packages for development](#additional-python-packages-for-development)
+    - [Additional python packages for project and code documentation](#additional-python-packages-for-project-and-code-documentation)
+    - [Additional tools to support development](#additional-tools-to-support-development)
 
-# Dev Container Main Configurations and Installations
+## Dev Container Main Configurations and Installations
 
 Using a Python image with UV pre-installed, which includes Python, as well as a Debian base image including the VS Code devcontainer base image.  
 Multi-Stage Build: Despite using two base images, only one container is built. The final container is based on the second image, while copying content from the UV stage into the final stage.
@@ -41,7 +41,7 @@ Multi-Stage Build: Despite using two base images, only one container is built. T
 - **Git:** A distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.
 - **VS Code**, including extensions like Python, Jupyter Notebooks, Docker, PyLance, Ruff and more. Find my list of VS Code **Extensions** for Data Science Projects in [this](#vs-code-extensions-for-data-science-projects) section below.
 
-## Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json
+### Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json
 
 Those files define the dev container setup for data science projects. The list below gives a short overview of the single files. Details can be found in the comments in the single files.
 
@@ -266,7 +266,7 @@ Those files define the dev container setup for data science projects. The list b
   </div>
   </details>
 
-# Getting Started
+## Getting Started
 
 - Install Docker Desktop.
 - Install VSCode.
@@ -297,7 +297,7 @@ Optional Steps:
 - Add/remove VSCode settings and extensions in .devcontainer/devcontainer.json.
 - Update .gitignore and other config files to match your setup.
 
-# VS Code Extensions for Data Science Projects
+## VS Code Extensions for Data Science Projects
 
 The below extensions are installed for VS Code in the dev container, as defined in `devcontainer.json`.
 
@@ -331,7 +331,7 @@ yzane.markdown-pdf # Generate PDF from Markdown files
 yzhang.markdown-all-in-one # All-in-one Markdown extension
 ```
 
-## Additional python packages for development
+### Additional python packages for development
 
 - uv
 - ruff
@@ -343,7 +343,7 @@ yzhang.markdown-all-in-one # All-in-one Markdown extension
 - jupyterlab
 - toml-sort
 
-## Additional python packages for project and code documentation
+### Additional python packages for project and code documentation
 
 - mkdocs
 - mkdocs-include-markdown-plugin
@@ -351,7 +351,7 @@ yzhang.markdown-all-in-one # All-in-one Markdown extension
 - mkdocs-material
 - mkdocstrings[python]
 
-## Additional tools to support development
+### Additional tools to support development
 
 - GitHub
 - GitHub Actions and Workflows for CI

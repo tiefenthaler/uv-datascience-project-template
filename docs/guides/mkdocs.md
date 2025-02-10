@@ -68,7 +68,7 @@ The mkdocstrings plugin will automatically generate documentation for this funct
 
 The mkdocs-jupyter plugin allows you to include Jupyter notebooks in your MkDocs documentation. To include a notebook, simply add it to the nav section of your mkdocs.yml file. The plugin will automatically convert the notebook to HTML and include it in your documentation. This is very useful for tutorials. For example:
 
-```yml
+```yaml
 nav:
   - Notebook: notebook.ipynb
 ```
@@ -79,7 +79,7 @@ nav:
 
 Init documentation using `mkdocs` for an existing project:
 
-```bash
+```shell
 uv run mkdocs new .
 ```
 
@@ -105,7 +105,7 @@ project/
 
 Create mkdocs Configuration File: Edit the mkdocs.yml file in the root of your project. This file will contain the configuration for your mkdocs site.
 
-```yml
+```yaml
 site_name: UV Data Science Project Template
 nav:
   - Home: index.md
@@ -140,7 +140,7 @@ plugins:
 Generate General Documentation: For example use the `index.md` to reference your `README.md` file.
 **`docs/index.md`:**
 
-```Markdown
+```md
 # Dev Container UV Data Science
 
 Welcome to the documentation for the Dev Container UV Data Science project.
