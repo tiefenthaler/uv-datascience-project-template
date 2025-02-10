@@ -1,9 +1,33 @@
 # Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production
 
+<!--docs-ref-index-start-->
+
 This guide provides instructions on how to develop and productionize machine learning applications in an robust and efficient way.  
 It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to use those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
-> See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) with additional information.
+> **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) with additional information.**
+
+## Table of Contents
+
+- [Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production](#tutorial-project-for-1-develop-data-science-projects-in-a-dev-container-and-2-machine-learning-applications-in-production)
+  - [Table of Contents](#table-of-contents)
+  - [Overview Tools](#overview-tools)
+  - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
+    - [pyproject.toml](#pyprojecttoml)
+  - [Custom Code in src Folder](#custom-code-in-src-folder)
+    - [lit\_auto\_encoder.py](#lit_auto_encoderpy)
+    - [train\_autoencoder.py](#train_autoencoderpy)
+    - [FastAPI Application](#fastapi-application)
+      - [app\_fastapi\_autoencoder.py](#app_fastapi_autoencoderpy)
+    - [main.py](#mainpy)
+  - [Production Setup for the Machine Learning FastAPI App hosted in the Docker container](#production-setup-for-the-machine-learning-fastapi-app-hosted-in-the-docker-container)
+    - [Dockerfile](#dockerfile)
+      - [Multi-Stage Dockerfile](#multi-stage-dockerfile)
+    - [Docker Compose](#docker-compose)
+    - [Build the docker image and run a container](#build-the-docker-image-and-run-a-container)
+    - [Test the endpoint with curl](#test-the-endpoint-with-curl)
+  - [Development in Dev Container](#development-in-dev-container)
+  - [Conclusion](#conclusion)
 
 ## Overview Tools
 
@@ -21,28 +45,6 @@ The project includes the following components, for more details see [Documentati
 | **MkDocs**                  | A static site generator geared towards building project documentation, written in Markdown.       |
 | **VSCode-DevContainer**     | A development environment setup using Docker and VS Code, providing a consistent and isolated workspace. |
 | **Docker-Production**       | Docker setup for creating a lean, efficient, and secure production environment for applications.  |
-
-## Table of Contents
-
-- [Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production](#tutorial-project-for-1-develop-data-science-projects-in-a-dev-container-and-2-machine-learning-applications-in-production)
-  - [Overview Tools](#overview-tools)
-  - [Table of Contents](#table-of-contents)
-  - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
-    - [pyproject.toml](#pyprojecttoml)
-  - [Custom Code in src Folder](#custom-code-in-src-folder)
-    - [lit\_auto\_encoder.py](#lit_auto_encoderpy)
-    - [train\_autoencoder.py](#train_autoencoderpy)
-    - [FastAPI Application](#fastapi-application)
-      - [app\_fastapi\_autoencoder.py](#app_fastapi_autoencoderpy)
-    - [main.py](#mainpy)
-  - [Production Setup for the Machine Learning FastAPI App hosted in the Docker container](#production-setup-for-the-machine-learning-fastapi-app-hosted-in-the-docker-container)
-    - [Dockerfile](#dockerfile)
-      - [Multi-Stage Dockerfile](#multi-stage-dockerfile)
-    - [Docker Compose](#docker-compose)
-    - [Build the docker image and run a container](#build-the-docker-image-and-run-a-container)
-    - [Test the endpoint with curl](#test-the-endpoint-with-curl)
-  - [Development in Dev Container](#development-in-dev-container)
-  - [Conclusion](#conclusion)
 
 ## Using uv to Manage the Project
 
@@ -304,6 +306,8 @@ See [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](htt
 ## Conclusion
 
 This guide provides a comprehensive overview of setting up and running the machine learning FastAPI project using Docker Compose and `uv`. Follow the instructions to build and run the application in both development and production environments.
+
+<!--docs-ref-index-end-->
 
 <!--docs-placeholder-start-->
 <!--docs-placeholder-end-->
