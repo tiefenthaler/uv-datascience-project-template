@@ -12,7 +12,13 @@ from .lit_auto_encoder import LitAutoEncoder
 
 
 def train_litautoencoder() -> tuple[Sequential, Sequential, Literal[True]]:
-    """Training function to initialize models and perform training."""
+    """Trains a LitAutoEncoder model on the MNIST dataset and returns
+    the trained encoder, decoder, and a flag indicating training completion.
+
+    Returns:
+        tuple[Sequential, Sequential, Literal[True]]: A tuple containing the trained encoder,
+            decoder, and a boolean flag indicating that the model has been successfully trained.
+    """  # noqa: D205
 
     # Define the encoder and decoder architecture
     encoder = nn.Sequential(nn.Linear(28 * 28, 64), nn.ReLU(), nn.Linear(64, 3))

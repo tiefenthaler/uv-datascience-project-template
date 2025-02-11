@@ -4,7 +4,12 @@ from torch import Tensor, nn, optim
 
 # define the LightningModule
 class LitAutoEncoder(L.LightningModule):
-    """A simple autoencoder model."""
+    """A simple autoencoder model.
+
+    Args:
+        encoder: The encoder component, responsible for encoding input data.
+        decoder: The decoder component, responsible for decoding encoded data.
+    """
 
     def __init__(self, encoder, decoder) -> None:
         super().__init__()
@@ -12,9 +17,15 @@ class LitAutoEncoder(L.LightningModule):
         self.decoder = decoder
 
     def training_step(self, batch, batch_idx) -> Tensor:
-        """Training step that defines the train loop.
+        """Performs a single training step for the model.
 
-        Training_step defines the train loop, it is independent of forward.
+        Args:
+            batch (Tuple[Tensor, Tensor]): A tuple containing the input data (x) and
+                the corresponding labels (y).
+            batch_idx (int): The index of the current batch.
+
+        Returns:
+            Tensor: The computed loss for the current training step.
         """
 
         x, y = batch

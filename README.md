@@ -1,15 +1,17 @@
-# Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production
+# UV Data Science Project Template
+
+> **Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
 
 <!--docs-ref-index-start-->
 
-This guide provides instructions on how to develop and productionize machine learning applications in an robust and efficient way.  
-It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to use those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
+This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
+It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
-> **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) with additional information.**
+> **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) for additional information.**
 
 ## Table of Contents
 
-- [Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production](#tutorial-project-for-1-develop-data-science-projects-in-a-dev-container-and-2-machine-learning-applications-in-production)
+- [UV Data Science Project Template](#uv-data-science-project-template)
   - [Table of Contents](#table-of-contents)
   - [Overview Tools](#overview-tools)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
