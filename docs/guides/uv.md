@@ -31,3 +31,7 @@
 - **pyproject.toml Support:** UV fully supports the `pyproject.toml` file, which is the recommended way to configure Python projects.
 - **Speed:** UV is significantly faster than `pip` for most operations, especially when installing dependencies from scratch.
 - **Global Cache:** UV uses a global cache to store downloaded packages, so they don't need to be downloaded again for each project.
+
+## Getting Started with UV
+
+Refer to the official [UV - Getting Started - Documentation](https://docs.astral.sh/uv/getting-started/) for detailed instructions on installing and using UV.

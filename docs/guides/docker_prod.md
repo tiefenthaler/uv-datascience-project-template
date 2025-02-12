@@ -22,6 +22,7 @@ This document provides an in-depth guide to the Docker production setup used in 
     - [2. Optimized Docker Service](#2-optimized-docker-service)
   - [Build and Run and Test the Docker Application](#build-and-run-and-test-the-docker-application)
   - [Best Practices](#best-practices)
+  - [Getting Started](#getting-started)
   - [Conclusion](#conclusion)
 
 ## Overview
@@ -227,6 +228,14 @@ services:
 - **Use Non-Root User:** Run the application as a non-root user to improve security.
 - **Use Environment Variables:** Use environment variables to configure the application at runtime.
 - **Use a Volume:** Use a volume to persist data between container restarts.
+
+## Getting Started
+
+1. Install Docker Compose: Ensure that Docker Compose is installed on your system. It often comes bundled with Docker Desktop for Mac and Windows.
+2. Clone the Repository: Clone the project repository to your local machine, so you have access to the Docker configuration files.
+3. Build the Docker Image: Build the Docker image using the provided `Dockerfile` or `multistage.Dockerfile`. To build (or rebuild) your service, use: `docker-compose build`
+4. Run the Application: Start the application using Docker Compose. To start your service, use: `docker-compose up`
+5. Access the Application: Open your web browser and go to `http://localhost:8000` to view the running application.
 
 ## Conclusion
 

@@ -1,18 +1,19 @@
 # UV Data Science Project Template
 
-> **Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
-
 <!--docs-ref-index-start-->
+
+<p align="center">
+  <img src="docs/readme/supercharge_python_datascience_project.png" alt="Banner" width="75%" height="75%" class="center"/>
+</p>
+
+> **Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
 
 This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
 It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
 > **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) for additional information.**
 
-## Table of Contents
-
 - [UV Data Science Project Template](#uv-data-science-project-template)
-  - [Table of Contents](#table-of-contents)
   - [Overview Tools](#overview-tools)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
     - [pyproject.toml](#pyprojecttoml)
@@ -307,7 +308,7 @@ See [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](htt
 
 ## Conclusion
 
-This guide provides a comprehensive overview of setting up and running the machine learning FastAPI project using Docker Compose and `uv`. Follow the instructions to build and run the application in both development and production environments.
+This repository provides a comprehensive overview of setting up and running the machine learning FastAPI project using Docker Compose and `uv`. Follow the instructions to build and run the application in both development and production environments.
 
 <!--docs-ref-index-end-->
 

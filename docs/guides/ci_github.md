@@ -8,6 +8,7 @@ Continuous Integration is a development practice where developers regularly merg
   - [Custom GitHub Actions](#custom-github-actions)
     - [`setup-python-with-uv`](#setup-python-with-uv)
     - [`setup-git-config`](#setup-git-config)
+  - [Getting Started: Set Up GitHub Actions and Workflows](#getting-started-set-up-github-actions-and-workflows)
 
 ## Integration of Workflows and Actions
 
@@ -62,3 +63,75 @@ This action configures Git user name and email. It is used to:
 
 - Set the Git user name to `github-actions[bot]`.
 - Set the Git user email to `41898282+github-actions[bot]@users.noreply.github.com`.
+
+## Getting Started: Set Up GitHub Actions and Workflows
+
+To set up GitHub Actions and Workflows in your project, follow these steps:
+
+- Create a `.github/workflows` directory in the root of your repository.
+- Define your workflows in YAML files within this directory.  
+      Example: `.github/workflows/pyright.yml`
+
+      ```yaml
+      name: Pyright
+
+      on:
+      push:
+      branches: [main]
+      pull_request:
+      branches: [main]
+
+      jobs:
+      type-check:
+      runs-on: ubuntu-latest
+
+      strategy:
+            matrix:
+            python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+      steps:
+            - uses: jakebailey/pyright-action@v2
+                  with:
+                  python-version: ${{ matrix.python-version }}
+      ```
+
+- Define jobs and steps within each workflow file.
+- Use reusable actions to encapsulate common steps.
+      You can use existing actions from the GitHub Marketplace or create custom actions.  
+      Example: `.github/actions/setup-python-with-uv/action.yml`
+
+      ```yaml
+      name: Install Python with uv
+      description: |
+      This GitHub Action installs Python using uv.
+      It pins the specified Python version, caches uv files, and installs dependencies.
+
+      inputs:
+      python-version:
+      description: Python version
+      required: true
+
+      runs:
+      using: composite
+      steps:
+      - name: Install uv
+            uses: astral-sh/setup-uv@v4
+            with:
+            enable-cache: true
+            python-version: ${{ inputs.python-version }}
+
+      - name: Install Dependencies
+            run: uv sync --all-groups
+            shell: bash
+      ```
+
+- Commit and push your changes to trigger the workflows.
+      ```bash
+      git add .
+      git commit -m "Set up GitHub Actions for Pyright"
+      git push origin main
+      ```
+- Monitor the Actions tab in your GitHub repository to check the status of your workflows.
+      Go to the "Actions" tab in your GitHub repository to check the status of your CI workflows. You should see the workflows running based on the configuration in your workflow files.
+
+By following these steps, you can set up GitHub Actions for Continuous Integration in your project, ensuring that your codebase is automatically tested and built upon each push or pull request.
