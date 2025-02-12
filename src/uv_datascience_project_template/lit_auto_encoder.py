@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import lightning as L  # noqa: N812
 from torch import Tensor, nn, optim
 
@@ -11,12 +13,12 @@ class LitAutoEncoder(L.LightningModule):
         decoder: The decoder component, responsible for decoding encoded data.
     """
 
-    def __init__(self, encoder, decoder) -> None:
+    def __init__(self, encoder: nn.Sequential, decoder: nn.Sequential) -> None:
         super().__init__()
         self.encoder = encoder
         self.decoder = decoder
 
-    def training_step(self, batch, batch_idx) -> Tensor:
+    def training_step(self, batch: Tuple[Tensor, Tensor], batch_idx: int) -> Tensor:
         """Performs a single training step for the model.
 
         Args:

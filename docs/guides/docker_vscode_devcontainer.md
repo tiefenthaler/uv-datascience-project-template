@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD041 -->
+# VSCode Dev-Container (Docker) Setup for Data Science Projects using UV
 
 <!-- Include the content of ../../.devcontainer/README.devcontainer.md -->
 {%

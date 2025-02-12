@@ -2,9 +2,9 @@
 
 <!--docs-ref-index-start-->
 
-<p align="center">
-  <img src="docs/readme/supercharge_python_datascience_project.png" alt="Banner" width="75%" height="75%" class="center"/>
-</p>
+<div align="center">
+  <img src="docs/readme/supercharge_python_datascience_project.png" alt="Banner" width="75%" height="75%">
+</div>
 
 > **Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
 
@@ -16,16 +16,16 @@ It is demonstrated how to achieve this using a modern setup of tools, like UV, D
 - [UV Data Science Project Template](#uv-data-science-project-template)
   - [Overview Tools](#overview-tools)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
-    - [pyproject.toml](#pyprojecttoml)
+    - [pyproject toml](#pyproject-toml)
   - [Custom Code in src Folder](#custom-code-in-src-folder)
-    - [lit\_auto\_encoder.py](#lit_auto_encoderpy)
-    - [train\_autoencoder.py](#train_autoencoderpy)
+    - [lit\_auto\_encoder](#lit_auto_encoder)
+    - [train\_autoencoder](#train_autoencoder)
     - [FastAPI Application](#fastapi-application)
-      - [app\_fastapi\_autoencoder.py](#app_fastapi_autoencoderpy)
-    - [main.py](#mainpy)
+      - [app\_fastapi\_autoencoder](#app_fastapi_autoencoder)
+    - [main](#main)
   - [Production Setup for the Machine Learning FastAPI App hosted in the Docker container](#production-setup-for-the-machine-learning-fastapi-app-hosted-in-the-docker-container)
     - [Dockerfile](#dockerfile)
-      - [Multi-Stage Dockerfile](#multi-stage-dockerfile)
+      - [Multi Stage Dockerfile](#multi-stage-dockerfile)
     - [Docker Compose](#docker-compose)
     - [Build the docker image and run a container](#build-the-docker-image-and-run-a-container)
     - [Test the endpoint with curl](#test-the-endpoint-with-curl)
@@ -55,7 +55,7 @@ The project includes the following components, for more details see [Documentati
 
 See [Guides - UV](https://tiefenthaler.github.io/uv-datascience-project-template/guides/uv/) for a comprehensive guide.
 
-### pyproject.toml
+### pyproject toml
 
 The `pyproject.toml` file includes the following sections:
 
@@ -157,7 +157,7 @@ See [Source Code API Reference](https://tiefenthaler.github.io/uv-datascience-pr
 
 The `src` folder contains the custom code for the machine learning project. The main components include:
 
-### lit_auto_encoder.py
+### lit_auto_encoder
 
 This file defines the `LitAutoEncoder` class, which is a LightningModule an autoencoder using PyTorch Lightning. The `LitAutoEncoder` class includes:
 
@@ -165,7 +165,7 @@ This file defines the `LitAutoEncoder` class, which is a LightningModule an auto
 2. A `training_step` method to define the training loop.
 3. A `configure_optimizers` method to set up the optimizer.
 
-### train_autoencoder.py
+### train_autoencoder
 
 This file defines the training function `train_litautoencoder` to initialize and train the model on the MNIST dataset using PyTorch Lightning.
 
@@ -177,7 +177,7 @@ The FastAPI application is defined in the `app_fastapi_autoencoder.py` file. It 
 2. `POST /train`: Endpoint to train the autoencoder model.
 3. `POST /embed`: Endpoint to embed fake images using the trained autoencoder.
 
-#### app_fastapi_autoencoder.py
+#### app_fastapi_autoencoder
 
 See [Source Code API Reference](https://tiefenthaler.github.io/uv-datascience-project-template/api/fastapi_app/) for a comprehensive documentation.
 
@@ -192,7 +192,7 @@ This file defines the FastAPI application and the endpoints. It includes:
 7. An `embed` function to handle the embedding endpoint.
 8. The application entry point to run the FastAPI application.
 
-### main.py
+### main
 
 This file defines the uvicorn server to run the FastAPI AutoEncoder application and the endpoints. It includes:
 
@@ -225,7 +225,7 @@ The `Dockerfile` is used to build the Docker image for the project. It includes 
 7. Add executables and source to environment paths.
 8. Set the default command to run the FastAPI application.
 
-#### Multi-Stage Dockerfile
+#### Multi Stage Dockerfile
 
 To build the multistage image for a container optimized final image without uv use the `multistage.Dockerfile`.
 

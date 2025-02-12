@@ -1,5 +1,6 @@
-<!--docs-ref-readme-devcontainer-1-start-->
 # VSCode Dev-Container (Docker) Setup for Data Science Projects using UV
+
+<!--docs-ref-readme-devcontainer-1-start-->
 
 This is a [**containerized dev setup**](https://code.visualstudio.com/docs/devcontainers/containers) respectively related for using [**remote containers**](https://code.visualstudio.com/docs/remote/containers) to work on data science / machine learning projects using **[UV](https://docs.astral.sh/uv/), [Git](https://git-scm.com/)** with **[VSCode](https://code.visualstudio.com/)**.
 
