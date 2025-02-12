@@ -8,8 +8,8 @@ MkDocs is a fast, simple and downright gorgeous static site generator that's gea
   - [Using mkdocstrings](#using-mkdocstrings)
   - [Using mkdocs-jupyter](#using-mkdocs-jupyter)
   - [Create Documentation](#create-documentation)
-    - [Init documentation](#init-documentation)
-    - [Create mkdocs Configuration File](#createmkdocsconfiguration-file)
+    - [Init Documentation](#init-documentation)
+    - [Create MkDocs Configuration File](#create-mkdocs-configuration-file)
     - [Generate General Documentation](#generate-general-documentation)
     - [Generate API Documentation](#generate-api-documentation)
   - [Building the Documentation](#building-the-documentation)
@@ -75,7 +75,7 @@ nav:
 
 ## Create Documentation
 
-### Init documentation
+### Init Documentation
 
 Init documentation using `mkdocs` for an existing project:
 
@@ -83,7 +83,7 @@ Init documentation using `mkdocs` for an existing project:
 uv run mkdocs new .
 ```
 
-This will create a mkdocs.yml file and a docs/ folder with a index.md file.
+This will create a mkdocs.yml file and a docs/ folder with an index.md file.
 
 ```Text
 project/
@@ -101,7 +101,7 @@ project/
 └── ...
 ```
 
-### Create mkdocs Configuration File
+### Create MkDocs Configuration File
 
 Create mkdocs Configuration File: Edit the mkdocs.yml file in the root of your project. This file will contain the configuration for your mkdocs site.
 

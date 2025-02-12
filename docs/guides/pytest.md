@@ -8,7 +8,7 @@ This guide explains how to use `pytest` for testing and `coverage.py` for measur
   - [Running Tests](#running-tests)
     - [Specific Tests](#specific-tests)
   - [Introduction to Coverage.py](#introduction-to-coveragepy)
-    - [Key Features](#key-features-1)
+    - [Coverage Key Features](#coverage-key-features)
   - [Running Tests with Coverage](#running-tests-with-coverage)
   - [Configuration](#configuration)
     - [.coveragerc](#coveragerc)
@@ -50,7 +50,7 @@ uv run pytest tests/test_module.py::test_function
 
 [coverage.py](https://coverage.readthedocs.io/en/stable/) is a tool for measuring code coverage in Python. It monitors your program, notes which parts of the code have been executed, and then analyzes the source to identify code that could have been executed but was not.
 
-### Key Features
+### Coverage Key Features
 
 - **Line Coverage:** Measures which lines of code were executed during testing.
 - **Branch Coverage:** Measures which branches in the code were taken during testing.
