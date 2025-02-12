@@ -1,3 +1,4 @@
+<!--docs-ref-readme-devcontainer-1-start-->
 # VSCode Dev-Container (Docker) Setup for Data Science Projects using UV
 
 This is a [**containerized dev setup**](https://code.visualstudio.com/docs/devcontainers/containers) respectively related for using [**remote containers**](https://code.visualstudio.com/docs/remote/containers) to work on data science / machine learning projects using **[UV](https://docs.astral.sh/uv/), [Git](https://git-scm.com/)** with **[VSCode](https://code.visualstudio.com/)**.
@@ -6,10 +7,9 @@ The repository contains a setup of a local development container using docker co
 
 Find the [**Documentation**](https://tiefenthaler.github.io/uv-datascience-project-template/guides/docker_vscode_devcontainer/) about this VSCode Dev-Container for Data Science.
 
-## Table of Contents
+<!--docs-ref-readme-devcontainer-1-end-->
 
 - [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](#vscode-dev-container-docker-setup-for-data-science-projects-using-uv)
-  - [Table of Contents](#table-of-contents)
   - [Dev Container Main Configurations and Installations](#dev-container-main-configurations-and-installations)
     - [Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json](#setup-organization-within-dockerfiledebug--docker-composeyml--devcontainerjson)
   - [Getting Started](#getting-started)
@@ -17,6 +17,8 @@ Find the [**Documentation**](https://tiefenthaler.github.io/uv-datascience-proje
     - [Additional python packages for development](#additional-python-packages-for-development)
     - [Additional python packages for project and code documentation](#additional-python-packages-for-project-and-code-documentation)
     - [Additional tools to support development](#additional-tools-to-support-development)
+
+<!--docs-ref-readme-devcontainer-2-start-->
 
 ## Dev Container Main Configurations and Installations
 
@@ -269,6 +271,7 @@ Those files define the dev container setup for data science projects. The list b
     - Install VSCode remote container extension: [ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 - Start dev container:  F1 + "Open folder in container ...".
 - To try the setup:
+    - Clone the repository.
     - Run demo.py in the Python virtual environment (used as default, see `devcontainer.json`).
     - Your application will be available at <http://localhost:8000>.
         - Welcome root request of the FastAPI app, providing an app description.
@@ -351,3 +354,5 @@ yzhang.markdown-all-in-one # All-in-one Markdown extension
 - GitHub
 - GitHub Actions and Workflows for CI
 - GitHub Pages (to host your documentation)
+
+<!--docs-ref-readme-devcontainer-2-end-->

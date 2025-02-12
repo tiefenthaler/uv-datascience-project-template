@@ -18,7 +18,7 @@ MkDocs is a fast, simple and downright gorgeous static site generator that's gea
 
 ## Installation
 
-MkDocs and the related extensions are used:
+Install MkDocs and the related extensions (using uv):
 
 - [mkdocs](https://www.mkdocs.org/)
 - [mkdocs-include-markdown-plugin](https://github.com/mondeja/mkdocs-include-markdown-plugin#documentation)
