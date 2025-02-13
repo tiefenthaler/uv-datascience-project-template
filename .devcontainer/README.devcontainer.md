@@ -37,7 +37,7 @@ Multi-Stage Build: Despite using two base images, only one container is built. T
     - 🏢 Supports Cargo-style workspaces for scalable projects.
 - **Volume Mapping**: A volume will be used to map a directory on your local file system to a directory inside the Docker container. This way, any changes you make to your code locally will be immediately reflected inside the container, where you can run and test the code.
 - **Git:** A distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.
-- **VS Code**, including extensions like Python, Jupyter Notebooks, Docker, PyLance, Ruff and more. Find my list of VS Code **Extensions** for Data Science Projects in [this](#vs-code-extensions-for-data-science-projects) section below.
+- **VS Code**, including extensions like Python, Jupyter Notebooks, Docker, PyLance, Ruff and more. Find my list of VS Code **Extensions** for Data Science Projects in [this section](#vs-code-extensions-for-data-science-projects) below.
 
 ### Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json
 
