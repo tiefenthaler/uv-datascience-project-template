@@ -19,13 +19,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const github = require('@actions/github');
             const core = require('@actions/core');
-            const context = github.context;  # Ensure context is imported
+            const context = github.context;
 
-            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-
-            const response = await octokit.rest.actions.listWorkflowRuns({
+            const response = await github.rest.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
               status: 'completed', 
