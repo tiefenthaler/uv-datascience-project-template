@@ -21,6 +21,7 @@ jobs:
           script: |
             const github = require('@actions/github');
             const core = require('@actions/core');
+            const context = github.context;  # Ensure context is imported
 
             const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 

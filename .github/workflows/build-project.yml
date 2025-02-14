@@ -1,0 +1,52 @@
+name: Publish Docs via GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python ${{ matrix.python-version }} with uv
+        uses: ./.github/actions/setup-python-with-uv
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run FastAPI application in the background
+        run: |
+          uv run python main.py &
+          sleep 10  # Wait for the server to start
+
+      - name: Test /train endpoint
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://0.0.0.0:8000/train)
+          if [ "$response" -ne 200 ]; then
+            echo "Test /train endpoint failed with status code $response"
+            exit 1
+          fi
+
+      - name: Test /embed endpoint
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}')
+          if [ "$response" -ne 200 ]; then
+            echo "Test /embed endpoint failed with status code $response"
+            exit 1
+          fi
+
+      - name: Shut down FastAPI application
+        run: |
+          pkill -f "uvicorn"
