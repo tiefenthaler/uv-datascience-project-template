@@ -19,7 +19,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const core = require('@actions/core');
             const context = github.context;
 
             const response = await github.rest.actions.listWorkflowRuns({
@@ -37,62 +36,8 @@ jobs:
               }
             }
 
-            core.setOutput('all_success', allSuccess);
+            return allSuccess;
 
       - name: Set Output
-        run: |
-          echo "::set-output name=all_success::${{ steps.get_runs.outputs.all_success }}"
-
-      # - name: Create Status Badge
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       const core = require('@actions/core');
-
-      #       const allSuccess = core.getInput('all_success');
-      #       const badgeColor = allSuccess ? 'brightgreen' : 'red';
-      #       const badgeLabel = allSuccess ? 'passed' : 'failed';
-      #       const badgeUrl = `https://img.shields.io/badge/CI_Workflows-${badgeLabel}-${badgeColor}?style=flat-square`; 
-
-      #       core.setOutput('badge_url', badgeUrl);
-
-      # - name: Update README
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       const core = require('@actions/core');
-      #       const github = require('@actions/github');
-      #       const fs = require('fs');
-
-      #       const badgeUrl = core.getInput('badge_url');
-
-      #       const readmePath = 'README.md';
-
-      #       // Read the existing README content
-      #       let readmeContent = fs.readFileSync(readmePath, 'utf8');
-
-      #       // Find the existing badge (if any)
-      #       const oldBadgeRegex = /\[!\[.*\]\(.+\)/;
-      #       const oldBadgeMatch = readmeContent.match(oldBadgeRegex);
-
-      #       // Replace the old badge with the new one
-      #       if (oldBadgeMatch) {
-      #         readmeContent = readmeContent.replace(oldBadgeMatch[0], `![${badgeLabel}](${badgeUrl})`);
-      #       } else {
-      #         // Add the badge to the top of the README
-      #         readmeContent = `![${badgeLabel}](${badgeUrl})\n${readmeContent}`;
-      #       }
-
-      #       // Write the updated README content
-      #       fs.writeFileSync(readmePath, readmeContent, 'utf8');
-
-      #       // Commit the changes
-      #       const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-      #       await octokit.rest.repos.createOrUpdateFileContents({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         path: readmePath,
-      #         message: 'Update workflow status badge',
-      #         content: Buffer.from(readmeContent).toString('base64'),
-      #         sha: context.sha,
-      #       });
+        if: always()
+        run: echo "workflow_success=${{ steps.get_runs.outputs.result }}" >> $GITHUB_OUTPUT
