@@ -1,17 +1,27 @@
 # UV Data Science Project Template
 
-<!--docs-ref-index-start-->
+<!--docs-ref-index-1-start-->
 
 <div align="center">
   <img src="docs/readme/supercharge_python_datascience_project.png" alt="Banner" width="75%" height="75%">
+  <p><em>Image by David T. [Source: Astral]</em></p>
 </div>
 
-> **Tutorial Project for 1) Develop Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
+[![testing status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/testing.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/testing.yml)
+[![coverage status - file](https://raw.githubusercontent.com/tiefenthaler/uv-datascience-project-template/coverage-badge/coverage.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/blob/coverage-badge/coverage.svg)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/tiefenthaler/uv-datascience-project-template/main.svg)](https://results.pre-commit.ci/latest/github/tiefenthaler/uv-datascience-project-template/main)
+[![documentation status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml)
+[![docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
+[![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Tutorial Project for 1) Developing Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
 
 This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
 It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
 > **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) for additional information.**
+
+<!--docs-ref-index-1-end-->
 
 - [UV Data Science Project Template](#uv-data-science-project-template)
   - [Overview Tools](#overview-tools)
@@ -31,6 +41,8 @@ It is demonstrated how to achieve this using a modern setup of tools, like UV, D
     - [Test the endpoint with curl](#test-the-endpoint-with-curl)
   - [Development in Dev Container](#development-in-dev-container)
   - [Conclusion](#conclusion)
+
+<!--docs-ref-index-2-start-->
 
 ## Overview Tools
 
@@ -308,9 +320,8 @@ See [VSCode Dev-Container (Docker) Setup for Data Science Projects using UV](htt
 
 ## Conclusion
 
-This repository provides a comprehensive overview of setting up and running the machine learning FastAPI project using Docker Compose and `uv`. Follow the instructions to build and run the application in both development and production environments.
+This repository provides a comprehensive overview of setting up and running the machine learning FastAPI project using Docker and `uv`. Follow the instructions to build and run the application in both development and production environments. The project demonstrates how to develop and productionize machine learning applications using modern tools and best practices.
 
-<!--docs-ref-index-end-->
+Additionally, ensure to review the provided guides and documentation for detailed instructions on various setups and configurations necessary for optimal project performance.
 
-<!--docs-placeholder-start-->
-<!--docs-placeholder-end-->
+<!--docs-ref-index-2-end-->
