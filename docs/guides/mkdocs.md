@@ -145,7 +145,10 @@ Generate General Documentation: For example use the `index.md` to reference your
 
 Welcome to the documentation for the Dev Container UV Data Science project.
 
-<!-- Include the content of README.md -->
+<!-- Include the content of README.devcontainer.md -->
+<!-- Using PyMdown Snippets for inclusion relative to the base_path defined in the mkdocs.yml-->
+<!-- Uncomment the following lines to include the README.devcontainer.md file -->
+<!-- --8<-- ".devcontainer/README.devcontainer.md" -->
 ```
 
 ### Generate API Documentation

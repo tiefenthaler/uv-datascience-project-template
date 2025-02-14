@@ -5,6 +5,12 @@ Welcome to the documentation for UV Data Science Project Template. This project 
 <!-- Include the content of README.md -->
 {%
     include-markdown "../README.md"
-    start="<!--docs-ref-index-start-->"
-    end="<!--docs-ref-index-end-->"
+    start="<!--docs-ref-index-1-start-->"
+    end="<!--docs-ref-index-1-end-->"
+%}
+
+{%
+    include-markdown "../README.md"
+    start="<!--docs-ref-index-2-start-->"
+    end="<!--docs-ref-index-2-end-->"
 %}

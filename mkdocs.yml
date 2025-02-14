@@ -1,7 +1,10 @@
 site_name: UV Data Science Project Template
 repo_url: https://github.com/tiefenthaler/uv-datascience-project-template
+copyright: Copyright &copy; 2025 David Tiefenthaler
 nav:
-  - Home: index.md
+  - Home:
+    - index.md
+    - About: about.md
   - Guides:
     - guides/index.md
     - UV: guides/uv.md
@@ -28,13 +31,22 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.path
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
+    - content.code.copy
+    - content.code.select
 plugins:
   - search
   - include-markdown
   - mkdocstrings:
       handlers:
         python:
+          paths: [src] # search packages in the src folder
+          rendering:
+            show_root_heading: yes
+            merge_init_into_class: yes
+            docstring_section_style: spacy
           options:
             docstring_style: google
             show_source: true
@@ -43,4 +55,17 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
   - pymdownx.superfences
+  - pymdownx.pathconverter
+  - pymdownx.snippets:
+      base_path: ["."] # Using --8<-- "dir/file.md" is relative to the base_path.
+  - toc:
+      permalink: true
