@@ -8,10 +8,10 @@
 
 [![testing status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/testing.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/testing.yml)
 [![coverage status - file](https://raw.githubusercontent.com/tiefenthaler/uv-datascience-project-template/coverage-badge/coverage.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/blob/coverage-badge/coverage.svg)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/tiefenthaler/uv-datascience-project-template/main.svg)](https://results.pre-commit.ci/latest/github/tiefenthaler/uv-datascience-project-template/main)
+[![ci workflows - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/check-all-workflows.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions)
 [![documentation status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml)
 [![docker - static](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
-[![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![license: MIT - static](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
 

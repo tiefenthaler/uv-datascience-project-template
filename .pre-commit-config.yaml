@@ -22,14 +22,23 @@ repos:
         description: "Run 'ruff format' for extremely fast Python formatting"
         args: [--diff] # Show diff instead of applying changes directly.
 
-  - repo: local
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.394
     hooks:
       - id: pyright
-        name: Type checker
-        entry: uv run pyright
+        name: Pyright type checker
         language: system
         types: [python]
         fail_fast: true
+
+  # - repo: local
+  #   hooks:
+  #     - id: pyright
+  #       name: Type checker
+  #       entry: uv run pyright
+  #       language: system
+  #       types: [python]
+  #       fail_fast: true
 
   - repo: https://github.com/hadolint/hadolint
     rev: v2.12.0
