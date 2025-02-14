@@ -1,4 +1,4 @@
-name: Publish Docs via GitHub Pages
+name: Build Project
 
 on:
   push:
@@ -33,17 +33,21 @@ jobs:
 
       - name: Test /train endpoint
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://0.0.0.0:8000/train)
-          if [ "$response" -ne 200 ]; then
-            echo "Test /train endpoint failed with status code $response"
+          response=$(curl -s -o response_body.txt -w "%{http_code}" -X POST http://0.0.0.0:8000/train)
+          status_code=$(cat response_body.txt)
+          if [ "$status_code" -ne 200 ]; then
+            echo "Test /train endpoint failed with status code $status_code"
+            cat response_body.txt  # Log the response body for debugging
             exit 1
           fi
 
       - name: Test /embed endpoint
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}')
-          if [ "$response" -ne 200 ]; then
-            echo "Test /embed endpoint failed with status code $response"
+          response=$(curl -s -o response_body.txt -w "%{http_code}" -X POST http://0.0.0.0:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 4}')
+          status_code=$(cat response_body.txt)
+          if [ "$status_code" -ne 200 ]; then
+            echo "Test /embed endpoint failed with status code $status_code"
+            cat response_body.txt  # Log the response body for debugging
             exit 1
           fi
 
