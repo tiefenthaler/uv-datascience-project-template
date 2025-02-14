@@ -19,8 +19,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const context = github.context;
-
             const response = await github.rest.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
