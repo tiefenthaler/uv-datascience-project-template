@@ -1,10 +1,11 @@
 # .github/workflows/check_all_workflows.yml
 
-name: CI Workflows
+name: CI Workflows Status
 
 on:
+  # Run when other workflows complete
   workflow_run:
-    workflows: 
+    workflows:
       - "Testing"
       - "Publish Docs via GitHub Pages"
       - "Docker"
@@ -12,8 +13,11 @@ on:
       - "Pyright"
     types:
       - completed
-    branches:
-      - main
+  # Allow manual triggers
+  workflow_dispatch:
+  # Also run on pushes to main
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -28,40 +32,49 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            // Get all workflow runs for the repository in the last hour
-            const date = new Date();
-            date.setHours(date.getHours() - 1);
+            const targetWorkflows = [
+              'Testing',
+              'Publish Docs via GitHub Pages',
+              'Docker',
+              'Ruff',
+              'Pyright'
+            ];
             
-            const { data: { workflow_runs } } = await github.rest.actions.listWorkflowRunsForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              status: 'completed',
-              branch: 'main',
-              created: `>=${date.toISOString()}`
-            });
-
-            // Filter to only include the workflows we care about
-            const targetWorkflows = ['Testing', 'Publish Docs via GitHub Pages', 'Docker'];
-            const relevantRuns = workflow_runs.filter(run => 
-              targetWorkflows.includes(run.name)
-            );
-
-            // Check if any relevant workflow runs exist
-            if (relevantRuns.length === 0) {
-              console.log('No relevant workflow runs found');
-              return true;
+            for (const workflow of targetWorkflows) {
+              console.log(`Checking workflow: ${workflow}`);
+              
+              const { data: { workflow_runs } } = await github.rest.actions.listWorkflowRuns({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: workflow,
+                branch: 'main',
+                per_page: 1
+              });
+              
+              if (workflow_runs.length === 0) {
+                console.log(`No runs found for ${workflow}`);
+                continue;
+              }
+              
+              const latestRun = workflow_runs[0];
+              console.log(`Latest run for ${workflow}: ${latestRun.status} - ${latestRun.conclusion}`);
+              
+              if (latestRun.status !== 'completed' || latestRun.conclusion !== 'success') {
+                console.log(`Workflow ${workflow} is not successful`);
+                return false;
+              }
             }
+            
+            console.log('All workflows are successful');
+            return true;
 
-            // Check all relevant workflow runs
-            const allSuccess = relevantRuns.every(
-              run => run.status === 'completed' && run.conclusion === 'success'
-            );
-
-            console.log(`Found ${relevantRuns.length} relevant workflow runs`);
-            console.log(`All successful: ${allSuccess}`);
-
-            return allSuccess;
-
-      - name: Set Output
+      - name: Create badge
         if: always()
-        run: echo "workflow_success=${{ steps.check.outputs.result }}" >> $GITHUB_OUTPUT
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: YOUR_GIST_ID
+          filename: workflows.json
+          label: workflows
+          message: ${{ steps.check.outputs.result == 'true' && 'passing' || 'failing' }}
+          color: ${{ steps.check.outputs.result == 'true' && 'success' || 'critical' }}
