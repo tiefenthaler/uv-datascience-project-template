@@ -8,7 +8,6 @@ on:
     workflows:
       - "Testing"
       - "Publish Docs via GitHub Pages"
-      - "Docker"
       - "Ruff"
       - "Pyright"
     types:
@@ -35,7 +34,6 @@ jobs:
             const targetWorkflows = [
               'Testing',
               'Publish Docs via GitHub Pages',
-              'Docker',
               'Ruff',
               'Pyright'
             ];
