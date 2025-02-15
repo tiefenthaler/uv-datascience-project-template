@@ -7,35 +7,29 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  # schedule:
-  #   - cron: '0 * * * *' # Check every hour
 
 jobs:
   check_workflows:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Workflow Runs
-        id: get_runs
+      - name: Check Workflow Status
+        id: check
         uses: actions/github-script@v6
         with:
           script: |
             const response = await github.rest.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              status: 'completed', 
-              branch: 'main' 
+              status: 'completed',
+              branch: 'main'
             });
 
-            let allSuccess = true;
-            for (const run of response.data.workflow_runs) {
-              if (run.status !== 'completed' || run.conclusion !== 'success') {
-                allSuccess = false;
-                break;
-              }
-            }
+            const allSuccess = response.data.workflow_runs.every(
+              run => run.status === 'completed' && run.conclusion === 'success'
+            );
 
             return allSuccess;
 
       - name: Set Output
         if: always()
-        run: echo "workflow_success=${{ steps.get_runs.outputs.result }}" >> $GITHUB_OUTPUT
+        run: echo "workflow_success=${{ steps.check.outputs.result }}" >> $GITHUB_OUTPUT
