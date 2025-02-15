@@ -31,6 +31,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const github = require('@actions/github');
+            const core = require('@actions/core');
+            const context = github.context;
+
             const targetWorkflows = [
               'Testing',
               'Publish Docs via GitHub Pages',
@@ -66,13 +70,13 @@ jobs:
             console.log('All workflows are successful');
             return true;
 
-      - name: Create badge
-        if: always()
-        uses: schneegans/dynamic-badges-action@v1.6.0
-        with:
-          auth: ${{ secrets.GIST_SECRET }}
-          gistID: YOUR_GIST_ID
-          filename: workflows.json
-          label: workflows
-          message: ${{ steps.check.outputs.result == 'true' && 'passing' || 'failing' }}
-          color: ${{ steps.check.outputs.result == 'true' && 'success' || 'critical' }}
+      # - name: Create badge
+      #   if: always()
+      #   uses: schneegans/dynamic-badges-action@v1.6.0
+      #   with:
+      #     auth: ${{ secrets.GIST_SECRET }}
+      #     gistID: YOUR_GIST_ID
+      #     filename: workflows.json
+      #     label: workflows
+      #     message: ${{ steps.check.outputs.result == 'true' && 'passing' || 'failing' }}
+      #     color: ${{ steps.check.outputs.result == 'true' && 'success' || 'critical' }}
