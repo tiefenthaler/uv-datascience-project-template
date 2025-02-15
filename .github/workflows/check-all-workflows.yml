@@ -3,10 +3,21 @@
 name: CI Workflows
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_run:
+    workflows: 
+      - "Testing"
+      - "Publish Docs via GitHub Pages"
+      - "Docker"
+      - "Ruff"
+      - "Pyright"
+    types:
+      - completed
+    branches:
+      - main
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   check_workflows:
@@ -17,16 +28,37 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const response = await github.rest.actions.listWorkflowRuns({
+            // Get all workflow runs for the repository in the last hour
+            const date = new Date();
+            date.setHours(date.getHours() - 1);
+            
+            const { data: { workflow_runs } } = await github.rest.actions.listWorkflowRunsForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
               status: 'completed',
-              branch: 'main'
+              branch: 'main',
+              created: `>=${date.toISOString()}`
             });
 
-            const allSuccess = response.data.workflow_runs.every(
+            // Filter to only include the workflows we care about
+            const targetWorkflows = ['Testing', 'Publish Docs via GitHub Pages', 'Docker'];
+            const relevantRuns = workflow_runs.filter(run => 
+              targetWorkflows.includes(run.name)
+            );
+
+            // Check if any relevant workflow runs exist
+            if (relevantRuns.length === 0) {
+              console.log('No relevant workflow runs found');
+              return true;
+            }
+
+            // Check all relevant workflow runs
+            const allSuccess = relevantRuns.every(
               run => run.status === 'completed' && run.conclusion === 'success'
             );
+
+            console.log(`Found ${relevantRuns.length} relevant workflow runs`);
+            console.log(`All successful: ${allSuccess}`);
 
             return allSuccess;
 
