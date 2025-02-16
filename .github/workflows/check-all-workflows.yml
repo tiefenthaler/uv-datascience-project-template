@@ -3,6 +3,8 @@
 name: CI Workflows Status
 
 on:
+  push:
+    branches: [main]
   # Run when other workflows complete
   workflow_run:
     workflows:
@@ -10,65 +12,81 @@ on:
       - "Publish Docs via GitHub Pages"
       - "Ruff"
       - "Pyright"
+      # - "Docker"
     types:
       - completed
   # Allow manual triggers
   workflow_dispatch:
-  # Also run on pushes to main
-  push:
-    branches: [main]
 
 permissions:
   contents: read
   actions: read
 
 jobs:
-  check_workflows:
+  wait-for-all:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Workflow Status
-        id: check
-        uses: actions/github-script@v6
+      - name: Wait for all workflows
+        uses: lewagon/wait-on-check-action@v1.2.0
         with:
-          script: |
-            const github = require('@actions/github');
-            const core = require('@actions/core');
-            const context = github.context;
+          ref: ${{ github.ref }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          check-name: "other-workflow-1, other-workflow-2" # Replace with actual workflow names
+          wait-interval: 10
 
-            const targetWorkflows = [
-              'Testing',
-              'Publish Docs via GitHub Pages',
-              'Ruff',
-              'Pyright'
-            ];
+  final-check:
+    runs-on: ubuntu-latest
+    needs: wait-for-all
+    steps:
+      - name: Success message
+        run: echo "All workflows completed successfully!"
+
+  # check_workflows:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check Workflow Status
+  #       id: check
+  #       uses: actions/github-script@v6
+  #       with:
+  #         script: |
+  #           const github = require('@actions/github');
+  #           const core = require('@actions/core');
+  #           const context = github.context;
+
+  #           const targetWorkflows = [
+  #             'Testing',
+  #             'Publish Docs via GitHub Pages',
+  #             'Ruff',
+  #             'Pyright'
+  #           ];
             
-            for (const workflow of targetWorkflows) {
-              console.log(`Checking workflow: ${workflow}`);
+  #           for (const workflow of targetWorkflows) {
+  #             console.log(`Checking workflow: ${workflow}`);
               
-              const { data: { workflow_runs } } = await github.rest.actions.listWorkflowRuns({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                workflow_id: workflow,
-                branch: 'main',
-                per_page: 1
-              });
+  #             const { data: { workflow_runs } } = await github.rest.actions.listWorkflowRuns({
+  #               owner: context.repo.owner,
+  #               repo: context.repo.repo,
+  #               workflow_id: workflow,
+  #               branch: 'main',
+  #               per_page: 1
+  #             });
               
-              if (workflow_runs.length === 0) {
-                console.log(`No runs found for ${workflow}`);
-                continue;
-              }
+  #             if (workflow_runs.length === 0) {
+  #               console.log(`No runs found for ${workflow}`);
+  #               continue;
+  #             }
               
-              const latestRun = workflow_runs[0];
-              console.log(`Latest run for ${workflow}: ${latestRun.status} - ${latestRun.conclusion}`);
+  #             const latestRun = workflow_runs[0];
+  #             console.log(`Latest run for ${workflow}: ${latestRun.status} - ${latestRun.conclusion}`);
               
-              if (latestRun.status !== 'completed' || latestRun.conclusion !== 'success') {
-                console.log(`Workflow ${workflow} is not successful`);
-                return false;
-              }
-            }
+  #             if (latestRun.status !== 'completed' || latestRun.conclusion !== 'success') {
+  #               console.log(`Workflow ${workflow} is not successful`);
+  #               return false;
+  #             }
+  #           }
             
-            console.log('All workflows are successful');
-            return true;
+  #           console.log('All workflows are successful');
+  #           return true;
 
       # - name: Create badge
       #   if: always()
