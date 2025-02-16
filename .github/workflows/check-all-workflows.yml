@@ -7,12 +7,13 @@ on:
     branches: [main]
   # Run when other workflows complete
   workflow_run:
-    workflows:
-      - "Testing"
-      - "Publish Docs via GitHub Pages"
-      - "Ruff"
-      - "Pyright"
-      # - "Docker"
+    workflows: [
+      "Testing",
+      "Publish Docs via GitHub Pages",
+      "Ruff",
+      "Pyright",
+      # "Docker"
+    ]
     types:
       - completed
   # Allow manual triggers
@@ -31,7 +32,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          check-name: "other-workflow-1, other-workflow-2" # Replace with actual workflow names
+          check-name: "Testing, Publish Docs via GitHub Pages, Ruff, Pyright"
           wait-interval: 10
 
   final-check:
