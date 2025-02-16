@@ -42,6 +42,8 @@ This project uses GitHub Actions for CI Workflows. Upon each push or pull reques
 
 5. **Documentation Deployment:** The project documentation is automatically built and deployed to GitHub Pages using [mkdocs](https://www.mkdocs.org/).
 
+6. **CI Workflow Status:** Provides a summary of the CI workflow status, passed and failed jobs.
+
 You can check the status of the latest CI run on the GitHub repository under the "Actions" tab.
 
 ## Custom GitHub Actions

@@ -2,6 +2,15 @@
 
 [UV](https://docs.astral.sh/uv/) is used as a fast and efficient package manager for this project, replacing tools like pip, virtualenv, and pip-tools. It significantly speeds up the installation of dependencies and management of the virtual environment, making the development process smoother and faster. UV ensures consistent dependency resolution and environment setup across different development environments.
 
+- [UV, an extremely fast Python package and project manager, written in Rust](#uv-an-extremely-fast-python-package-and-project-manager-written-in-rust)
+  - [Getting Started with UV](#getting-started-with-uv)
+    - [Install uv](#install-uv)
+    - [Install Python](#install-python)
+    - [Install Python packages and dependencies](#install-python-packages-and-dependencies)
+    - [Run Python code](#run-python-code)
+    - [Launching JupyterLab](#launching-jupyterlab)
+    - [Optional: Manage virtual environments manually](#optional-manage-virtual-environments-manually)
+
 **UV**, an extremely fast Python package, virtual environment and project manager.
 
 - 🚀 A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and more.
@@ -35,3 +44,141 @@
 ## Getting Started with UV
 
 Refer to the official [UV - Getting Started - Documentation](https://docs.astral.sh/uv/getting-started/) for detailed instructions on installing and using UV.
+
+This section guides you through the Python setup and package installation procedure using `uv` native commands over the `uv pip` interface and is based on the content of **Sebastian Raschka**'s [GitHub repository](https://github.com/rasbt/LLMs-from-scratch/tree/main).
+
+> [!NOTE]
+> There are alternative ways to install Python and use `uv`. For example, you can install Python directly via `uv` and use `uv add` instead of `uv pip install` for even faster package management.
+>
+> If you prefer the `uv pip` commands, I recommend checking the official [`uv` documentation](https://docs.astral.sh/uv/).
+>
+> While `uv add` offers additional speed advantages, `uv pip` might be slightly more user-friendly for with your existing habits. However, if you're new to Python package management, the native `uv` interface is also a great opportunity to learn it from the start. It's also how I use `uv`, but I realized the barrier to entry is a bit higher if you are coming from `pip` and `conda/mamba`.
+
+### Install uv
+
+Uv can be installed as follows, depending on your operating system.
+
+**macOS and Linux**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+or
+
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
+**Windows**
+
+```bash
+powershell -c "irm https://astral.sh/uv/install.ps1 | more"
+```
+
+### Install Python
+
+You can install Python using uv:
+
+```bash
+uv python install 3.10
+```
+
+### Install Python packages and dependencies
+
+To install all required packages from a `pyproject.toml` file (such as the one located at the top level of this GitHub repository), run the following command, assuming the file is in the same directory as your terminal session:
+
+```bash
+uv add . --group dev
+```
+
+> [!NOTE]
+> If you have problems with the following commands above due to certain dependencies (for example, if you are using Windows), you can always fall back to regular pip:
+> `uv add pip`
+> `uv run python -m pip install -U -r requirements.txt`
+
+Note that the `uv add` command above will create a separate virtual environment via the `.venv` subfolder. (In case you want to delete your virtual environment to start from scratch, you can simply delete the `.venv` folder.)
+
+You can install new packages, that are not specified in the `pyproject.toml` via `uv add`, for example:
+
+```bash
+uv add packaging
+```
+
+And you can remove packages via `uv remove`, for example,	
+
+```bash
+uv remove packaging
+```
+
+### Run Python code
+
+Your environment should now be ready to run the code in the repository. You can test it by running the following command to run a python script:
+
+```bash
+uv run python main.py
+```
+
+Or, if you don't want to type `uv run python` every time you execute code, manually activate the virtual environment first.
+
+On macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+On Windows (PowerShell):
+
+```bash
+.venv\Scripts\activate
+```
+
+Then, run:
+
+```bash
+python main.py
+```
+
+### Launching JupyterLab
+
+You can launch a JupyterLab instance via:
+
+```bash
+uv run jupyter lab
+```
+
+### Optional: Manage virtual environments manually
+
+Alternatively, you can still install the dependencies directly from the repository using `uv pip install`. But note that this doesn't record dependencies in a `uv.lock` file as `uv add` does. Also, it requires creating and activating the virtual environment manually:
+
+**1. Create a new virtual environment**
+
+Run the following command to manually create a new virtual environment, which will be saved via a new `.venv` subfolder:
+
+```bash
+uv venv --python=python3.12
+```
+
+**2. Activate virtual environment**
+
+Next, we need to activate this new virtual environment.
+
+On macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+On Windows (PowerShell):
+
+```bash
+.venv\Scripts\activate
+```
+
+**3. Install dependencies**
+
+To install the required dependencies from your local `requirements.txt` file, use the following command:
+
+```bash
+uv pip install -r requirements.txt
+```
