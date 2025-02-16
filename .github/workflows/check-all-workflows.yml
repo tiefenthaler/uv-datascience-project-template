@@ -1,22 +1,12 @@
-# .github/workflows/check_all_workflows.yml
+# https://github.com/lewagon/wait-on-check-action
 
-name: CI Workflows Status
+name: CI Workflow Status
 
 on:
   push:
     branches: [main]
-  # Run when other workflows complete
-  # workflow_run:
-  #   workflows: [
-  #     "Testing",
-  #     "Publish Docs via GitHub Pages",
-  #     "Ruff",
-  #     "Pyright",
-  #     # "Docker"
-  #   ]
-  #   types:
-  #     - completed
-  # Allow manual triggers
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -28,13 +18,12 @@ jobs:
     name: Wait for all workflows
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for all workflows
+      - name: Step Wait for all workflows
         uses: lewagon/wait-on-check-action@v1.3.4
         with:
           ref: ${{ github.ref }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          # check-name: "Testing, Publish Docs via GitHub Pages, Ruff, Pyright"
-          running-workflow-name: "Wait for all workflows"  # Specify the name of the workflow to wait for
+          running-workflow-name: "Wait for all workflows"  # Wait for all other workflows to complete by specifying the name of this job.
           wait-interval: 10
 
   final-check:
@@ -43,61 +32,3 @@ jobs:
     steps:
       - name: Success message
         run: echo "All workflows completed successfully!"
-
-  # check_workflows:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check Workflow Status
-  #       id: check
-  #       uses: actions/github-script@v6
-  #       with:
-  #         script: |
-  #           const github = require('@actions/github');
-  #           const core = require('@actions/core');
-  #           const context = github.context;
-
-  #           const targetWorkflows = [
-  #             'Testing',
-  #             'Publish Docs via GitHub Pages',
-  #             'Ruff',
-  #             'Pyright'
-  #           ];
-            
-  #           for (const workflow of targetWorkflows) {
-  #             console.log(`Checking workflow: ${workflow}`);
-              
-  #             const { data: { workflow_runs } } = await github.rest.actions.listWorkflowRuns({
-  #               owner: context.repo.owner,
-  #               repo: context.repo.repo,
-  #               workflow_id: workflow,
-  #               branch: 'main',
-  #               per_page: 1
-  #             });
-              
-  #             if (workflow_runs.length === 0) {
-  #               console.log(`No runs found for ${workflow}`);
-  #               continue;
-  #             }
-              
-  #             const latestRun = workflow_runs[0];
-  #             console.log(`Latest run for ${workflow}: ${latestRun.status} - ${latestRun.conclusion}`);
-              
-  #             if (latestRun.status !== 'completed' || latestRun.conclusion !== 'success') {
-  #               console.log(`Workflow ${workflow} is not successful`);
-  #               return false;
-  #             }
-  #           }
-            
-  #           console.log('All workflows are successful');
-  #           return true;
-
-      # - name: Create badge
-      #   if: always()
-      #   uses: schneegans/dynamic-badges-action@v1.6.0
-      #   with:
-      #     auth: ${{ secrets.GIST_SECRET }}
-      #     gistID: YOUR_GIST_ID
-      #     filename: workflows.json
-      #     label: workflows
-      #     message: ${{ steps.check.outputs.result == 'true' && 'passing' || 'failing' }}
-      #     color: ${{ steps.check.outputs.result == 'true' && 'success' || 'critical' }}
