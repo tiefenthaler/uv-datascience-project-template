@@ -37,6 +37,9 @@ exclude = [
     "data",
 ]
 
+force-exclude = true
+extend-exclude = ["[{][{]cookiecutter.repo_name[}][}]"]
+
 line-length = 99
 
 target-version = "py312"
@@ -75,8 +78,9 @@ indent-style = "space" # Default is "4" spaces.
 docstring-code-format = true
 docstring-code-line-length = 120 # use "dynamic" to use the line-length value from "line-length".
 
-[per-file-ignores]
+[lint.per-file-ignores]
 "tests/**" = ["D103"]  # Ignore missing docstrings in tests
+# "{{cookiecutter.repo_name}}/tests/test_foo.py" = ["D103", "F821", "F401"]  # Ignore missing docstrings and undefined name errors
 
-[pydocstyle]
+[lint.pydocstyle]
 convention = "google"

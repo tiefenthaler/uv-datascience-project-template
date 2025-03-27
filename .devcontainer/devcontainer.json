@@ -79,7 +79,6 @@
 				// AI Coding Assistant
 				"github.copilot",
 				"github.copilot-chat",
-				// "tabnine.tabnine-vscode"
 				// Other
 				"richie5um2.vscode-sort-json",
 				"oliversen.chatgpt-docstrings"

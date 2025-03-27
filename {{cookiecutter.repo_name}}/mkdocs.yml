@@ -1,0 +1,72 @@
+site_name: {{cookiecutter.project_name}}
+repo_url: https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}
+site_url: https://{{cookiecutter.author_github_handle}}.github.io/{{cookiecutter.project_name}}
+site_description: {{cookiecutter.project_description}}
+site_author: {{cookiecutter.author_name}}
+edit_uri: edit/main/docs/
+repo_name: {{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}
+copyright: Maintained by <a href="https://{{cookiecutter.author_github_handle}}.com">{{cookiecutter.author_github_handle}}</a>.
+nav:
+  - Home:
+    - index.md
+    - About: about.md
+  - Source Code API Reference:
+    - api/index.md
+theme:
+  name: material
+  features:
+    - navigation.indexes
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - content.code.copy
+    - content.code.select
+plugins:
+  - search
+  - include-markdown
+  - mkdocstrings:
+      handlers:
+        python:
+          # search packages in the src folder
+          paths: [
+            {%- if cookiecutter.directory_structure == "src" -%}
+            "src/{{cookiecutter.module_name}}"
+            {%- else -%}
+            "{{cookiecutter.module_name}}"
+            {%- endif -%}
+            ]
+          rendering:
+            show_root_heading: yes
+            merge_init_into_class: yes
+            docstring_section_style: spacy
+          options:
+            docstring_style: google
+            show_source: true
+  - mkdocs-jupyter:
+      # ignore_h1_titles: true # Ignore using first h1 as title, instead use filename.
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/{{cookiecutter.project_name}}
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.superfences
+  - pymdownx.pathconverter
+  - pymdownx.snippets:
+      base_path: ["."] # Using --8<-- "dir/file.md" is relative to the base_path.
+  - toc:
+      permalink: true
