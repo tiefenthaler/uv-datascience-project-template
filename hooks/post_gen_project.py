@@ -67,7 +67,7 @@ def main() -> None:
         remove_file("pyrightconfig.json")
 
     ### Docs ###
-    if "{{cookiecutter.docs_mkdocs}}" == "y":
+    if "{{cookiecutter.docs_mkdocs}}" == "n":
         remove_file("mkdocs.yml")
         remove_dir("docs")
 
@@ -80,7 +80,7 @@ def main() -> None:
         remove_dir(".github")
 
     ### VSCode Dev Container ###
-    if "{{ cookiecutter.use_vscode_devcontainer }}" == "no":
+    if "{{ cookiecutter.use_vscode_devcontainer }}" == "n":
         remove_dir(".devcontainer")
 
     ### Docker Production ###

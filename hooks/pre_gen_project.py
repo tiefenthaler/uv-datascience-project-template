@@ -34,6 +34,9 @@ move_file("../ruff.toml", "ruff.toml")
 # pyright
 remove_file("pyrightconfig.json")  # placeholder only to indicate presence in cookiecutter
 move_file("../pyrightconfig.json", "pyrightconfig.json")
+# CI
+remove_dir(".github")  # placeholder only to indicate presence in cookiecutter
+move_parent_dir("../.github", ".github")
 # devcontainer
 remove_dir(".devcontainer")  # placeholder only to indicate presence in cookiecutter
 move_parent_dir("../.devcontainer", ".devcontainer")

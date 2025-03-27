@@ -31,7 +31,6 @@
     "docs_mkdocs": ["y", "n"],
     "pre_commit_hooks": ["y", "n"],
     "github_actions_ci": ["y", "n"],
-    
     "use_vscode_devcontainer": ["y", "n"],
     "use_docker_production": [
         "none",
