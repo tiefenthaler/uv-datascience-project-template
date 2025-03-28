@@ -6,6 +6,7 @@
     "author_name": "Your name (or your organization/company/team)",
     "author_email": "your.email@example.com",
     "python_version": "3.12",
+    // "author_github_handle": "your-github-handle",
     "open_source_license": [
         "Not open source",
         "MIT license",

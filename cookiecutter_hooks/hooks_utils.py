@@ -17,7 +17,9 @@ def remove_file(filepath: str) -> None:
     Args:
         filepath (str): The path of the file to be removed.
     """
-    os.remove(os.path.join(REPO_DIRECTORY, filepath))
+    full_path = os.path.join(REPO_DIRECTORY, filepath)
+    if os.path.isfile(full_path):
+        os.remove(full_path)
 
 
 def remove_dir(filepath: str) -> None:
@@ -26,7 +28,9 @@ def remove_dir(filepath: str) -> None:
     Args:
         filepath (str): The path of the directory to be removed.
     """
-    shutil.rmtree(os.path.join(REPO_DIRECTORY, filepath))
+    full_path = os.path.join(REPO_DIRECTORY, filepath)
+    if os.path.isdir(full_path):
+        shutil.rmtree(full_path)
 
 
 def move_file(filepath: str, target: str) -> None:
@@ -36,7 +40,11 @@ def move_file(filepath: str, target: str) -> None:
         filepath (str): The path of the file to be moved.
         target (str): The target path where the file should be moved.
     """
-    os.rename(os.path.join(REPO_DIRECTORY, filepath), os.path.join(REPO_DIRECTORY, target))
+    source_path = os.path.join(REPO_DIRECTORY, filepath)
+    target_path = os.path.join(REPO_DIRECTORY, target)
+    if os.path.isfile(source_path):
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        os.rename(source_path, target_path)
 
 
 def move_dir(src: str, target: str) -> None:
@@ -46,7 +54,11 @@ def move_dir(src: str, target: str) -> None:
         src (str): The source directory path.
         target (str): The target directory path.
     """
-    shutil.move(os.path.join(REPO_DIRECTORY, src), os.path.join(REPO_DIRECTORY, target))
+    source_path = os.path.join(REPO_DIRECTORY, src)
+    target_path = os.path.join(REPO_DIRECTORY, target)
+    if os.path.isdir(source_path):
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        shutil.move(source_path, target_path)
 
 
 def move_parent_dir(src: str, target: str) -> None:
@@ -64,4 +76,6 @@ def move_parent_dir(src: str, target: str) -> None:
     target_path = (
         os.path.abspath(target) if os.path.isabs(target) else os.path.join(REPO_DIRECTORY, target)
     )
-    shutil.move(source_path, target_path)
+    if os.path.isdir(source_path):
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        shutil.move(source_path, target_path)
