@@ -14,6 +14,7 @@ nav:
     - Pre-Commit: guides/pre_commit.md
     - CI-GitHub: guides/ci_github.md
     - MkDocs: guides/mkdocs.md
+    - Cookiecutter: guides/cookiecutter.md
     - Docker-Production: guides/docker_prod.md
     - Docker-VSCode-DevContainer: guides/docker_vscode_devcontainer.md
   - Source Code API Reference:
