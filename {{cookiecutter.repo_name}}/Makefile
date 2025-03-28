@@ -34,12 +34,6 @@ test: ## Test the code with pytest
 	@uv run pytest --cov
 {%- endif%}
 
-.PHONY: doctest
-doctest: ## Test the code with doctest
-{%- if cookiecutter.testing_framework != "none" %}
-	@uv run python -m pytest --doctest-modules
-{%- endif%}
-
 # .PHONY: build
 # build: clean-build ## Build wheel file
 # 	@echo "🚀 Creating wheel file"
@@ -62,7 +56,6 @@ doctest: ## Test the code with doctest
 # {%- endif%}
 
 {%- if cookiecutter.docs_mkdocs == "y" %}
-
 .PHONY: docs-test
 docs-test: ## Test if documentation can be built without warnings or errors
 	@uv run mkdocs build -s
@@ -70,7 +63,6 @@ docs-test: ## Test if documentation can be built without warnings or errors
 .PHONY: docs
 docs: ## Build and serve the documentation
 	@uv run mkdocs serve
-
 {%- endif %}
 
 .PHONY: help

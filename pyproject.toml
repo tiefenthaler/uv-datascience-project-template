@@ -28,24 +28,24 @@ dependencies = [
 # DEV SETTING
 [dependency-groups]
 dev = [
+    "cookiecutter>=2.6.0",
     "ipykernel>=6.29.5",
     "jupyterlab>=4.3.1",
+    "pre-commit>=4.1.0",
+    "pyright>=1.1.398",
     "pytest-cov>=6.0.0",
     "pytest>=8.1.1",
-    "toml-sort>=0.24.2",
-    "uv>=0.5.26",
-    "pre-commit>=4.1.0",
-    "cookiecutter>=2.6.0",
     "ruff>=0.11.2",
-    "pyright>=1.1.398",
+    "toml-sort>=0.24.2",
+    "uv>=0.5.26"
 ]
 docs = [
-    "mkdocs>=1.6.1",
     "mkdocs-include-markdown-plugin>=7.1.4",
     "mkdocs-jupyter>=0.25.1",
     "mkdocs-material>=9.6.3",
+    "mkdocs>=1.6.1",
     "mkdocstrings[python]>=0.15.0",
-    "pymdown-extensions>=10.14.3",
+    "pymdown-extensions>=10.14.3"
 ]
 
 # DEV SETTING
