@@ -36,8 +36,6 @@ def main() -> None:
 
     ### Directory Structure ###
     if "{{cookiecutter.directory_structure}}" == "src":
-        if os.path.isdir("src"):
-            remove_dir("src")
         move_dir(
             "{{cookiecutter.module_name}}", os.path.join("src", "{{cookiecutter.module_name}}")
         )
@@ -98,3 +96,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    print("Post-Generation Hooks Complete")
