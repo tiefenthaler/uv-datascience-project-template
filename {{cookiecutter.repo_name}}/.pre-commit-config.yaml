@@ -26,7 +26,7 @@ repos:
 
 {%- if cookiecutter.static_type_checking == "pyright" %}
   - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.394
+    rev: v1.1.398
     hooks:
       - id: pyright
         name: Pyright type checker

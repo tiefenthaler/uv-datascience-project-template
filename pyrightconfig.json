@@ -1,7 +1,8 @@
 {
     "pythonVersion": "3.12",
     "pythonPlatform": "All",
-    "venvPath": "./.venv",
+    "venvPath": ".",
+    "venv": ".venv",
     "typeCheckingMode": "standard",
     "include": [
         "src/",
