@@ -60,6 +60,10 @@ You can update your hooks to the latest version automatically by running `pre-co
 
 If you want to commit changes without running the pre-commit hooks, you can use the `--no-verify` flag with the `git commit` command.
 
+```Bash
+git commit --no-verify -m "Your commit message"
+```
+
 ### 6. Customizing Hooks
 
 You can customize the pre-commit hooks by modifying the `.pre-commit-config.yaml` file. You can add new hooks, remove existing hooks, or change the settings of existing hooks.
