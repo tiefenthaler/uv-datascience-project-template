@@ -2,10 +2,6 @@
 install: ## Install the virtual environment and install the pre-commit hooks
 	@echo "🚀 Creating virtual environment using uv"
 	@uv sync --all-groups --no-build
-{%- if cookiecutter.pre_commit_hooks == 'y' %}
-	@echo "🚀 Installing pre-commit hooks"
-	@uv run pre-commit install
-{%- endif %}
 
 .PHONY: check
 check: ## Run code quality tools.
@@ -20,7 +16,9 @@ check: ## Run code quality tools.
 	@uv run pyright
 {%- endif %}
 {%- if cookiecutter.pre_commit_hooks == 'y' %}
-	@echo "🚀 Linting code: Running pre-commit"
+	@echo "🚀 Installing pre-commit hooks"
+	@uv run pre-commit install
+	@echo "🚀 Running pre-commit"
 	@uv run pre-commit run -a
 {%- endif %}
 
@@ -28,9 +26,9 @@ check: ## Run code quality tools.
 test: ## Test the code with pytest
 {%- if cookiecutter.testing_framework != "none"%}
 	@echo "🚀 Testing code: Running pytest"
-{%- if cookiecutter.testing_framework == "pytest-only"%}
+{%- elif cookiecutter.testing_framework == "pytest-only"%}
 	@uv run pytest
-{%- elseif cookiecutter.testing_framework == "pytest-and-code-coverage"%}
+{%- elif cookiecutter.testing_framework == "pytest-and-code-coverage"%}
 	@uv run pytest --cov
 {%- endif%}
 
@@ -44,7 +42,7 @@ test: ## Test the code with pytest
 # 	@echo "🚀 Removing build artifacts"
 # 	@uv run python -c "import shutil; import os; shutil.rmtree('dist') if os.path.exists('dist') else None"
 
-# {%- if cookiecutter.publish_to_pypi == "y"%}
+# {#####%- if cookiecutter.publish_to_pypi == "y"%#####}
 
 # .PHONY: publish
 # publish: ## Publish a release to PyPI.
@@ -53,16 +51,16 @@ test: ## Test the code with pytest
 
 # .PHONY: build-and-publish
 # build-and-publish: build publish ## Build and publish.
-# {%- endif%}
+# {#####%- endif%#####}
 
 {%- if cookiecutter.docs_mkdocs == "y" %}
 .PHONY: docs-test
 docs-test: ## Test if documentation can be built without warnings or errors
 	@uv run mkdocs build -s
 
-.PHONY: docs
-docs: ## Build and serve the documentation
-	@uv run mkdocs serve
+# .PHONY: docs
+# docs: ## Build and serve the documentation
+# 	@uv run mkdocs serve
 {%- endif %}
 
 .PHONY: help
