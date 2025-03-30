@@ -62,7 +62,7 @@ To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookie
 
 ## Releasing a new version
 
-{% if cookiecutter.publish_to_pypi == "y" -%}
+<!-- {#####% if cookiecutter.publish_to_pypi == "y" -%#####} -->
 
 - Create an API Token on [PyPI](https://pypi.org/).
 - Add the API Token to your projects secrets with the name `PYPI_TOKEN` by visiting [this page](https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}/settings/secrets/actions/new).
@@ -70,7 +70,7 @@ To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookie
 - Create a new tag in the form `*.*.*`.
 
 For more details, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/cicd/#how-to-trigger-a-release).
-{%- endif %}
+<!-- {#####%- endif %#####} -->
 
 ---
 

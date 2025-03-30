@@ -5,6 +5,7 @@ Cookiecutter is a command-line utility that creates projects from project templa
 ## What is Cookiecutter?
 
 Cookiecutter is a Python-based project templating tool that:
+
 - Creates projects from templates
 - Handles variable substitution
 - Supports conditional file creation
