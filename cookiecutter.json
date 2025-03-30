@@ -1,10 +1,11 @@
 {
     "_copy_without_render": [
         ".github/workflows/*.yml",
+        ".github/actions/**/*.yml",
         "*.html",
         "*.rst"
     ],
-    "_hooks_dir": "cookiecutter_hooks",
+
     "project_name": "project-name",
     "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "module_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",

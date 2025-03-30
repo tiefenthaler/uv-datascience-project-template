@@ -15,7 +15,7 @@
 
 ### 1. Create a New Repository
 
-First, create a repository on GitHub with the same name as this project, and then run the following commands:
+First, create a repository on GitHub with the same name as this project, and then run the following commands locally:
 
 ```bash
 git init -b main

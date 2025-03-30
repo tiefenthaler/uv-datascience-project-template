@@ -1,99 +1,95 @@
-import os
+"""This module contains the post generation hooks for the cookiecutter template."""
 
-from .hooks_utils import (  # type: ignore
-    move_dir,
-    move_file,
-    remove_dir,
-    remove_file,
-    test_print,
-)
+import os
+import shutil
 
 
 def main() -> None:
     """This function is called after the project is generated."""
-    test_print()
 
     ### LICENSE ###
     if "{{cookiecutter.open_source_license}}" == "Not open source":
-        remove_file("LICENSE_MIT")
-        remove_file("LICENSE_BSD")
-        remove_file("LICENSE_APACHE")
+        os.remove("LICENSE_MIT")
+        os.remove("LICENSE_BSD")
+        os.remove("LICENSE_APACHE")
 
     if "{{cookiecutter.open_source_license}}" == "MIT license":
-        move_file("LICENSE_MIT", "LICENSE")
-        remove_file("LICENSE_BSD")
-        remove_file("LICENSE_APACHE")
+        shutil.move("LICENSE_MIT", "LICENSE")
+        os.remove("LICENSE_BSD")
+        os.remove("LICENSE_APACHE")
 
     if "{{cookiecutter.open_source_license}}" == "BSD license":
-        move_file("LICENSE_BSD", "LICENSE")
-        remove_file("LICENSE_MIT")
-        remove_file("LICENSE_APACHE")
+        shutil.move("LICENSE_BSD", "LICENSE")
+        os.remove("LICENSE_MIT")
+        os.remove("LICENSE_APACHE")
 
     if "{{cookiecutter.open_source_license}}" == "Apache-2.0":
-        move_file("LICENSE_APACHE", "LICENSE")
-        remove_file("LICENSE_MIT")
-        remove_file("LICENSE_BSD")
+        shutil.move("LICENSE_APACHE", "LICENSE")
+        os.remove("LICENSE_MIT")
+        os.remove("LICENSE_BSD")
 
     ### Directory Structure ###
     if "{{cookiecutter.directory_structure}}" == "src":
-        move_dir(
+        shutil.move(
             "{{cookiecutter.module_name}}", os.path.join("src", "{{cookiecutter.module_name}}")
         )
 
     ### Testing Framework ###
     if "{{cookiecutter.testing_framework}}" == "pytest-only":
-        remove_file(".coveragerc")
-        remove_file("tests/conftest.py")
-        remove_file("tests/test_coverage.py")
+        os.remove(".coveragerc")
+        os.remove("tests/conftest.py")
+        os.remove("tests/test_coverage.py")
 
     if "{{cookiecutter.testing_framework}}" == "pytest-and-code-coverage":
-        remove_file("pytest.ini")
+        pass
 
     if "{{cookiecutter.testing_framework}}" == "none":
-        remove_file(".coveragerc")
-        remove_file("pytest.ini")
-        remove_file("tests/conftest.py")
-        remove_file("tests/test_coverage.py")
-        remove_dir("tests")
+        os.remove(".coveragerc")
+        os.remove("pytest.ini")
+        os.remove("tests/conftest.py")
+        os.remove("tests/test_coverage.py")
+        shutil.rmtree("tests")
 
     ### Linting and Formatting ###
     if "{{cookiecutter.linting_and_formatting}}" == "none":
-        remove_file("ruff.toml")
+        shutil.rmtree("ruff.toml")
 
     ### Static Type Checking ###
     if "{{cookiecutter.static_type_checking}}" == "none":
-        remove_file("pyrightconfig.json")
+        os.remove("pyrightconfig.json")
 
     ### Docs ###
     if "{{cookiecutter.docs_mkdocs}}" == "n":
-        remove_file("mkdocs.yml")
-        remove_dir("docs")
+        os.remove("mkdocs.yml")
+        shutil.rmtree("docs")
 
     ### Pre-commit Hooks ###
     if "{{cookiecutter.pre_commit_hooks}}" == "n":
-        remove_file(".pre-commit-config.yaml")
+        os.remove(".pre-commit-config.yaml")
 
     ### Github Actions CI ###
     if "{{cookiecutter.github_actions_ci}}" == "n":
-        remove_dir(".github")
+        shutil.rmtree(".github")
 
     ### VSCode Dev Container ###
     if "{{ cookiecutter.use_vscode_devcontainer }}" == "n":
-        remove_dir(".devcontainer")
+        shutil.rmtree(".devcontainer")
 
     ### Docker Production ###
     if "{{ cookiecutter.use_docker_production }}" == "none":
-        remove_file("Dockerfile")
-        remove_file("multistage.Dockerfile")
-        remove_file("docker-compose.yml")
+        os.remove("Dockerfile")
+        os.remove("multistage.Dockerfile")
+        os.remove("docker-compose.yml")
+        os.remove(".dockerignore")
 
     if "{{ cookiecutter.use_docker_production }}" == "Dockerfile":
-        remove_file("multistage.Dockerfile")
+        os.remove("multistage.Dockerfile")
 
     if "{{ cookiecutter.use_docker_production }}" == "multistage.Dockerfile":
-        remove_file("Dockerfile")
+        os.remove("Dockerfile")
 
 
 if __name__ == "__main__":
+    print("Post-Generation Hooks Starting ...")
     main()
     print("Post-Generation Hooks Complete")
