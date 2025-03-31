@@ -40,12 +40,12 @@ dev = [
     "uv>=0.5.26"
 ]
 docs = [
+    "mkdocs>=1.6.1",
     "mkdocs-include-markdown-plugin>=7.1.4",
     "mkdocs-jupyter>=0.25.1",
     "mkdocs-material>=9.6.3",
-    "mkdocs>=1.6.1",
-    "mkdocstrings[python]>=0.15.0",
-    "pymdown-extensions>=10.14.3"
+    "mkdocstrings-python>=1.16.8",
+    "pymdown-extensions>=10.14.3",
 ]
 
 # DEV SETTING

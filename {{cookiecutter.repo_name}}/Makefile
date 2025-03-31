@@ -1,7 +1,11 @@
 .PHONY: install
 install: ## Install the virtual environment and install the pre-commit hooks
 	@echo "🚀 Creating virtual environment using uv"
-	@uv sync --all-groups --no-build
+	@uv sync --all-groups
+{%- if cookiecutter.pre_commit_hooks == 'y' %}
+	@echo "🚀 Installing pre-commit hooks"
+	@uv run pre-commit install
+{%- endif %}
 
 .PHONY: check
 check: ## Run code quality tools.
@@ -26,31 +30,32 @@ check: ## Run code quality tools.
 test: ## Test the code with pytest
 {%- if cookiecutter.testing_framework != "none"%}
 	@echo "🚀 Testing code: Running pytest"
-{%- elif cookiecutter.testing_framework == "pytest-only"%}
+{%- endif%}
+{%- if cookiecutter.testing_framework == "pytest-only"%}
 	@uv run pytest
 {%- elif cookiecutter.testing_framework == "pytest-and-code-coverage"%}
 	@uv run pytest --cov
 {%- endif%}
 
-# .PHONY: build
-# build: clean-build ## Build wheel file
-# 	@echo "🚀 Creating wheel file"
-# 	@uvx --from build pyproject-build --installer uv
+.PHONY: build
+build: clean-build ## Build wheel file
+	@echo "🚀 Creating wheel file"
+	@uvx --from build pyproject-build --installer uv
 
-# .PHONY: clean-build
-# clean-build: ## Clean build artifacts
-# 	@echo "🚀 Removing build artifacts"
-# 	@uv run python -c "import shutil; import os; shutil.rmtree('dist') if os.path.exists('dist') else None"
+.PHONY: clean-build
+clean-build: ## Clean build artifacts
+	@echo "🚀 Removing build artifacts"
+	@uv run python -c "import shutil; import os; shutil.rmtree('dist') if os.path.exists('dist') else None"
 
 # {#####%- if cookiecutter.publish_to_pypi == "y"%#####}
 
-# .PHONY: publish
-# publish: ## Publish a release to PyPI.
-# 	@echo "🚀 Publishing."
-# 	@uvx twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+.PHONY: publish
+publish: ## Publish a release to PyPI.
+	@echo "🚀 Publishing."
+	@uvx twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
-# .PHONY: build-and-publish
-# build-and-publish: build publish ## Build and publish.
+.PHONY: build-and-publish
+build-and-publish: build publish ## Build and publish.
 # {#####%- endif%#####}
 
 {%- if cookiecutter.docs_mkdocs == "y" %}
@@ -58,9 +63,9 @@ test: ## Test the code with pytest
 docs-test: ## Test if documentation can be built without warnings or errors
 	@uv run mkdocs build -s
 
-# .PHONY: docs
-# docs: ## Build and serve the documentation
-# 	@uv run mkdocs serve
+.PHONY: docs
+docs: ## Build and serve the documentation
+	@uv run mkdocs serve
 {%- endif %}
 
 .PHONY: help

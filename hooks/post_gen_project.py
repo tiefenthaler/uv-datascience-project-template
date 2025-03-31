@@ -90,6 +90,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    print("Post-Generation Hooks Starting ...")
     main()
     print("Post-Generation Hooks Complete")

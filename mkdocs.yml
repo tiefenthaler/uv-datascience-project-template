@@ -44,13 +44,12 @@ plugins:
       handlers:
         python:
           paths: [src] # search packages in the src folder
-          rendering:
-            show_root_heading: yes
-            merge_init_into_class: yes
-            docstring_section_style: spacy
           options:
             docstring_style: google
             show_source: true
+            show_root_heading: True
+            docstring_section_style: spacy
+            merge_init_into_class: True
   - mkdocs-jupyter:
       # ignore_h1_titles: true # Ignore using first h1 as title, instead use filename.
 extra_css:
