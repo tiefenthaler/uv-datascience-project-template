@@ -1,50 +1,45 @@
 [project]
-name = "uv-datascience-project-template"
-version = "0.1.0"
-description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) for Machine Learning Application in Production"
-readme = "README.md"
-license = {text = "MIT"}
+name = "{{cookiecutter.project_name}}"
+version = "0.0.1"
+description = "{{cookiecutter.project_description}}"
 authors = [
-    {name = "David Tiefenthaler"}
+    {name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}
 ]
-urls = {repository = "https://github.com/tiefenthaler/uv-datascience-project-template"}
-keywords = [
-    "data science project",
-    "docker",
-    "python",
-    "template",
-    "uv"
+readme = "README.md"
+keywords = ["python"]
+requires-python = ">=3.9,<4.0"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: {{cookiecutter.python_version}}",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-requires-python = ">=3.12.0, <3.13.0"
-dependencies = [
-    "fastapi[standard]>=0.115.6",
-    "lightning>=2.4.0",
-    "pydantic>=2.10.4",
-    "torch>=2.4.1",
-    "torchvision>=0.20.1",
-    "uvicorn>=0.34.0"
-]
+
+[project.urls]
+Homepage = "https://{{cookiecutter.author_github_handle}}.github.io/{{cookiecutter.project_name}}/"
+Repository = "https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}"
+Documentation = "https://{{cookiecutter.author_github_handle}}.github.io/{{cookiecutter.project_name}}/"
 
 # DEV SETTING
 [dependency-groups]
 dev = [
-    "cookiecutter>=2.6.0",
     "ipykernel>=6.29.5",
     "jupyterlab>=4.3.1",
-    "pre-commit>=4.1.0",
     "pyright>=1.1.398",
     "pytest-cov>=6.0.0",
     "pytest>=8.1.1",
-    "ruff>=0.11.2",
+    "ruff>=0.9.4",
     "toml-sort>=0.24.2",
-    "uv>=0.5.26"
+    "uv>=0.5.26",
+    "pre-commit>=4.1.0",
 ]
 docs = [
     "mkdocs>=1.6.1",
     "mkdocs-include-markdown-plugin>=7.1.4",
     "mkdocs-jupyter>=0.25.1",
     "mkdocs-material>=9.6.3",
-    "mkdocstrings-python>=1.16.8",
+    "mkdocstrings[python]>=0.15.0",
     "pymdown-extensions>=10.14.3",
 ]
 
@@ -78,7 +73,7 @@ spaces_before_inline_comment = 4
 spaces_indent_inline_array = 4
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/uv_datascience_project_template"]
+packages = ["src/{{cookiecutter.module_name}}"]
 
 [build-system]
 requires = ["hatchling"]

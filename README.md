@@ -14,6 +14,7 @@
 [![documentation status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml)
 [![docker - static](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
 [![license: MIT - static](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![cookiecutter - static](https://img.shields.io/badge/cookiecutter-template-328F97?logo=cookiecutter)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/cookiecutter.yml)
 <!--docs-ref-index-0.1-end-->
 
 <!--docs-ref-index-1-start-->
@@ -61,6 +62,7 @@ The project includes the following components, for more details see [Documentati
 | **MkDocs**                  | A static site generator geared towards building project documentation, written in Markdown.       |
 | **VSCode-DevContainer**     | A development environment setup using Docker and VS Code, providing a consistent and isolated workspace. |
 | **Docker-Production**       | Docker setup for creating a lean, efficient, and secure production environment for applications.  |
+| **Cookiecutter**       | A command-line utility that creates projects from project templates.  |
 
 ## Using uv to Manage the Project
 

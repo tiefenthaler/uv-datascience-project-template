@@ -1,30 +1,17 @@
-site_name: UV Data Science Project Template
-repo_url: https://github.com/tiefenthaler/uv-datascience-project-template
-copyright: Copyright &copy; 2025 David Tiefenthaler
+site_name: {{cookiecutter.project_name}}
+repo_url: https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}
+site_url: https://{{cookiecutter.author_github_handle}}.github.io/{{cookiecutter.project_name}}
+site_description: {{cookiecutter.project_description}}
+site_author: {{cookiecutter.author_name}}
+edit_uri: edit/main/docs/
+repo_name: {{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}
+copyright: Maintained by <a href="https://{{cookiecutter.author_github_handle}}.com">{{cookiecutter.author_github_handle}}</a>.
 nav:
   - Home:
     - index.md
     - About: about.md
-  - Guides:
-    - guides/index.md
-    - UV: guides/uv.md
-    - Ruff: guides/ruff.md
-    - PyRight: guides/pyright.md
-    - PyTest: guides/pytest.md
-    - Pre-Commit: guides/pre_commit.md
-    - CI-GitHub: guides/ci_github.md
-    - MkDocs: guides/mkdocs.md
-    - Cookiecutter: guides/cookiecutter.md
-    - Docker-Production: guides/docker_prod.md
-    - Docker-VSCode-DevContainer: guides/docker_vscode_devcontainer.md
   - Source Code API Reference:
-      - api/index.md
-      - Autoencoder: api/autoencoder.md
-      - Training: api/training.md
-      - FastAPI: api/fastapi_app.md
-  # NOTE: Does not support nested lists.
-  - Notebooks: 
-    - Jupyter Notebook - App: notebooks/app_without_fastapi.ipynb
+    - api/index.md
 theme:
   name: material
   features:
@@ -43,7 +30,14 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [src] # search packages in the src folder
+          # search packages in the src folder
+          paths: [
+            {%- if cookiecutter.directory_structure == "src" -%}
+            "src/{{cookiecutter.module_name}}"
+            {%- else -%}
+            "{{cookiecutter.module_name}}"
+            {%- endif -%}
+            ]
           options:
             docstring_style: google
             show_source: true
@@ -52,6 +46,12 @@ plugins:
             merge_init_into_class: True
   - mkdocs-jupyter:
       # ignore_h1_titles: true # Ignore using first h1 as title, instead use filename.
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/{{cookiecutter.project_name}}
 extra_css:
   - stylesheets/extra.css
 markdown_extensions:

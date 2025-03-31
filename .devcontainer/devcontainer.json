@@ -19,10 +19,10 @@
 	"runServices": ["myproject"],	
 	"workspaceFolder": "/vscode/workspace", // SET THIS, to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
 	"postCreateCommand": {
-		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (by building a .whl).
-		"uv-sync--frozen": "uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
-		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies, still in editable mode (by building a .whl).
-		// "uv-sync-project": "uv sync --frozen" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
+		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (don’t install pre-built wheels .whl).
+		"uv-sync--frozen": "uv sync --frozen --all-groups --no-binary-package ${localWorkspaceFolderBasename}" // By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.
+		// ADD THIS LINE, REMOVE LINE ABOVE, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies, still in editable mode (by building a .whl if available).
+		// "uv-sync-project": "uv sync --all-groups --frozen" // By default, uv installs projects and workspace members with pre-built wheels .whl if available.
 	},
 	"postStartCommand": {
 		// Optional: If applicable, add the following lines for installations.
@@ -79,7 +79,6 @@
 				// AI Coding Assistant
 				"github.copilot",
 				"github.copilot-chat",
-				// "tabnine.tabnine-vscode"
 				// Other
 				"richie5um2.vscode-sort-json",
 				"oliversen.chatgpt-docstrings"

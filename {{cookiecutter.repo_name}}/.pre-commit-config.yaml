@@ -9,19 +9,22 @@ ci:
   autoupdate_commit_msg: 'ci: pre-commit autoupdate'
 
 repos:
+{%- if cookiecutter.linting_and_formatting == "ruff" %}
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.2
+    rev: v0.9.2
     hooks:
       - id: ruff
         name: Ruff check
         description: "Run 'ruff check' for extremely fast Python linting"
-        args: [--fix, --exit-non-zero-on-fix, --config=ruff.toml] # Apply fixes and exit with non-zero if fix is not possible.
+        args: [--fix, --exit-non-zero-on-fix] # Apply fixes and exit with non-zero if fix is not possible.
 
       - id: ruff-format
         name: Ruff format
         description: "Run 'ruff format' for extremely fast Python formatting"
-        args: [--diff, --config=ruff.toml] # Show diff instead of applying changes directly.
+        args: [--diff] # Show diff instead of applying changes directly.
+{%- endif %}
 
+{%- if cookiecutter.static_type_checking == "pyright" %}
   - repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.398
     hooks:
@@ -30,6 +33,7 @@ repos:
         language: system
         types: [python]
         fail_fast: true
+{%- endif %}
 
   # - repo: local
   #   hooks:
@@ -40,8 +44,9 @@ repos:
   #       types: [python]
   #       fail_fast: true
 
+{%- if cookiecutter.use_docker_production == "Dockerfile" or cookiecutter.use_docker_production == "multistage.Dockerfile" or cookiecutter.use_vscode_devcontainer == "y" %}
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.13.1-beta
+    rev: v2.12.0
     hooks:
       - id: hadolint
         name: Lint Dockerfiles
@@ -51,3 +56,4 @@ repos:
         entry: hadolint
         # args:
         #   ["--config", ".hadolint.yaml"] # Use a configuration file for hadolint.
+{%- endif %}

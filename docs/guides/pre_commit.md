@@ -8,7 +8,9 @@ Pre-commit hooks are scripts that run automatically before each commit. They hel
     - [1. Installation](#1-installation)
     - [2. Install Pre-Commit Hooks and/or Running Hooks Manually](#2-install-pre-commit-hooks-andor-running-hooks-manually)
     - [3. Configuring Hooks](#3-configuring-hooks)
-    - [4. Customizing Hooks](#4-customizing-hooks)
+    - [4. Updating hooks automatically](#4-updating-hooks-automatically)
+    - [5. Git Commit ignoring pre-commit hooks](#5-git-commit-ignoring-pre-commit-hooks)
+    - [6. Customizing Hooks](#6-customizing-hooks)
 
 ## Benefits of Using Pre-Commit Hooks?
 
@@ -50,7 +52,19 @@ Here's a breakdown of the hooks used in this project:
 - **Pyright**: A static type checker for Python. It checks for type errors in the code. Refer to the `pyrightconfig.json` file for the configurations.
 - **Hadolint**: A linter for Dockerfiles. It checks for common issues and best practices in Dockerfiles. The `--config .hadolint.yaml` argument specifies a configuration file for Hadolint.
 
-### 4. Customizing Hooks
+### 4. Updating hooks automatically
+
+You can update your hooks to the latest version automatically by running `pre-commit autoupdate`. By default, this will bring the hooks to the latest tag on the default branch.
+
+### 5. Git Commit ignoring pre-commit hooks
+
+If you want to commit changes without running the pre-commit hooks, you can use the `--no-verify` flag with the `git commit` command.
+
+```Bash
+git commit --no-verify -m "Your commit message"
+```
+
+### 6. Customizing Hooks
 
 You can customize the pre-commit hooks by modifying the `.pre-commit-config.yaml` file. You can add new hooks, remove existing hooks, or change the settings of existing hooks.
 

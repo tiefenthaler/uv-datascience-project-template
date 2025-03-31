@@ -127,6 +127,11 @@ To set up GitHub Actions and Workflows in your project, follow these steps:
             shell: bash
       ```
 
+- Run the pre-commit hooks manually to ensure they are working correctly.
+      ```bash
+      uv run pre-commit run -a
+      ```
+
 - Commit and push your changes to trigger the workflows.
       ```bash
       git add .

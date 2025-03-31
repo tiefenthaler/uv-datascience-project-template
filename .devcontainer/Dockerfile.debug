@@ -25,13 +25,13 @@ FROM ghcr.io/astral-sh/uv:$UV_VER AS uv
 # RUN --mount=type=cache,target=/root/.cache/uv \
     # --mount=type=bind,source=/${PROJECT_NAME_}/uv.lock,target=/vscode/${WORKSPACE_NAME_}/uv.lock \
     # --mount=type=bind,source=/${PROJECT_NAME_}/pyproject.toml,target=/vscode/${WORKSPACE_NAME_}/pyproject.toml \
-    # uv sync --frozen --no-install-project
+    # uv sync --frozen --all-groups --no-install-project
 # Then, add the rest of the project source code and install it.
 # Installing separately from its dependencies allows optimal layer caching.
 # ADD .. /vscode/${WORKSPACE_NAME_}
 # RUN --mount=type=cache,target=/root/.cache/uv \
     # uv add --editable ./src/ \
-    # uv sync
+    # uv sync --all-groups
 
 # Once the project is installed, you can either activate the project virtual environment by placing its binary directory at the front of the path.
 # Required for the uv command during potential additional build commands using uv that are not related to installations, like uv run ... .
