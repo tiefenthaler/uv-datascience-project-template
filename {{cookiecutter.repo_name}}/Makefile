@@ -2,10 +2,10 @@
 install: ## Install the virtual environment and install the pre-commit hooks
 	@echo "🚀 Creating virtual environment using uv"
 	@uv sync --all-groups
-{%- if cookiecutter.pre_commit_hooks == 'y' %}
-	@echo "🚀 Installing pre-commit hooks"
-	@uv run pre-commit install
-{%- endif %}
+# {%- if cookiecutter.pre_commit_hooks == 'y' %}
+# 	@echo "🚀 Installing pre-commit hooks"
+# 	@uv run pre-commit install
+# {%- endif %}
 
 .PHONY: check
 check: ## Run code quality tools.
