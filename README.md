@@ -23,8 +23,9 @@
 This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
 It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
-> **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) for additional information.**
 <!--docs-ref-index-1-end-->
+
+> **See the related [Project Documentation](https://tiefenthaler.github.io/uv-datascience-project-template/) for additional information.**
 
 - [UV Data Science Project Template](#uv-data-science-project-template)
   - [Overview Tools](#overview-tools)
@@ -50,6 +51,8 @@ It is demonstrated how to achieve this using a modern setup of tools, like UV, D
 
 The project includes the following components, for more details see [Documentation - Guides](https://tiefenthaler.github.io/uv-datascience-project-template/guides/):
 
+<!--docs-ref-index-3-start-->
+
 | Tool                        | Description                                                                                       |
 |-----------------------------|---------------------------------------------------------------------------------------------------|
 | **UV**                      | A fast and efficient package manager for Python, written in Rust. It replaces tools like pip and virtualenv. |
@@ -63,6 +66,8 @@ The project includes the following components, for more details see [Documentati
 | **VSCode-DevContainer**     | A development environment setup using Docker and VS Code, providing a consistent and isolated workspace. |
 | **Docker-Production**       | Docker setup for creating a lean, efficient, and secure production environment for applications.  |
 | **Cookiecutter**       | A command-line utility that creates projects from project templates.  |
+
+<!--docs-ref-index-3-end-->
 
 ## Using uv to Manage the Project
 
