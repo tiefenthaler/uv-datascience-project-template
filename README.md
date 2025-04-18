@@ -12,17 +12,18 @@
 [![coverage status - file](https://raw.githubusercontent.com/tiefenthaler/uv-datascience-project-template/coverage-badge/coverage.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/blob/coverage-badge/coverage.svg)
 [![ci workflows - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/check-all-workflows.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions)
 [![documentation status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml)
-[![docker - static](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
+[![docker - event](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
+[![devcontainer - event](https://img.shields.io/badge/devcontainer-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
 [![license: MIT - static](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![cookiecutter - static](https://img.shields.io/badge/cookiecutter-template-328F97?logo=cookiecutter)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/cookiecutter.yml)
+[![cookiecutter - static](https://img.shields.io/badge/cookiecutter-template-328F97?logo=cookiecutter)](https://tiefenthaler.github.io/uv-datascience-project-template/guides/cookiecutter/)
 <!--docs-ref-index-0.1-end-->
 
 <!--docs-ref-index-1-start-->
-> **Template Project for Developing Data Science Projects with UV.**
-> A new project using this template can be created with cookiecutter.
+> **Template Project** for **Developing Data Science Projects** with **UV**.  
+> A new project using this template can be created with **cookiecutter**.
 
 This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
-It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
+It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, PyTest, MkDocs, CI, and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
 <!--docs-ref-index-1-end-->
 

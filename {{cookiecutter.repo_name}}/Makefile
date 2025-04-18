@@ -2,10 +2,13 @@
 install: ## Install the virtual environment and install the pre-commit hooks
 	@echo "🚀 Creating virtual environment using uv"
 	@uv sync --all-groups
-# {%- if cookiecutter.pre_commit_hooks == 'y' %}
-# 	@echo "🚀 Installing pre-commit hooks"
-# 	@uv run pre-commit install
-# {%- endif %}
+
+.PHONY: install-hooks
+install-hooks: ## Install the pre-commit hooks
+{%- if cookiecutter.pre_commit_hooks == 'y' %}
+	@echo "🚀 Installing pre-commit hooks"
+	@uv run pre-commit install
+{%- endif %}
 
 .PHONY: check
 check: ## Run code quality tools.
@@ -48,7 +51,6 @@ clean-build: ## Clean build artifacts
 	@uv run python -c "import shutil; import os; shutil.rmtree('dist') if os.path.exists('dist') else None"
 
 # {#####%- if cookiecutter.publish_to_pypi == "y"%#####}
-
 .PHONY: publish
 publish: ## Publish a release to PyPI.
 	@echo "🚀 Publishing."
@@ -59,14 +61,23 @@ build-and-publish: build publish ## Build and publish.
 # {#####%- endif%#####}
 
 {%- if cookiecutter.docs_mkdocs == "y" %}
-.PHONY: docs-test
-docs-test: ## Test if documentation can be built without warnings or errors
+.PHONY: docs-build
+docs-build: ## Test if documentation can be built without warnings or errors
 	@uv run mkdocs build -s
 
-.PHONY: docs
-docs: ## Build and serve the documentation
+.PHONY: docs-serve
+docs-serve: ## Build and serve the documentation
 	@uv run mkdocs serve
 {%- endif %}
+
+.PHONY: clean
+clean: ## Clean all artifacts and remove virtual environment
+	@echo "🚀 Cleaning all artifacts and removing virtual environment"
+	@uv run python -c "import shutil; import os; shutil.rmtree('dist') if os.path.exists('dist') else None; \
+	shutil.rmtree('build') if os.path.exists('build') else None; \
+	shutil.rmtree('docs/site') if os.path.exists('docs/site') else None; \
+	shutil.rmtree('.pytest_cache') if os.path.exists('.pytest_cache') else None"
+	@uv run python -c "import shutil; shutil.rmtree('.venv', ignore_errors=True)"
 
 .PHONY: help
 help:
