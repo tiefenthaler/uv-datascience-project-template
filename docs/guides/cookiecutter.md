@@ -29,6 +29,8 @@ The main configuration for cookiecutter is in `cookiecutter.json`. This file def
 
 ## Using This Template
 
+Install Cookiecutter [(see here](https://cookiecutter.readthedocs.io/en/stable/installation.html) if you haven't already.
+
 To create a new project using this template:
 
 ```bash
@@ -78,6 +80,14 @@ When using this template:
 2. Provide a clear project description
 3. Review generated files before committing
 4. Follow the post-generation setup instructions in the README
+
+## Additional Features to Setup the Project
+<!-- Include the content of README.md -->
+{%
+    include-markdown "../README.md"
+    start="<!--docs-ref-index-cookiecutter-0-start-->"
+    end="<!--docs-ref-index-cookiecutter-0-end-->"
+%}
 
 ## Additional Resources
 

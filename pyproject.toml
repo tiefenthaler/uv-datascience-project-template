@@ -1,7 +1,7 @@
 [project]
 name = "uv-datascience-project-template"
 version = "0.1.0"
-description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) for Machine Learning Application in Production"
+description = "Template Project for Developing Data Science Projects with UV. A new project using this template can be created with cookiecutter."
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
