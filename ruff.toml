@@ -1,60 +1,44 @@
-# To define the appropriate settings for each Python file, Ruff looks for the first pyproject.toml, ruff.toml,
-# or .ruff.toml file in the file's directory or any parent directory, while prioritizing ruff.toml.
+# Ruff Configuration File
+# This file configures the Ruff linter, which is used to enforce code quality and style.
 
 # Exclude a variety of commonly ignored directories.
 exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".git-rewrite",
-    ".hg",
-    ".ipynb_checkpoints",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".pyenv",
-    ".pytest_cache",
-    ".pytype",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    ".vscode",
-    ".devcontainer",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "site-packages",
-    "venv",
-    "logs.log",
-    "mlruns",
-    "mlflow_benchmark",
-    "docs",
-    "data",
+    # Version control directories
+    ".bzr", ".git", ".hg", ".svn",
+    # Python environment and cache directories
+    ".direnv", ".eggs", ".mypy_cache", ".pytest_cache", ".pytype", ".ruff_cache", ".venv", "__pycache__",
+    # Build and distribution directories
+    "_build", "buck-out", "build", "dist",
+    # Node.js and other project-specific directories
+    "node_modules", "site-packages", "venv",
+    # Logs and temporary files
+    "logs.log", "mlruns", "mlflow_benchmark",
+    # Documentation and data directories
+    "docs", "data",
 ]
 
+# Force exclude ensures these directories are always ignored.
 force-exclude = true
+
+# Extend exclude allows additional patterns to be ignored.
 extend-exclude = ["[{][{]cookiecutter.repo_name[}][}]"]
 
+# Set the maximum line length for code.
 line-length = 99
 
+# Specify the target Python version for linting.
 target-version = "py312"
 
 [lint]
-# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Enable specific linting rules.
 select = [
-    "E",    # pycodestyle
-    # "E4",
-    # "E7",
-    # "E9",
-    "N",    # pep8-naming
-    "F",    # pyflakes
-    "D",    # pydocstyle
+    "E",    # pycodestyle rules
+    "N",    # pep8-naming rules
+    "F",    # pyflakes rules
+    "D",    # pydocstyle rules
 ]
+
+# Ignore specific linting rules.
 ignore = [
     "D100",  # Missing docstring in public module
     "D101",  # Missing docstring in public class
@@ -63,7 +47,7 @@ ignore = [
     "D413",  # Missing blank line after last section
 ]
 
-# Allow fix for all enabled rules (when `--fix`) is provided.
+# Allow fix for all enabled rules when `--fix` is provided.
 fixable = ["ALL"]
 unfixable = []
 
@@ -71,16 +55,19 @@ unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [format]
+# Configure code formatting options.
 quote-style = "double"
 skip-magic-trailing-comma = true
 line-ending = "auto"
 indent-style = "space" # Default is "4" spaces.
 docstring-code-format = true
-docstring-code-line-length = 120 # use "dynamic" to use the line-length value from "line-length".
+docstring-code-line-length = 120 # Use "dynamic" to use the line-length value from "line-length".
 
 [lint.per-file-ignores]
+# Ignore specific rules for test files.
 "tests/**" = ["D103"]  # Ignore missing docstrings in tests
 # "{{cookiecutter.repo_name}}/tests/test_foo.py" = ["D103", "F821", "F401"]  # Ignore missing docstrings and undefined name errors
 
 [lint.pydocstyle]
+# Use the Google style guide for docstrings.
 convention = "google"

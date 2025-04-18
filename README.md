@@ -12,16 +12,18 @@
 [![coverage status - file](https://raw.githubusercontent.com/tiefenthaler/uv-datascience-project-template/coverage-badge/coverage.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/blob/coverage-badge/coverage.svg)
 [![ci workflows - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/check-all-workflows.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions)
 [![documentation status - event](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml/badge.svg?event=push)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/publish-docs.yml)
-[![docker - static](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
+[![docker - event](https://img.shields.io/badge/docker-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
+[![devcontainer - event](https://img.shields.io/badge/devcontainer-ready-blue.svg)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/docker.yml)
 [![license: MIT - static](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![cookiecutter - static](https://img.shields.io/badge/cookiecutter-template-328F97?logo=cookiecutter)](https://github.com/tiefenthaler/uv-datascience-project-template/actions/workflows/cookiecutter.yml)
+[![cookiecutter - static](https://img.shields.io/badge/cookiecutter-template-328F97?logo=cookiecutter)](https://tiefenthaler.github.io/uv-datascience-project-template/guides/cookiecutter/)
 <!--docs-ref-index-0.1-end-->
 
 <!--docs-ref-index-1-start-->
-> **Tutorial Project for 1) Developing Data Science Projects in a Dev Container, and 2) Machine Learning Applications in Production**
+> **Template Project** for **Developing Data Science Projects** with **UV**.  
+> A new project using this template can be created with **cookiecutter**.
 
 This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
-It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, FastAPI and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
+It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, PyTest, MkDocs, CI, and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
 <!--docs-ref-index-1-end-->
 
@@ -31,6 +33,8 @@ It is demonstrated how to achieve this using a modern setup of tools, like UV, D
   - [Overview Tools](#overview-tools)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
     - [pyproject toml](#pyproject-toml)
+  - [\> Cookiecutter to create a new project from this template](#-cookiecutter-to-create-a-new-project-from-this-template)
+    - [How to Use Cookiecutter](#how-to-use-cookiecutter)
   - [Custom Code in src Folder](#custom-code-in-src-folder)
     - [lit\_auto\_encoder](#lit_auto_encoder)
     - [train\_autoencoder](#train_autoencoder)
@@ -89,7 +93,7 @@ The `pyproject.toml` file includes the following sections:
 [project]
 name = "uv-datascience-project-template"
 version = "0.1.0"
-description = "Tutorial Project for 1) Data Science in a Dev Container, and 2) for a Machine Learning Application in Production; using Docker, UV, and FastAPI"
+description = "Template Project for Developing Data Science Projects with UV. A new project using this template can be created with cookiecutter."
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
@@ -116,22 +120,24 @@ dependencies = [
 # DEV SETTING
 [dependency-groups]
 dev = [
+    "cookiecutter>=2.6.0",
     "ipykernel>=6.29.5",
     "jupyterlab>=4.3.1",
-    "pyright>=1.1.393",
+    "pre-commit>=4.1.0",
+    "pyright>=1.1.398",
     "pytest-cov>=6.0.0",
     "pytest>=8.1.1",
-    "ruff>=0.9.4",
+    "ruff>=0.11.2",
     "toml-sort>=0.24.2",
-    "uv>=0.5.26",
-    "pre-commit>=4.1.0",
+    "uv>=0.5.26"
 ]
 docs = [
     "mkdocs>=1.6.1",
-    "mkdocs-include-markdown-plugin>=7.1.3",
+    "mkdocs-include-markdown-plugin>=7.1.4",
     "mkdocs-jupyter>=0.25.1",
     "mkdocs-material>=9.6.3",
-    "mkdocstrings[python]>=0.15.0",
+    "mkdocstrings-python>=1.16.8",
+    "pymdown-extensions>=10.14.3",
 ]
 
 # DEV SETTING
@@ -170,6 +176,39 @@ packages = ["src/uv_datascience_project_template"]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 ```
+
+## > Cookiecutter to create a new project from this template
+
+Cookiecutter is a command-line utility that creates projects from project templates. This guide explains how cookiecutter works and how it's used in this project.
+
+### How to Use Cookiecutter
+
+1. Install Cookiecutter
+2. Create a new project using the template:
+   ```bash
+   cookiecutter gh:tiefenthaler/uv-datascience-project-template
+    ```
+3. Follow the prompts to customize your project:
+   - Enter the project name.
+   - Enter the project description.
+   - ...
+<!--docs-ref-index-cookiecutter-0-start-->
+4. Navigate to the newly created project directory:
+   ```bash
+   cd <project_name>
+   ```
+5. Use the `Makefile` to manage the project:
+   - Create virtual environment and install dependencies:
+     ```bash
+     make install
+     ```
+   - Run checks for code quality:
+     ```bash
+     make check
+     ```
+   - Run additional commands like "test", "build", and others as needed.
+6. Happy coding!
+<!--docs-ref-index-cookiecutter-0-end-->
 
 ## Custom Code in src Folder
 

@@ -1,17 +1,23 @@
 {
-    "pythonVersion": "3.12",
-    "pythonPlatform": "All",
-    "venvPath": ".",
-    "venv": ".venv",
-    "typeCheckingMode": "standard",
+    // Pyright Configuration File
+    // This file configures Pyright, a static type checker for Python.
+
+    "pythonVersion": "3.12", // Specify the Python version to use for type checking.
+    "pythonPlatform": "All", // Target platform for the Python code (e.g., Windows, Linux, macOS).
+    "venvPath": ".", // Path to the directory containing virtual environments.
+    "venv": ".venv", // Name of the virtual environment to use.
+
+    "typeCheckingMode": "standard", // Type checking mode: "off", "basic", or "strict".
+
     "include": [
-        "src/",
-        "tests/"
+        "src/", // Include the source code directory for type checking.
+        "tests/" // Include the tests directory for type checking.
     ],
+
     "exclude": [
-        "**/__pycache__",
-        ".pytest_cache",
-        ".ruff_cache",
-        ".venv"
+        "**/__pycache__", // Exclude Python cache directories.
+        ".pytest_cache", // Exclude pytest cache directories.
+        ".ruff_cache", // Exclude Ruff cache directories.
+        ".venv" // Exclude the virtual environment directory.
     ]
 }
