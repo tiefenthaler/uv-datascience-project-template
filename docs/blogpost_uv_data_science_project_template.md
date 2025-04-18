@@ -286,6 +286,33 @@ For more details, refer to the [Cookiecutter Guide](https://tiefenthaler.github.
 
 1. **Customize**: Cookiecutter will prompt you for details like project name, author, Python version, etc.
 1. **Get Started**: `cd` into your newly created project directory and follow the setup instructions in its `README.md`.
+1. Use the **`Makefile`** to manage the project:
+   - Create virtual environment and install dependencies:
+
+      ```bash
+      make install
+      ```
+
+   - Run checks for code quality:
+
+      ```bash
+      make check
+      ```
+
+   - Run the FastAPI application:
+
+      ```bash
+      make run
+      ```
+
+   - Run help command to see available `Makefile` options:
+
+      ```bash
+      make help
+      ```
+
+   - Run additional commands like "test", "build", and others as needed.
+   - Happy coding!
 
 For more details, see the [Cookiecutter Guide](./guides/cookiecutter.md).
 

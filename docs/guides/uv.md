@@ -5,6 +5,8 @@
 - [UV, an extremely fast Python package and project manager, written in Rust](#uv-an-extremely-fast-python-package-and-project-manager-written-in-rust)
   - [Getting Started with UV](#getting-started-with-uv)
     - [Install uv](#install-uv)
+      - [macOS and Linux](#macos-and-linux)
+      - [Windows](#windows)
     - [Install Python](#install-python)
     - [Install Python packages and dependencies](#install-python-packages-and-dependencies)
     - [Run Python code](#run-python-code)
@@ -58,7 +60,7 @@ This section guides you through the Python setup and package installation proced
 
 Uv can be installed as follows, depending on your operating system.
 
-**macOS and Linux**
+#### macOS and Linux
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -70,7 +72,7 @@ or
 wget -qO- https://astral.sh/uv/install.sh | sh
 ```
 
-**Windows**
+#### Windows
 
 ```bash
 powershell -c "irm https://astral.sh/uv/install.ps1 | more"
@@ -105,7 +107,7 @@ You can install new packages, that are not specified in the `pyproject.toml` via
 uv add packaging
 ```
 
-And you can remove packages via `uv remove`, for example,	
+And you can remove packages via `uv remove`, for example:
 
 ```bash
 uv remove packaging
