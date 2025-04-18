@@ -32,7 +32,6 @@ Find the related [GitHub Repo](https://github.com/tiefenthaler/uv-datascience-pr
     - [How to Use](#how-to-use)
   - [Conclusion: Build Better, Faster](#conclusion-build-better-faster)
 
-
 ## Why Battle Setup? Use the UV Data Science Project Template
 
 The UV Data Science Project Template is engineered to tackle common challenges during setup and development of data science projects by providing a structured environment that ensures your projects are:
