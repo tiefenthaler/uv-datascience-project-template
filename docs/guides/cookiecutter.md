@@ -84,7 +84,7 @@ When using this template:
 ## Additional Features to Setup the Project
 <!-- Include the content of README.md -->
 {%
-    include-markdown "../README.md"
+    include-markdown "../../README.md"
     start="<!--docs-ref-index-cookiecutter-0-start-->"
     end="<!--docs-ref-index-cookiecutter-0-end-->"
 %}
