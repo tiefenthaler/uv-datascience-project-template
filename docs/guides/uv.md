@@ -151,7 +151,7 @@ uv run jupyter lab
 
 Alternatively, you can still install the dependencies directly from the repository using `uv pip install`. But note that this doesn't record dependencies in a `uv.lock` file as `uv add` does. Also, it requires creating and activating the virtual environment manually:
 
-**1. Create a new virtual environment**
+1. Create a new virtual environment
 
 Run the following command to manually create a new virtual environment, which will be saved via a new `.venv` subfolder:
 
@@ -159,7 +159,7 @@ Run the following command to manually create a new virtual environment, which wi
 uv venv --python=python3.12
 ```
 
-**2. Activate virtual environment**
+1. Activate virtual environment
 
 Next, we need to activate this new virtual environment.
 
@@ -175,7 +175,7 @@ On Windows (PowerShell):
 .venv\Scripts\activate
 ```
 
-**3. Install dependencies**
+1. Install dependencies
 
 To install the required dependencies from your local `requirements.txt` file, use the following command:
 
