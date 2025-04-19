@@ -1,12 +1,25 @@
 # Supercharge Your Data Science Projects with the UV Data Science Project Template
 
+<div align="center">
+  <img src="../readme/supercharge_python_datascience_project.png" alt="Banner" width="75%" height="75%">
+  <p><em>Image by David T. [Source: Astral]</em></p>
+</div>
+
 Data science is a field that thrives on innovation, but even the most groundbreaking ideas can falter without a solid foundation. Setting up a robust, reproducible, and scalable project structure is often a daunting task. Enter the **UV Data Science Project Template** — a modern, feature-rich framework designed to streamline your workflow and provide a solid foundation for your projects.
 
 In this article, we’ll explore why this template exists, dive into the powerful tools it integrates (like UV or Ruff), examine its structure, and see how it can transform your approach to data science projects.
 
+<div align="center">
+  <img src="../readme/cookiecutter_medium.png" alt="Banner" width="30%" height="30%">
+</div>
+
 **Key Feature:** Automatic Project Setup Generation using Cookiecutter.
 
 Find the related [GitHub Repo](https://github.com/tiefenthaler/uv-datascience-project-template) and related [Docs](https://tiefenthaler.github.io/uv-datascience-project-template/) here.
+
+<br /> <!--new line-->
+
+**Table of Contents**  
 
 - [Supercharge Your Data Science Projects with the UV Data Science Project Template](#supercharge-your-data-science-projects-with-the-uv-data-science-project-template)
   - [Why Battle Setup? Use the UV Data Science Project Template](#why-battle-setup-use-the-uv-data-science-project-template)
@@ -193,23 +206,23 @@ The **VSCode DevContainer** setup simplifies development by providing a pre-conf
 #### Usage
 
 1. **Install Prerequisites**:
-   - Install Docker Desktop.
-   - Install VSCode and the Remote - Containers extension.
+      - Install Docker Desktop.
+      - Install VSCode and the Remote - Containers extension.
 
 2. **Start the DevContainer**:
-   - Open the project in VSCode.
-   - Use the command palette (`F1`) and select "Open Folder in Container...".
+      - Open the project in VSCode.
+      - Use the command palette (`F1`) and select "Open Folder in Container...".
 
 3. **Run the Application**:
-   - Run demo.py in the Python virtual environment: `uv run main.py`.
-   - The FastAPI application is available at `http://localhost:8000`.
-   - Test endpoints using `curl`:
+      - Run demo.py in the Python virtual environment: `uv run main.py`.
+      - The FastAPI application is available at `http://localhost:8000`.
+      - Test endpoints using `curl`:
 
-     ```bash
-     curl -X GET http://localhost:8000/
-     curl -X POST http://localhost:8000/train
-     curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
-     ```
+        ```bash
+        curl -X GET http://localhost:8000/
+        curl -X POST http://localhost:8000/train
+        curl -X POST http://localhost:8000/embed -H "Content-Type: application/json" -d '{"n_fake_images": 1}'
+        ```
 
 #### Benefits
 

@@ -4,6 +4,7 @@ copyright: Copyright &copy; 2025 David Tiefenthaler
 nav:
   - Home:
     - index.md
+    - Blogpost: blogpost_uv_data_science_project_template.md
     - About: about.md
   - Guides:
     - guides/index.md
