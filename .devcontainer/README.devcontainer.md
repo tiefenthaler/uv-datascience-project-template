@@ -252,7 +252,7 @@ Those files define the dev container setup for data science projects. The list b
 - Start dev container:  F1 + "Open folder in container ...".
 - To try the setup:
     - Clone the repository.
-    - Run demo.py in the Python virtual environment (used as default, see `devcontainer.json`).
+    - Run demo.py in the Python virtual environment (`uv run main.py`).
     - Your application will be available at <http://localhost:8000>.
         - Welcome root request of the FastAPI app, providing an app description.
 

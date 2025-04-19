@@ -1,8 +1,8 @@
 # Supercharge Your Data Science Projects with the UV Data Science Project Template
 
-Data science is a field that thrives on innovation, but even the most groundbreaking ideas can falter without a solid foundation. Setting up a robust, reproducible, and scalable project structure is often a daunting task. Enter the **UV Data Science Project Template**—a modern, feature-rich framework designed to streamline your workflow and provide a solid foundation for your projects.
+Data science is a field that thrives on innovation, but even the most groundbreaking ideas can falter without a solid foundation. Setting up a robust, reproducible, and scalable project structure is often a daunting task. Enter the **UV Data Science Project Template** — a modern, feature-rich framework designed to streamline your workflow and provide a solid foundation for your projects.
 
-In this article, we’ll explore why this template exists, dive into the powerful tools it integrates (like **UV** and **Ruff**), examine its structure, and see how it can transform your approach to data science projects.
+In this article, we’ll explore why this template exists, dive into the powerful tools it integrates (like UV or Ruff), examine its structure, and see how it can transform your approach to data science projects.
 
 **Key Feature:** Automatic Project Setup Generation using Cookiecutter.
 
@@ -44,7 +44,7 @@ By adopting this template, you free yourself to focus on what truly matters: ext
 
 ## A Curated Toolkit for Modern Data Science
 
-The UV Data Science Project Template integrates a suite of powerful, best-in-class tools, each chosen to optimize specific parts of the data science lifecycle.
+The UV Data Science Project Template integrates a suite of powerful, best-in-class tools, each chosen to optimize specific parts of the data science project development lifecycle.
 
 | Tool                        | Description                                                                                       |
 |-----------------------------|---------------------------------------------------------------------------------------------------|
@@ -201,6 +201,7 @@ The **VSCode DevContainer** setup simplifies development by providing a pre-conf
    - Use the command palette (`F1`) and select "Open Folder in Container...".
 
 3. **Run the Application**:
+   - Run demo.py in the Python virtual environment: `uv run main.py`.
    - The FastAPI application is available at `http://localhost:8000`.
    - Test endpoints using `curl`:
 
@@ -223,14 +224,15 @@ For more details, refer to the [DevContainer Guide](https://tiefenthaler.github.
 The UV Data Science Project Template provides a logical and extensible directory structure:
 
 - **`src/`**: Contains your core Python source code. The example includes:
-  - A PyTorch Lightning-based autoencoder model (`src/models/autoencoder.py`).
-  - A FastAPI application (`src/api/main.py`) to serve the ML model.
-  - Training logic (`src/models/train_model.py`).
+  - A PyTorch Lightning-based autoencoder model (`src/lit_auto_encoder.py`).
+  - Training logic (`src/train_autoencoder.py`).
+  - A FastAPI application (`src/app_fastapi_autoencoder.py`) to serve the ML model.
 - **`tests/`**: Houses unit and integration tests written using Pytest.
 - **`docs/`**: Holds your project documentation in Markdown format, ready for MkDocs.
 - **Configuration Files**: Root directory contains pre-configured files like `pyproject.toml` (for UV, Ruff, Pytest, Pyright), `.pre-commit-config.yaml`, etc.
 - **Docker Support**: `Dockerfile`, `multistage.Dockerfile`, and `docker-compose.yml` provide containerization setups for development and production.
 - **CI/CD Workflows**: `.github/workflows/` defines the automated GitHub Actions pipelines.
+- **Cookiecutter Template**: The template structure is designed to be used with Cookiecutter, allowing you to create new projects based on this template easily. Including a Makefile to simplify common tasks like installing dependencies, running tests, and starting the FastAPI server.
 
 ## Example Use Case: Autoencoder for Image Compression
 
@@ -267,8 +269,6 @@ Manually copying templates is error-prone. This template leverages **Cookiecutte
 - **Customization**: Tailor essential project metadata during creation.
 
 Cookiecutter turns starting a best-practice data science project into a simple command-line interaction.
-
-For more details, refer to the [Cookiecutter Guide](https://tiefenthaler.github.io/uv-datascience-project-template/guides/cookiecutter/).
 
 ### How to Use
 
@@ -322,4 +322,4 @@ The **UV Data Science Project Template** offers a robust, modern foundation for 
 
 Stop reinventing the project setup wheel. Give your next data science project a significant head start with this template and experience a more streamlined, collaborative, and production-ready workflow.
 
-**Ready to try it out? Find the template on GitHub:** [[Link to the GitHub Repository](https://github.com/tiefenthaler/uv-datascience-project-template)]
+**Ready to try it out? Find the template on [GitHub](https://github.com/tiefenthaler/uv-datascience-project-template).**
