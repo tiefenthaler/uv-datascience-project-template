@@ -1,0 +1,186 @@
+{
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
+    "diffEditor.maxComputationTime": 0,
+    "dotnetAcquisitionExtension.existingDotnetPath": [],
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "editor.mouseWheelZoom": true,
+    "git.autofetch": true,
+    "github.copilot.advanced": {},
+    "jupyter.completionTriggerCharacters": {
+        "bash": [
+            "$",
+            "{"
+        ],
+        "java": [
+            ".",
+            "@",
+            "#"
+        ],
+        "javascript": [
+            ".",
+            "\"",
+            "'",
+            "/",
+            "@"
+        ],
+        "julia": [
+            "."
+        ],
+        "python": [
+            ".",
+            "%",
+            "'",
+            "\""
+        ],
+        "r": [
+            "[",
+            "(",
+            ",",
+            "$",
+            "@",
+            "\"",
+            "'"
+        ],
+        "rust": [
+            ".",
+            ":"
+        ],
+        "scala": [
+            "."
+        ],
+        "typescript": [
+            ".",
+            "\"",
+            "'",
+            "/",
+            "@",
+            "<"
+        ]
+    },
+    "jupyter.experiments.optInto": [],
+    "jupyter.notebookFileRoot": "${workspaceRoot}", // "${fileDirname}"
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "markdown.extension.toc.omittedFromToc": {
+        "README.md": [
+            "# XYZ"
+        ]
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": "explicit",
+        "notebook.source.organizeImports": "explicit"
+    },
+    "notebook.defaultFormatter": "charliermarsh.ruff",
+    "notebook.formatOnSave.enabled": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.diagnosticSeverityOverrides": {},
+    "python.analysis.generateWithTypeAnnotation": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.supportDocstringTemplate": true,
+    // Pylance is used for type checking, which under the hood uses pyright. If a pyrightconfig.json or configs in pyproject.toml are set, they have priority.
+    "python.analysis.typeCheckingMode": "basic", // or "strict", or "off" as needed
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.autoComplete.extraPaths": [],
+    "python.experiments.optOutFrom": [
+        "pythonTerminalEnvVarActivation"
+    ],
+    // Use Pylance for code highlighting.
+    "python.languageServer": "Pylance",
+    // Disable Pylance to avoid conflicts with Ruff.
+    // Disable other Python linters to avoid conflicts with Ruff.
+    "python.linting.enabled": true,
+    "python.linting.ruffEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.mypyEnabled": false,
+    "ruff.nativeServer": "auto",
+    "ruff.exclude": [
+        ".git"
+    ],
+    "ruff.lineLength": 99,
+    "tabnine.experimentalAutoImports": true,
+    "terminal.integrated.inheritEnv": false,
+    "window.zoomLevel": 1,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "markdownlint.config": {
+        "MD025": false
+    },
+    "cSpell.userWords": [
+        "addopts",
+        "autoencoder",
+        "autouse",
+        "conftest",
+        "cookiecutter",
+        "coveragerc",
+        "datascience",
+        "Dockerfiles",
+        "docstrings",
+        "fastapi",
+        "filterwarnings",
+        "htmlcov",
+        "ipykernel",
+        "ipynb",
+        "jupyterlab",
+        "litautoencoder",
+        "mkdocs",
+        "mkdocstrings",
+        "MNIST",
+        "norecursedirs",
+        "pipx",
+        "productionize",
+        "pycache",
+        "pydantic",
+        "pyenv",
+        "pylint",
+        "pyrightconfig",
+        "pytest",
+        "pythonpath",
+        "Raschka",
+        "testpaths",
+        "Tiefenthaler",
+        "venv",
+        "virtualenv",
+        "pyproject",
+        "pyright",
+        "PYTHONUNBUFFERED",
+        "tomlsort",
+        "torchvision",
+        "uvicorn"
+    ],
+    "chatgpt-docstrings.baseUrl": "https://models.inference.ai.azure.com",
+    "chatgpt-docstrings.aiModel": "gpt-4o",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.chat.languageContext.typescript.enabled": true,
+    "github.copilot.enable": {
+        "markdown": true,
+        "plaintext": true
+    },
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    "chat.agent.enabled": true,
+    "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+    "github.copilot.chat.languageContext.fix.typescript.enabled": true
+}
