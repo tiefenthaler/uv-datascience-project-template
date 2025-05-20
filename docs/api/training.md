@@ -4,8 +4,8 @@ The training process for the autoencoder involves optimizing the autoencoder to 
 
 ## Steps
 
-1. **Data Preparation**: Load and preprocess the dataset.
-2. **Model Initialization**: Instantiate the LitAutoEncoder model.
+1. **Data Preparation**: Load and preprocess the MNIST dataset.
+2. **Model Initialization**: Instantiate the LitAutoEncoder model with encoder and decoder.
 3. **Training Loop**: Use PyTorch Lightning's Trainer to handle the training process.
 
 ## Example
