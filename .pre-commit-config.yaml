@@ -27,7 +27,8 @@ repos:
     hooks:
       - id: pyright
         name: Pyright type checker
-        language: system
+        language: python
+        additional_dependencies: [pyright]
         types: [python]
         fail_fast: true
 
