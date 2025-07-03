@@ -3,6 +3,7 @@ docs/source
 # From https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore
 
 # Byte-compiled / optimized / DLL files
+# Python-generated files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -12,6 +13,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.pytest_cache
+*.py[oc]
 build/
 develop-eggs/
 dist/
@@ -44,6 +47,24 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .nox/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+# VS Code
+.vscode/
+
+# Data
+lightning_logs/
+MNIST/
+.test_reports/
+site/
+
+# MacOS
+.DS_Store
+
+# Coverage
 .coverage
 .coverage.*
 .cache
@@ -57,26 +78,8 @@ cover/
 .test_reports/
 .coverage_report/
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
 # Ruff
 .ruff_cache
-
 # MKDocs documentation
 /site
 

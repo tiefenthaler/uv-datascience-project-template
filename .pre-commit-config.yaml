@@ -15,6 +15,7 @@ repos:
       - id: check-added-large-files
       - id: check-toml
       - id: check-yaml
+        exclude: '^{{cookiecutter.repo_name}}/.*\.ya?ml$'
       - id: end-of-file-fixer
       - id: trailing-whitespace
 
@@ -61,10 +62,10 @@ repos:
         entry: hadolint
         # args:
         #   ["--config", ".hadolint.yaml"] # Use a configuration file for hadolint.
+
   - repo: https://github.com/trufflesecurity/trufflehog
     rev: v3.85.0
     hooks:
       - id: trufflehog
         name: TruffleHog
         description: Detect secrets in your code.
-        args: [--only-verified]
