@@ -3,7 +3,7 @@
 [run]
 # Requires a .test_reports directory, which will be automatically created by tests/conftest.py.
 data_file = .test_reports/coverage/.coverage
-source = 
+source =
     src
 branch = True
 # parallel = True

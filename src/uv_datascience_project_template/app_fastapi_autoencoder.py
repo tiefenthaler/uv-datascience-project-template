@@ -30,7 +30,7 @@ def read_root() -> Response:
     message = """
     ⚡⚡⚡ Welcome to the LitAutoEncoder API! ⚡⚡⚡
     - To train the model, send a POST request to '/train' without providing any additional input.
-    - To get encodings for random fake images, POST to '/embed' with JSON input: 
+    - To get encodings for random fake images, POST to '/embed' with JSON input:
       {'n_fake_images': [1-10]} in the request body.
     """
     return Response(content=message, media_type="text/plain")

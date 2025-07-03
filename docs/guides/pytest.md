@@ -71,7 +71,7 @@ This command will run all tests and collect coverage data for the `src` director
 
 ### .coveragerc
 
-The `.coveragerc` file configures how `coverage.py` collects and reports coverage data.  
+The `.coveragerc` file configures how `coverage.py` collects and reports coverage data.
 Key settings include:
 
 - `data_file`: Specifies the location where coverage data is stored. In this project, it's set to `.test_reports/coverage/.coverage`.

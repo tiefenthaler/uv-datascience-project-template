@@ -56,10 +56,9 @@ services: # Top level element to configure the arguments of multiple services.
     # Default command to start the dev container.
     command:
       - sh -c "chmod -R 777 /vscode/${WORKSPACE_NAME} && tail -f /dev/null" # Set permissions on the working directory for root user.
-      # - sudo chown -R vscode:vscode /vscode/workspace/.venv # SET THIS, to use without devcontainer.json (IDE VS Code). USER=vscode is used. Set permission for the user to be able to create the .venv with uv, since this might be restricted per default. 
+      # - sudo chown -R vscode:vscode /vscode/workspace/.venv # SET THIS, to use without devcontainer.json (IDE VS Code). USER=vscode is used. Set permission for the user to be able to create the .venv with uv, since this might be restricted per default.
       - docker-compose down # Remove the container after exiting.
 
 # Define the volumes of the docker container.
 volumes:
   venv: # Volume for the virtual environment for persistent in the container.
-
