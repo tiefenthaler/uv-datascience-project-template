@@ -32,7 +32,7 @@ It is demonstrated how to achieve this using a modern setup of tools, like UV, D
 - [UV Data Science Project Template](#uv-data-science-project-template)
   - [Overview Tools](#overview-tools)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
-    - [pyproject toml](#pyproject-toml)
+    - [Configuration Management](#configuration-management)
   - [\> Cookiecutter to create a new project from this template](#-cookiecutter-to-create-a-new-project-from-this-template)
     - [How to Use Cookiecutter](#how-to-use-cookiecutter)
   - [Custom Code in src Folder](#custom-code-in-src-folder)
@@ -79,14 +79,15 @@ The project includes the following components, for more details see [Documentati
 
 See [Guides - UV](https://tiefenthaler.github.io/uv-datascience-project-template/guides/uv/) for a comprehensive guide.
 
-### pyproject toml
+### Configuration Management
 
-The `pyproject.toml` file includes the following sections:
+This project uses a hybrid approach for configuration management:
 
-1. Project metadata (name, version, description, etc.).
-2. Dependencies required for the project.
-3. Dependency groups for development and documentation.
-4. Configuration for tools and packaging.
+1.  **`pyproject.toml`**: Used for project metadata, dependencies incl. groups for development and documentation, and tool-specific configurations, as well as packaging.
+2.  **`settings.toml`**: Stores static, non-sensitive application parameters like model hyperparameters, training settings, and data paths. This file is located in the root of the generated project.
+3.  **Environment Variables**: Used for dynamic or sensitive settings, overriding values from `config.toml`.
+
+Settings are loaded using Pydantic, which provides type validation and allows overriding `config.toml` values with environment variables. This ensures a clear separation of concerns and flexibility for different environments.
 
 ```toml
 # filepath: pyproject.toml

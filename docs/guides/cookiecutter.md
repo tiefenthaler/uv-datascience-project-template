@@ -15,6 +15,8 @@ Cookiecutter is a Python-based project templating tool that:
 
 The main configuration for cookiecutter is in `cookiecutter.json`. This file defines all variables that can be customized when creating a new project. Key options in this template include:
 
+Additionally, the generated project will include a `settings.toml` file for managing application-specific settings and parameters. These settings can be overridden by environment variables for flexible deployment.
+
 ```json
 {
     "project_name": "project-name",

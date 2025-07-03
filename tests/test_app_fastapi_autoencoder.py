@@ -1,8 +1,12 @@
 from fastapi.testclient import TestClient
 
-from uv_datascience_project_template.app_fastapi_autoencoder import app, train_litautoencoder
+from uv_datascience_project_template.app_fastapi_autoencoder import app
+from uv_datascience_project_template.config import get_settings
+from uv_datascience_project_template.train_autoencoder import train_litautoencoder
 
 client = TestClient(app)
+
+settings = get_settings()
 
 
 def test_root_endpoint() -> None:
@@ -36,7 +40,7 @@ def test_train_endpoint_idempotent() -> None:
 def test_embed_endpoint() -> None:
     """Test the /embed endpoint for valid and invalid input cases."""
     # First, ensure the model is trained
-    train_litautoencoder()
+    train_litautoencoder(settings)
 
     # Test with valid input
     response = client.post("/embed", json={"n_fake_images": 5})

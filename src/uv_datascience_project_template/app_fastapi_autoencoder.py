@@ -6,6 +6,7 @@ from fastapi import FastAPI, HTTPException, Response
 from pydantic import BaseModel, conint
 from torch import rand
 
+from .config import get_settings
 from .lit_auto_encoder import LitAutoEncoder
 from .train_autoencoder import train_litautoencoder
 
@@ -15,6 +16,8 @@ app = FastAPI()
 encoder = None
 decoder = None
 is_model_trained = False  # Track model training status
+
+settings = get_settings()
 
 
 # Input validation model
@@ -49,7 +52,7 @@ def train_model() -> dict[str, str]:
     if is_model_trained:
         return {"message": "Model is already trained."}
 
-    encoder, decoder, is_model_trained = train_litautoencoder()
+    encoder, decoder, is_model_trained = train_litautoencoder(settings)
     return {"message": "Model training completed successfully."}
 
 
@@ -72,7 +75,11 @@ def embed(input_data: NumberFakeImages) -> dict[str, Any]:
         )
 
     n_fake_images = input_data.n_fake_images
-    checkpoint_path = "./lightning_logs/LitAutoEncoder/version_0/checkpoints/epoch=0-step=100.ckpt"
+    # checkpoint_path = "./lightning_logs/LitAutoEncoder/version_0/checkpoints/epoch=0-step=100.ckpt" # noqa: E501
+    checkpoint_path = os.path.join(
+        settings.data.mnist_data_path,
+        "lightning_logs/LitAutoEncoder/version_0/checkpoints/epoch=0-step=100.ckpt",
+    )
 
     if not os.path.exists(checkpoint_path):
         raise HTTPException(
@@ -87,7 +94,8 @@ def embed(input_data: NumberFakeImages) -> dict[str, Any]:
     encoder_model.eval()
 
     # Generate fake image embeddings based on user input
-    fake_image_batch = rand(n_fake_images, 28 * 28, device=autoencoder.device)
+    # fake_image_batch = rand(n_fake_images, 28 * 28, device=autoencoder.device)
+    fake_image_batch = rand(n_fake_images, settings.model.input_dim, device=autoencoder.device)
     embeddings = encoder_model(fake_image_batch)
     # print("⚡" * 20, "\nPredictions (image embeddings):\n", embeddings, "\n", "⚡" * 20)
 
@@ -97,4 +105,5 @@ def embed(input_data: NumberFakeImages) -> dict[str, Any]:
 # Application entry point
 if __name__ == "__main__":
     # Run the FastAPI application
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=settings.api.host, port=settings.api.port)
