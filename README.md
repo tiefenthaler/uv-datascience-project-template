@@ -19,10 +19,10 @@
 <!--docs-ref-index-0.1-end-->
 
 <!--docs-ref-index-1-start-->
-> **Template Project** for **Developing Data Science Projects** with **UV**.  
+> **Template Project** for **Developing Data Science Projects** with **UV**.
 > A new project using this template can be created with **cookiecutter**.
 
-This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
+This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.
 It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, PyTest, MkDocs, CI, and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
 <!--docs-ref-index-1-end-->
