@@ -16,7 +16,7 @@
 	// Build image using docker compose based on build specs in docker-compose.yml
 	"dockerComposeFile": ["./docker-compose.yml"],
 	"service": "myproject",
-	"runServices": ["myproject"],	
+	"runServices": ["myproject"],
 	"workspaceFolder": "/vscode/workspace", // SET THIS, to name the project folder to your local project folder name: "workspaceFolder": "/vscode/${localWorkspaceFolderBasename}",
 	"postCreateCommand": {
 		// REMOVE THIS LINE, ADD LINE BELOW, REMOVE "postStartCommand"/"uv-sync--frozen": if you want to properly install source dependencies (don’t install pre-built wheels .whl).

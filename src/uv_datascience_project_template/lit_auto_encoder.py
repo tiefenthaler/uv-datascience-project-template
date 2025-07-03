@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 
 import lightning as L  # noqa: N812
 from torch import Tensor, nn, optim
@@ -13,10 +13,20 @@ class LitAutoEncoder(L.LightningModule):
         decoder: The decoder component, responsible for decoding encoded data.
     """
 
-    def __init__(self, encoder: nn.Sequential, decoder: nn.Sequential) -> None:
+    def __init__(
+        self,
+        encoder: Optional[nn.Sequential] = None,
+        decoder: Optional[nn.Sequential] = None,
+        learning_rate: float = 1e-3,
+    ) -> None:
         super().__init__()
-        self.encoder = encoder
-        self.decoder = decoder
+        self.encoder = (
+            encoder if encoder else nn.Sequential(nn.Linear(784, 64), nn.ReLU(), nn.Linear(64, 3))
+        )
+        self.decoder = (
+            decoder if decoder else nn.Sequential(nn.Linear(3, 64), nn.ReLU(), nn.Linear(64, 784))
+        )
+        self.learning_rate = learning_rate
 
     def training_step(self, batch: Tuple[Tensor, Tensor], batch_idx: int) -> Tensor:
         """Performs a single training step for the model.
@@ -41,5 +51,6 @@ class LitAutoEncoder(L.LightningModule):
 
     def configure_optimizers(self) -> optim.Adam:
         """Configure the Adam optimizer."""
-        optimizer = optim.Adam(self.parameters(), lr=1e-3)
+        # optimizer = optim.Adam(self.parameters(), lr=1e-3)
+        optimizer = optim.Adam(self.parameters(), lr=self.learning_rate)
         return optimizer

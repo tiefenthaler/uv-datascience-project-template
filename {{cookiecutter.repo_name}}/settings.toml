@@ -1,0 +1,18 @@
+# Application configuration settings
+
+[model_settings]
+input_dim = 784 # 28 * 28 for MNIST images
+hidden_dim = 64
+latent_dim = 3
+
+[training_settings]
+epochs = 1
+limit_train_batches = 100
+learning_rate = 0.001
+
+[data_settings]
+mnist_data_path = "./MNIST"
+
+[api_settings]
+host = "0.0.0.0"
+port = 8000

@@ -51,6 +51,12 @@ Here's a breakdown of the hooks used in this project:
     - **Ruff Format**: Runs the Ruff formatter to format the code. The `--diff` argument displays a diff of the changes instead of applying them directly.
 - **Pyright**: A static type checker for Python. It checks for type errors in the code. Refer to the `pyrightconfig.json` file for the configurations.
 - **Hadolint**: A linter for Dockerfiles. It checks for common issues and best practices in Dockerfiles. The `--config .hadolint.yaml` argument specifies a configuration file for Hadolint.
+- **check-added-large-files**: Prevents committing large files to the repository.
+- **check-toml**: Checks TOML files for syntax errors.
+- **check-yaml**: Checks YAML files for syntax errors.
+- **end-of-file-fixer**: Ensures that files end with a newline, and removes them if they don't.
+- **trailing-whitespace**: Trims trailing whitespace from lines.
+- **TruffleHog**: Detects secrets and credentials in your code.
 
 ### 4. Updating hooks automatically
 

@@ -17,7 +17,7 @@ Find the [**Documentation**](https://tiefenthaler.github.io/uv-datascience-proje
 
 ## Dev Container Main Configurations and Installations
 
-Using a Python image with UV pre-installed, which includes Python, as well as a Debian base image including the VS Code devcontainer base image.  
+Using a Python image with UV pre-installed, which includes Python, as well as a Debian base image including the VS Code devcontainer base image.
 Multi-Stage Build: Despite using two base images, only one container is built. The final container is based on the second image, while copying content from the UV stage into the final stage.
 
 - **UV**, an extremely fast Python package, virtual environment and project manager.

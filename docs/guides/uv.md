@@ -26,7 +26,7 @@
 
 **Specifically, UV is utilized for:**
 
-- **Dependency Management:** UV manages both project dependencies and development dependencies, ensuring that all necessary packages are installed quickly and efficiently.
+- **Dependency Management:** UV manages both project dependencies and development dependencies, ensuring that all necessary packages are installed quickly and efficiently. This includes `pydantic-settings` for robust configuration management.
 - **Virtual Environment Creation:** UV creates and manages the project's virtual environment, isolating project dependencies from the global Python environment.
 - **Speed and Efficiency:** UV's speed advantage over traditional tools like `pip` significantly reduces the time spent on environment setup and dependency installation, especially in projects with many dependencies.
 - **Consistency:** By using UV, the project ensures that the development environment is consistent across different machines and platforms, reducing the risk of "it works on my machine" issues.

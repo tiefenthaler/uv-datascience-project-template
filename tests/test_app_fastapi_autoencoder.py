@@ -1,18 +1,43 @@
+import pytest
 from fastapi.testclient import TestClient
 
-from uv_datascience_project_template.app_fastapi_autoencoder import app, train_litautoencoder
+from uv_datascience_project_template.app_fastapi_autoencoder import app
+from uv_datascience_project_template.config import get_settings
+from uv_datascience_project_template.train_autoencoder import train_litautoencoder
 
-client = TestClient(app)
+settings = get_settings()
 
 
-def test_root_endpoint() -> None:
+@pytest.fixture(name="client")
+def client_fixture(tmp_path):
+    # Create a temporary directory for MNIST data
+    temp_mnist_data_path = tmp_path / "MNIST"
+    temp_mnist_data_path.mkdir()
+
+    # Override the settings for the test
+    original_mnist_data_path = settings.data.mnist_data_path
+    settings.data.mnist_data_path = temp_mnist_data_path
+
+    with TestClient(app) as client:
+        app.dependency_overrides = {}
+        app.state.encoder = None
+        app.state.decoder = None
+        app.state.is_model_trained = False
+        app.state.checkpoint_path = None
+        yield client
+
+    # Restore original settings after the test
+    settings.data.mnist_data_path = original_mnist_data_path
+
+
+def test_root_endpoint(client: TestClient) -> None:
     """Test the root endpoint returns welcome message and status 200."""
     response = client.get("/")
     assert response.status_code == 200
     assert "Welcome to the LitAutoEncoder API!" in response.text
 
 
-def test_train_endpoint() -> None:
+def test_train_endpoint(client: TestClient) -> None:
     """Test the /train endpoint returns a success message and status 200."""
     response = client.post("/train")
     assert response.status_code == 200
@@ -22,7 +47,7 @@ def test_train_endpoint() -> None:
     )
 
 
-def test_train_endpoint_idempotent() -> None:
+def test_train_endpoint_idempotent(client: TestClient) -> None:
     """Test that repeated calls to /train endpoint do not fail and return valid messages."""
     for _ in range(2):
         response = client.post("/train")
@@ -33,10 +58,12 @@ def test_train_endpoint_idempotent() -> None:
         )
 
 
-def test_embed_endpoint() -> None:
+def test_embed_endpoint(client: TestClient) -> None:
     """Test the /embed endpoint for valid and invalid input cases."""
     # First, ensure the model is trained
-    train_litautoencoder()
+    app.state.encoder, app.state.decoder, _, app.state.checkpoint_path = train_litautoencoder(
+        settings
+    )
 
     # Test with valid input
     response = client.post("/embed", json={"n_fake_images": 5})

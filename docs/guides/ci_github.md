@@ -71,7 +71,7 @@ This action configures Git user name and email. It is used to:
 To set up GitHub Actions and Workflows in your project, follow these steps:
 
 - Create a `.github/workflows` directory in the root of your repository.
-- Define your workflows in YAML files within this directory.  
+- Define your workflows in YAML files within this directory.
       Example: `.github/workflows/pyright.yml`
 
       ```yaml
@@ -99,7 +99,7 @@ To set up GitHub Actions and Workflows in your project, follow these steps:
 
 - Define jobs and steps within each workflow file.
 - Use reusable actions to encapsulate common steps.
-      You can use existing actions from the GitHub Marketplace or create custom actions.  
+      You can use existing actions from the GitHub Marketplace or create custom actions.
       Example: `.github/actions/setup-python-with-uv/action.yml`
 
       ```yaml

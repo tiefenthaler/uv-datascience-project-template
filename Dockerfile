@@ -21,6 +21,7 @@ WORKDIR /${WORKSPACE_NAME}
 ENV UV_COMPILE_BYTECODE=1
 
 # Production setup: Copy and install dependencies without installing the project.
+# COPY pyproject.toml uv.lock ./
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \

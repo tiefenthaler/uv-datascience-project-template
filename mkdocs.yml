@@ -24,7 +24,7 @@ nav:
       - Training: api/training.md
       - FastAPI: api/fastapi_app.md
   # NOTE: Does not support nested lists.
-  - Notebooks: 
+  - Notebooks:
     - Jupyter Notebook - App: notebooks/app_without_fastapi.ipynb
 theme:
   name: material

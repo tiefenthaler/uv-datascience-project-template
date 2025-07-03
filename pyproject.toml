@@ -20,6 +20,8 @@ dependencies = [
     "fastapi[standard]>=0.115.6",
     "lightning>=2.4.0",
     "pydantic>=2.10.4",
+    "pydantic-settings>=2.3.4",
+    "toml>=0.10.2",
     "torch>=2.4.1",
     "torchvision>=0.20.1",
     "uvicorn>=0.34.0"
@@ -37,6 +39,8 @@ dev = [
     "pytest>=8.1.1",
     "ruff>=0.11.2",
     "toml-sort>=0.24.2",
+    "pydantic-settings>=2.3.4",
+    "toml>=0.10.2",
     "uv>=0.5.26"
 ]
 docs = [

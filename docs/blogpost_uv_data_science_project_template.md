@@ -19,7 +19,7 @@ Find the related [GitHub Repo](https://github.com/tiefenthaler/uv-datascience-pr
 
 <br /> <!--new line-->
 
-**Table of Contents**  
+**Table of Contents**
 
 - [Supercharge Your Data Science Projects with the UV Data Science Project Template](#supercharge-your-data-science-projects-with-the-uv-data-science-project-template)
   - [Why Battle Setup? Use the UV Data Science Project Template](#why-battle-setup-use-the-uv-data-science-project-template)

@@ -9,6 +9,16 @@ ci:
   autoupdate_commit_msg: 'ci: pre-commit autoupdate'
 
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-toml
+      - id: check-yaml
+        exclude: '^{{cookiecutter.repo_name}}/.*\.ya?ml$'
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.11.2
     hooks:
@@ -52,3 +62,10 @@ repos:
         entry: hadolint
         # args:
         #   ["--config", ".hadolint.yaml"] # Use a configuration file for hadolint.
+
+  - repo: https://github.com/trufflesecurity/trufflehog
+    rev: v3.85.0
+    hooks:
+      - id: trufflehog
+        name: TruffleHog
+        description: Detect secrets in your code.

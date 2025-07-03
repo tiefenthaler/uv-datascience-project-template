@@ -19,10 +19,10 @@
 <!--docs-ref-index-0.1-end-->
 
 <!--docs-ref-index-1-start-->
-> **Template Project** for **Developing Data Science Projects** with **UV**.  
+> **Template Project** for **Developing Data Science Projects** with **UV**.
 > A new project using this template can be created with **cookiecutter**.
 
-This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.  
+This guide provides instructions on how to develop and productionize machine learning applications in a robust and efficient way.
 It is demonstrated how to achieve this using a modern setup of tools, like UV, Docker, Ruff, PyTest, MkDocs, CI, and more (see [Overview Tools](#overview-tools) Section). The focus of this project is to give an introduction to using those tools and not on how to properly set up a machine learning application (for production). Therefore only a simple machine learning pipeline based on PyTorch/Lightning and FastAPI is used.
 
 <!--docs-ref-index-1-end-->
@@ -32,7 +32,7 @@ It is demonstrated how to achieve this using a modern setup of tools, like UV, D
 - [UV Data Science Project Template](#uv-data-science-project-template)
   - [Overview Tools](#overview-tools)
   - [Using uv to Manage the Project](#using-uv-to-manage-the-project)
-    - [pyproject toml](#pyproject-toml)
+    - [Configuration Management](#configuration-management)
   - [\> Cookiecutter to create a new project from this template](#-cookiecutter-to-create-a-new-project-from-this-template)
     - [How to Use Cookiecutter](#how-to-use-cookiecutter)
   - [Custom Code in src Folder](#custom-code-in-src-folder)
@@ -79,14 +79,15 @@ The project includes the following components, for more details see [Documentati
 
 See [Guides - UV](https://tiefenthaler.github.io/uv-datascience-project-template/guides/uv/) for a comprehensive guide.
 
-### pyproject toml
+### Configuration Management
 
-The `pyproject.toml` file includes the following sections:
+This project uses a hybrid approach for configuration management:
 
-1. Project metadata (name, version, description, etc.).
-2. Dependencies required for the project.
-3. Dependency groups for development and documentation.
-4. Configuration for tools and packaging.
+1.  **`pyproject.toml`**: Used for project metadata, dependencies incl. groups for development and documentation, and tool-specific configurations, as well as packaging.
+2.  **`settings.toml`**: Stores static, non-sensitive application parameters like model hyperparameters, training settings, and data paths. This file is located in the root of the generated project.
+3.  **Environment Variables**: Used for dynamic or sensitive settings, overriding values from `config.toml`.
+
+Settings are loaded using Pydantic, which provides type validation and allows overriding `config.toml` values with environment variables. This ensures a clear separation of concerns and flexibility for different environments.
 
 ```toml
 # filepath: pyproject.toml
@@ -207,6 +208,22 @@ Cookiecutter is a command-line utility that creates projects from project templa
      make check
      ```
    - Run additional commands like "test", "build", and others as needed.
+   - Run the FastAPI application:
+     ```bash
+     make run-api
+     ```
+   - Format code:
+     ```bash
+     make format
+     ```
+   - Lint and fix code:
+     ```bash
+     make lint-fix
+     ```
+   - Check for template synchronization issues:
+     ```bash
+     make check-template-sync
+     ```
 6. Happy coding!
 <!--docs-ref-index-cookiecutter-0-end-->
 
@@ -226,7 +243,7 @@ This file defines the `LitAutoEncoder` class, which is a LightningModule an auto
 
 ### train_autoencoder
 
-This file defines the training function `train_litautoencoder` to initialize and train the model on the MNIST dataset using PyTorch Lightning.
+This file defines the training function `train_litautoencoder` to initialize and train the model on the MNIST dataset using PyTorch Lightning. It now returns the path to the saved model checkpoint.
 
 ### FastAPI Application
 
@@ -240,15 +257,15 @@ The FastAPI application is defined in the `app_fastapi_autoencoder.py` file. It 
 
 See [Source Code API Reference](https://tiefenthaler.github.io/uv-datascience-project-template/api/fastapi_app/) for a comprehensive documentation.
 
-This file defines the FastAPI application and the endpoints. It includes:
+This file defines the FastAPI application and the endpoints. It uses `app.state` to manage the model's state (encoder, decoder, training status, and checkpoint path) instead of global variables. This provides a cleaner and more scalable pattern. It includes:
 
 1. Importing necessary libraries and modules.
-2. Defining global variables for the encoder, decoder, and model training status.
+2. Initializing `app.state` on application startup to manage model components.
 3. A `NumberFakeImages` class for input validation.
 4. A `train_litautoencoder` function to initialize and train the autoencoder.
 5. A `read_root` function to handle the root endpoint.
-6. A `train_model` function to handle the model training endpoint.
-7. An `embed` function to handle the embedding endpoint.
+6. A `train_model` function to handle the model training endpoint, which now updates `app.state`.
+7. An `embed` function to handle the embedding endpoint, which now retrieves the model and checkpoint path from `app.state`.
 8. The application entry point to run the FastAPI application.
 
 ### main
