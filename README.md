@@ -207,6 +207,22 @@ Cookiecutter is a command-line utility that creates projects from project templa
      make check
      ```
    - Run additional commands like "test", "build", and others as needed.
+   - Run the FastAPI application:
+     ```bash
+     make run-api
+     ```
+   - Format code:
+     ```bash
+     make format
+     ```
+   - Lint and fix code:
+     ```bash
+     make lint-fix
+     ```
+   - Check for template synchronization issues:
+     ```bash
+     make check-template-sync
+     ```
 6. Happy coding!
 <!--docs-ref-index-cookiecutter-0-end-->
 
