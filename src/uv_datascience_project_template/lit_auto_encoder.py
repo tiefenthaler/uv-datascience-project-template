@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 
 import lightning as L  # noqa: N812
 from torch import Tensor, nn, optim
@@ -14,11 +14,18 @@ class LitAutoEncoder(L.LightningModule):
     """
 
     def __init__(
-        self, encoder: nn.Sequential, decoder: nn.Sequential, learning_rate: float = 1e-3
+        self,
+        encoder: Optional[nn.Sequential] = None,
+        decoder: Optional[nn.Sequential] = None,
+        learning_rate: float = 1e-3,
     ) -> None:
         super().__init__()
-        self.encoder = encoder
-        self.decoder = decoder
+        self.encoder = (
+            encoder if encoder else nn.Sequential(nn.Linear(784, 64), nn.ReLU(), nn.Linear(64, 3))
+        )
+        self.decoder = (
+            decoder if decoder else nn.Sequential(nn.Linear(3, 64), nn.ReLU(), nn.Linear(64, 784))
+        )
         self.learning_rate = learning_rate
 
     def training_step(self, batch: Tuple[Tensor, Tensor], batch_idx: int) -> Tensor:

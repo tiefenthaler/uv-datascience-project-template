@@ -12,12 +12,16 @@ from .train_autoencoder import train_litautoencoder
 
 app = FastAPI()
 
-# Global variables for encoder/decoder
-encoder = None
-decoder = None
-is_model_trained = False  # Track model training status
-
 settings = get_settings()
+
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize FastAPI app state on startup."""
+    app.state.encoder = None
+    app.state.decoder = None
+    app.state.is_model_trained = False
+    app.state.checkpoint_path = None
 
 
 # Input validation model
@@ -47,12 +51,14 @@ def train_model() -> dict[str, str]:
     Returns:
         dict[str, str]: A message indicating the training status.
     """
-    global encoder, decoder, is_model_trained
-
-    if is_model_trained:
+    if app.state.is_model_trained:
         return {"message": "Model is already trained."}
 
-    encoder, decoder, is_model_trained = train_litautoencoder(settings)
+    encoder, decoder, is_model_trained, checkpoint_path = train_litautoencoder(settings)
+    app.state.encoder = encoder
+    app.state.decoder = decoder
+    app.state.is_model_trained = is_model_trained
+    app.state.checkpoint_path = checkpoint_path
     return {"message": "Model training completed successfully."}
 
 
@@ -67,29 +73,20 @@ def embed(input_data: NumberFakeImages) -> dict[str, Any]:
     Returns:
         dict[str, Any]: A dictionary containing the embeddings of the fake images.
     """
-    global encoder, decoder
-
-    if encoder is None or decoder is None:
+    if app.state.encoder is None or app.state.decoder is None:
         raise HTTPException(
             status_code=500, detail="Model not initialized. Train the model first."
         )
 
     n_fake_images = input_data.n_fake_images
-    # checkpoint_path = "./lightning_logs/LitAutoEncoder/version_0/checkpoints/epoch=0-step=100.ckpt" # noqa: E501
-    checkpoint_path = os.path.join(
-        settings.data.mnist_data_path,
-        "lightning_logs/LitAutoEncoder/version_0/checkpoints/epoch=0-step=100.ckpt",
-    )
 
-    if not os.path.exists(checkpoint_path):
+    if not app.state.checkpoint_path or not os.path.exists(app.state.checkpoint_path):
         raise HTTPException(
             status_code=500, detail="Checkpoint file not found. Train the model first."
         )
 
     # Load the trained autoencoder from the checkpoint
-    autoencoder = LitAutoEncoder.load_from_checkpoint(
-        checkpoint_path, encoder=encoder, decoder=decoder
-    )
+    autoencoder = LitAutoEncoder.load_from_checkpoint(app.state.checkpoint_path)
     encoder_model = autoencoder.encoder
     encoder_model.eval()
 

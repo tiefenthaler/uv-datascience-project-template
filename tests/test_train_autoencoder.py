@@ -9,9 +9,10 @@ def test_train_litautoencoder() -> None:
 
     Ensures the function returns non-None encoder and decoder, and the flag is True.
     """
-    encoder, decoder, is_model_trained = train_litautoencoder(settings)
+    encoder, decoder, is_model_trained, checkpoint_path = train_litautoencoder(settings)
     assert encoder is not None
     assert decoder is not None
+    assert checkpoint_path is not None
     assert is_model_trained is True
 
 
@@ -21,7 +22,8 @@ def test_train_litautoencoder_idempotent() -> None:
     Ensures the function is idempotent and returns valid results on multiple calls.
     """
     for _ in range(2):
-        encoder, decoder, is_model_trained = train_litautoencoder(settings)
+        encoder, decoder, is_model_trained, checkpoint_path = train_litautoencoder(settings)
         assert encoder is not None
         assert decoder is not None
+        assert checkpoint_path is not None
         assert is_model_trained is True

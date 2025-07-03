@@ -243,7 +243,7 @@ This file defines the `LitAutoEncoder` class, which is a LightningModule an auto
 
 ### train_autoencoder
 
-This file defines the training function `train_litautoencoder` to initialize and train the model on the MNIST dataset using PyTorch Lightning.
+This file defines the training function `train_litautoencoder` to initialize and train the model on the MNIST dataset using PyTorch Lightning. It now returns the path to the saved model checkpoint.
 
 ### FastAPI Application
 
@@ -257,15 +257,15 @@ The FastAPI application is defined in the `app_fastapi_autoencoder.py` file. It 
 
 See [Source Code API Reference](https://tiefenthaler.github.io/uv-datascience-project-template/api/fastapi_app/) for a comprehensive documentation.
 
-This file defines the FastAPI application and the endpoints. It includes:
+This file defines the FastAPI application and the endpoints. It uses `app.state` to manage the model's state (encoder, decoder, training status, and checkpoint path) instead of global variables. This provides a cleaner and more scalable pattern. It includes:
 
 1. Importing necessary libraries and modules.
-2. Defining global variables for the encoder, decoder, and model training status.
+2. Initializing `app.state` on application startup to manage model components.
 3. A `NumberFakeImages` class for input validation.
 4. A `train_litautoencoder` function to initialize and train the autoencoder.
 5. A `read_root` function to handle the root endpoint.
-6. A `train_model` function to handle the model training endpoint.
-7. An `embed` function to handle the embedding endpoint.
+6. A `train_model` function to handle the model training endpoint, which now updates `app.state`.
+7. An `embed` function to handle the embedding endpoint, which now retrieves the model and checkpoint path from `app.state`.
 8. The application entry point to run the FastAPI application.
 
 ### main

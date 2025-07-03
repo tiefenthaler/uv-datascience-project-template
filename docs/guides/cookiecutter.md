@@ -69,7 +69,7 @@ The template allows you to customize:
 
 Based on your choices, the template will:
 
-1. Generate appropriate configuration files
+1. Generate appropriate configuration files, including an example application that demonstrates best practices for FastAPI state management and model checkpointing.
 2. Set up documentation structure if `docs_mkdocs="y"`
 3. Configure GitHub Actions if `github_actions_ci="y"`
 4. Set up dev containers if `use_vscode_devcontainer="y"`
