@@ -101,7 +101,7 @@ clean: ## Clean all artifacts and remove virtual environment
 
 .PHONY: update-packages
 update-packages: ## Update all Python packages to the latest versions of the `uv.lock` file and sync the environment
-	@echo "⬆️  Updating all Python packages..."
+	@echo "🚀 Updating all Python packages..."
 	@uv lock --upgrade
 	@uv sync --all-groups
 	@echo "✅ Packages updated and environment is in sync."
