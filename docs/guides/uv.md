@@ -207,7 +207,7 @@ uv sync --all-groups
 ```
 
 > [!NOTE]
-> Upgrade dependencies with the script `scripts/uv_upgrade_dependencies.py` respectively the Makefile target `update-packages`, [source](https://gist.github.com/yhoiseth/c80c1e44a7036307e424fce616eed25e):
+> Upgrade dependencies within the `pyproject.toml` file with the script `scripts/uv_upgrade_dependencies.py` respectively the Makefile (project root directory) target `update-packages`, [source](https://gist.github.com/yhoiseth/c80c1e44a7036307e424fce616eed25e):
 >
 > ```bash
 > make update-packages
