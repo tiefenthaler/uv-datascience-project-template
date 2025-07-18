@@ -17,14 +17,14 @@ keywords = [
 ]
 requires-python = ">=3.12.0, <3.13.0"
 dependencies = [
-    "fastapi[standard]>=0.115.6",
-    "lightning>=2.4.0",
-    "pydantic>=2.10.4",
-    "pydantic-settings>=2.3.4",
+    "fastapi[standard]>=0.116.1",
+    "lightning>=2.5.2",
+    "pydantic>=2.11.7",
+    "pydantic-settings>=2.10.1",
     "toml>=0.10.2",
-    "torch>=2.4.1",
-    "torchvision>=0.20.1",
-    "uvicorn>=0.34.0"
+    "torch>=2.7.1",
+    "torchvision>=0.22.1",
+    "uvicorn>=0.35.0",
 ]
 
 # DEV SETTING
@@ -32,24 +32,24 @@ dependencies = [
 dev = [
     "cookiecutter>=2.6.0",
     "ipykernel>=6.29.5",
-    "jupyterlab>=4.3.1",
-    "pre-commit>=4.1.0",
-    "pyright>=1.1.398",
-    "pytest-cov>=6.0.0",
-    "pytest>=8.1.1",
-    "ruff>=0.11.2",
-    "toml-sort>=0.24.2",
-    "pydantic-settings>=2.3.4",
+    "jupyterlab>=4.4.4",
+    "pre-commit>=4.2.0",
+    "pydantic-settings>=2.10.1",
+    "pyright>=1.1.403",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.12.4",
     "toml>=0.10.2",
-    "uv>=0.5.26"
+    "toml-sort>=0.24.2",
+    "uv>=0.8.0",
 ]
 docs = [
     "mkdocs>=1.6.1",
-    "mkdocs-include-markdown-plugin>=7.1.4",
+    "mkdocs-include-markdown-plugin>=7.1.6",
     "mkdocs-jupyter>=0.25.1",
-    "mkdocs-material>=9.6.3",
-    "mkdocstrings-python>=1.16.8",
-    "pymdown-extensions>=10.14.3",
+    "mkdocs-material>=9.6.15",
+    "mkdocstrings-python>=1.16.12",
+    "pymdown-extensions>=10.16",
 ]
 
 # DEV SETTING
