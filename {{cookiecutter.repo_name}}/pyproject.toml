@@ -7,7 +7,6 @@ authors = [
 ]
 readme = "README.md"
 keywords = ["python"]
-requires-python = ">=3.9,<4.0"
 classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
@@ -20,6 +19,11 @@ classifiers = [
 Homepage = "https://{{cookiecutter.author_github_handle}}.github.io/{{cookiecutter.project_name}}/"
 Repository = "https://github.com/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name}}"
 Documentation = "https://{{cookiecutter.author_github_handle}}.github.io/{{cookiecutter.project_name}}/"
+
+requires-python = ">=3.9,<4.0"
+dependencies = [
+    # Add your project dependencies here
+]
 
 # DEV SETTING
 [dependency-groups]

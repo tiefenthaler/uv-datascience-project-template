@@ -195,13 +195,20 @@ uv self update
 
 ### UV update packages (dependencies)
 
-You can update all Python packages to the latest versions of the **`uv.lock` file** and sync the environment using the command below.
-This will update all packages to their latest versions, which may not always be desirable.  
-If you want to update only specific packages, you can use `uv lock --upgrade <package_name>` instead.  
-This also does **not update** the specified dependencies **within the `pyproject.toml` file**. As of uv version 0.7.22 there is no way to update the dependencies in the `pyproject.toml` file automatically. Draft pull request: [#13934](https://github.com/astral-sh/uv/pull/13934).  
+You can update all Python packages to the latest versions of the `uv.lock` file and sync the environment using the command below.
+This will update all packages to their latest versions, which may not always be desirable.
+If you want to update only specific packages, you can use `uv lock --upgrade <package_name>` instead.
+This also does **not update** the specified dependencies **within the `pyproject.toml` file**. As of uv version 0.7.22 there is no way to update the dependencies in the `pyproject.toml` file automatically. Draft pull request: [#13934](https://github.com/astral-sh/uv/pull/13934).
 You can update individual packages manually to the latest compatible version within the `pyproject.toml` file by using `uv add --upgrade <package_name>`.
 
 ```bash
 uv lock --upgrade
 uv sync --all-groups
 ```
+
+> [!NOTE]
+> Upgrade dependencies with the script `scripts/uv_upgrade_dependencies.py` respectively the Makefile target `update-packages`, [source](https://gist.github.com/yhoiseth/c80c1e44a7036307e424fce616eed25e):
+>
+> ```bash
+> make update-packages
+> ```
