@@ -1,0 +1,18 @@
+/* Apply styles for screens wider than 76.25em (approximately 1220px) */
+@media only screen and (min-width: 76.25em) {
+  /* Target the main content area */
+  .md-main__inner {
+    max-width: none; /* Remove the maximum width constraint */
+  }
+  /* Target the primary sidebar */
+  .md-sidebar--primary {
+    left: 0; /* Align the primary sidebar to the left */
+  }
+  /* Target the secondary sidebar */
+  .md-sidebar--secondary {
+    right: 0; /* Align the secondary sidebar to the right */
+    margin-left: 0; /* Remove any left margin */
+    -webkit-transform: none; /* Remove any webkit transform */
+    transform: none; /* Remove any transform */
+  }
+}

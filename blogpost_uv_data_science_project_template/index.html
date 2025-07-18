@@ -1,0 +1,1922 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Blogpost - UV Data Science Project Template</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#supercharge-your-data-science-projects-with-the-uv-data-science-project-template" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="UV Data Science Project Template" class="md-header__button md-logo" aria-label="UV Data Science Project Template" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UV Data Science Project Template
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Blogpost
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tiefenthaler/uv-datascience-project-template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guides/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Source Code API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../notebooks/app_without_fastapi/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Notebooks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="UV Data Science Project Template" class="md-nav__button md-logo" aria-label="UV Data Science Project Template" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    UV Data Science Project Template
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tiefenthaler/uv-datascience-project-template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href=".." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Blogpost
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blogpost
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-battle-setup-use-the-uv-data-science-project-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Battle Setup? Use the UV Data Science Project Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-curated-toolkit-for-modern-data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Curated Toolkit for Modern Data Science
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Curated Toolkit for Modern Data Science">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uv-the-swift-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV: The Swift Foundation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruff-lightning-fast-linting-and-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ruff: Lightning-Fast Linting and Formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyright-robust-type-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pyright: Robust Type Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytest-and-coveragepy-ensuring-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pytest and Coverage.py: Ensuring Reliability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-hooks-quality-control-at-commit-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit Hooks: Quality Control at Commit Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-with-github-actions-automated-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI with GitHub Actions: Automated Workflows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-professional-project-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      MkDocs: Professional Project Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-production-consistent-environments-anywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Production: Consistent Environments Anywhere
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode-devcontainer-seamless-development-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode DevContainer: Seamless Development Environments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSCode DevContainer: Seamless Development Environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure-a-place-for-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Structure: A Place for Everything
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-use-case-autoencoder-for-image-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Use Case: Autoencoder for Image Compression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Use Case: Autoencoder for Image Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fastapi-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      FastAPI Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-project-kick-off-with-cookiecutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate Project Kick-off with Cookiecutter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automate Project Kick-off with Cookiecutter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-build-better-faster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion: Build Better, Faster
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../guides/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/uv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/ruff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ruff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/pyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PyRight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/pytest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PyTest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/pre_commit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-Commit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/ci_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI-GitHub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/docker_prod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker-Production
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/docker_vscode_devcontainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker-VSCode-DevContainer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/cookiecutter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookiecutter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Source Code API Reference
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Source Code API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/autoencoder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autoencoder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Training
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/fastapi_app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Notebooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/app_without_fastapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jupyter Notebook - App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-battle-setup-use-the-uv-data-science-project-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Battle Setup? Use the UV Data Science Project Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-curated-toolkit-for-modern-data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Curated Toolkit for Modern Data Science
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A Curated Toolkit for Modern Data Science">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uv-the-swift-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV: The Swift Foundation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruff-lightning-fast-linting-and-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ruff: Lightning-Fast Linting and Formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyright-robust-type-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pyright: Robust Type Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytest-and-coveragepy-ensuring-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pytest and Coverage.py: Ensuring Reliability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-hooks-quality-control-at-commit-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit Hooks: Quality Control at Commit Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-with-github-actions-automated-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI with GitHub Actions: Automated Workflows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-professional-project-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      MkDocs: Professional Project Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-production-consistent-environments-anywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Production: Consistent Environments Anywhere
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode-devcontainer-seamless-development-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      VSCode DevContainer: Seamless Development Environments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSCode DevContainer: Seamless Development Environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure-a-place-for-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Structure: A Place for Everything
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-use-case-autoencoder-for-image-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Use Case: Autoencoder for Image Compression
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Use Case: Autoencoder for Image Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fastapi-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      FastAPI Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-project-kick-off-with-cookiecutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate Project Kick-off with Cookiecutter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automate Project Kick-off with Cookiecutter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-build-better-faster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion: Build Better, Faster
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="supercharge-your-data-science-projects-with-the-uv-data-science-project-template">Supercharge Your Data Science Projects with the UV Data Science Project Template<a class="headerlink" href="#supercharge-your-data-science-projects-with-the-uv-data-science-project-template" title="Permanent link">&para;</a></h1>
+<div align="center">
+  <img src="../readme/supercharge_python_datascience_project.png" alt="Banner" width="75%" height="75%">
+  <p><em>Image by David T. [Source: Astral]</em></p>
+</div>
+
+<p>Data science is a field that thrives on innovation, but even the most groundbreaking ideas can falter without a solid foundation. Setting up a robust, reproducible, and scalable project structure is often a daunting task. Enter the <strong>UV Data Science Project Template</strong> — a modern, feature-rich framework designed to streamline your workflow and provide a solid foundation for your projects.</p>
+<p>In this article, we’ll explore why this template exists, dive into the powerful tools it integrates (like UV or Ruff), examine its structure, and see how it can transform your approach to data science projects.</p>
+<div align="center">
+  <img src="../readme/cookiecutter_medium.png" alt="Banner" width="30%" height="30%">
+</div>
+
+<p><strong>Key Feature:</strong> Automatic Project Setup Generation using Cookiecutter.</p>
+<p>Find the related <a href="https://github.com/tiefenthaler/uv-datascience-project-template">GitHub Repo</a> and related <a href="https://tiefenthaler.github.io/uv-datascience-project-template/">Docs</a> here.</p>
+<p><br /> <!--new line--></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#supercharge-your-data-science-projects-with-the-uv-data-science-project-template">Supercharge Your Data Science Projects with the UV Data Science Project Template</a></li>
+<li><a href="#why-battle-setup-use-the-uv-data-science-project-template">Why Battle Setup? Use the UV Data Science Project Template</a></li>
+<li><a href="#a-curated-toolkit-for-modern-data-science">A Curated Toolkit for Modern Data Science</a><ul>
+<li><a href="#uv-the-swift-foundation"><strong>UV: The Swift Foundation</strong></a></li>
+<li><a href="#ruff-lightning-fast-linting-and-formatting"><strong>Ruff: Lightning-Fast Linting and Formatting</strong></a></li>
+<li><a href="#pyright-robust-type-checking"><strong>Pyright: Robust Type Checking</strong></a></li>
+<li><a href="#pytest-and-coveragepy-ensuring-reliability"><strong>Pytest and Coverage.py: Ensuring Reliability</strong></a></li>
+<li><a href="#pre-commit-hooks-quality-control-at-commit-time"><strong>Pre-Commit Hooks: Quality Control at Commit Time</strong></a></li>
+<li><a href="#ci-with-github-actions-automated-workflows"><strong>CI with GitHub Actions: Automated Workflows</strong></a></li>
+<li><a href="#mkdocs-professional-project-documentation"><strong>MkDocs: Professional Project Documentation</strong></a></li>
+<li><a href="#docker-production-consistent-environments-anywhere"><strong>Docker Production: Consistent Environments Anywhere</strong></a></li>
+<li><a href="#vscode-devcontainer-seamless-development-environments"><strong>VSCode DevContainer: Seamless Development Environments</strong></a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#benefits">Benefits</a></li>
+</ul>
+</li>
+<li><a href="#project-structure-a-place-for-everything">Project Structure: A Place for Everything</a></li>
+<li><a href="#example-use-case-autoencoder-for-image-compression">Example Use Case: Autoencoder for Image Compression</a><ul>
+<li><a href="#objective">Objective</a></li>
+<li><a href="#dataset">Dataset</a></li>
+<li><a href="#implementation">Implementation</a></li>
+<li><a href="#fastapi-integration">FastAPI Integration</a></li>
+</ul>
+</li>
+<li><a href="#automate-project-kick-off-with-cookiecutter">Automate Project Kick-off with Cookiecutter</a><ul>
+<li><a href="#how-to-use">How to Use</a></li>
+</ul>
+</li>
+<li><a href="#conclusion-build-better-faster">Conclusion: Build Better, Faster</a></li>
+</ul>
+<h2 id="why-battle-setup-use-the-uv-data-science-project-template">Why Battle Setup? Use the UV Data Science Project Template<a class="headerlink" href="#why-battle-setup-use-the-uv-data-science-project-template" title="Permanent link">&para;</a></h2>
+<p>The UV Data Science Project Template is engineered to tackle common challenges during setup and development of data science projects by providing a structured environment that ensures your projects are:</p>
+<ul>
+<li><strong>Reproducible by Design</strong>: Forget "it works on my machine." By leveraging <strong>Docker</strong> for containerization and <strong>UV</strong> for precise dependency management, the template creates isolated, consistent environments every time, everywhere.</li>
+<li><strong>Collaboration-Ready</strong>: Stop reinventing the wheel for team workflows. Pre-configured CI/CD pipelines using <strong>GitHub Actions</strong>, automated code quality checks with <strong>pre-commit hooks</strong>, and standardized documentation tools (<strong>MkDocs</strong>) make teamwork seamless and efficient.</li>
+<li><strong>Scalable from the Start</strong>: Transitioning from development to production shouldn't be an afterthought. With production-ready configurations and tools like <strong>Docker</strong>, the template is built for deploying and scaling your data science applications.</li>
+</ul>
+<p>By adopting this template, you free yourself to focus on what truly matters: extracting insights, building models, and solving complex data problems, rather than wrestling with the project setup.</p>
+<h2 id="a-curated-toolkit-for-modern-data-science">A Curated Toolkit for Modern Data Science<a class="headerlink" href="#a-curated-toolkit-for-modern-data-science" title="Permanent link">&para;</a></h2>
+<p>The UV Data Science Project Template integrates a suite of powerful, best-in-class tools, each chosen to optimize specific parts of the data science project development lifecycle.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UV</strong></td>
+<td>A fast and efficient package manager for Python, written in Rust. It replaces tools like pip and virtualenv.</td>
+</tr>
+<tr>
+<td><strong>Ruff</strong></td>
+<td>An extremely fast Python linter, formatter, and code assistant, written in Rust.</td>
+</tr>
+<tr>
+<td><strong>PyRight</strong></td>
+<td>A static type checker for Python, helping to catch type-related errors early in the development process.</td>
+</tr>
+<tr>
+<td><strong>PyTest</strong></td>
+<td>A powerful and flexible testing framework for Python, simplifying writing and running tests.</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>A tool for measuring code coverage of Python programs, helping to ensure that all parts of the code are tested.</td>
+</tr>
+<tr>
+<td><strong>Pre-Commit</strong></td>
+<td>A framework for managing and maintaining multi-language pre-commit hooks to ensure code quality.</td>
+</tr>
+<tr>
+<td><strong>CI-GitHub</strong></td>
+<td>Continuous Integration setup using GitHub Actions to automate testing, linting, and deployment.</td>
+</tr>
+<tr>
+<td><strong>MkDocs</strong></td>
+<td>A static site generator geared towards building project documentation, written in Markdown.</td>
+</tr>
+<tr>
+<td><strong>VSCode-DevContainer</strong></td>
+<td>A development environment setup using Docker and VS Code, providing a consistent and isolated workspace.</td>
+</tr>
+<tr>
+<td><strong>Docker-Production</strong></td>
+<td>Docker setup for creating a lean, efficient, and secure production environment for applications.</td>
+</tr>
+<tr>
+<td><strong>Cookiecutter</strong></td>
+<td>A command-line utility that creates projects from project templates.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uv-the-swift-foundation"><strong>UV: The Swift Foundation</strong><a class="headerlink" href="#uv-the-swift-foundation" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/astral-sh/uv">UV</a> is an extremely fast Python package installer and resolver, written in Rust by Astral (the makers of Ruff). It aims to be a drop-in replacement for tools like <code>pip</code>, <code>pip-tools</code>, and <code>virtualenv</code>.</p>
+<ul>
+<li><strong>Blazing Fast Dependency Management</strong>: Resolves and installs packages significantly faster than traditional tools.</li>
+<li><strong>Unified Environment Management</strong>: Creates and manages virtual environments seamlessly.</li>
+<li><strong>Project Packaging</strong>: Simplifies building and distributing your Python projects.</li>
+<li>
+<p><strong>Usage</strong>: Manage dependencies, run scripts, and handle virtual environments effortlessly. For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Add a new dependency</span>
+uv<span class="w"> </span>add<span class="w"> </span>pytest
+
+<span class="c1"># Install dependencies from pyproject.toml</span>
+uv<span class="w"> </span>sync
+
+<span class="c1"># Run pytest within the managed environment</span>
+uv<span class="w"> </span>run<span class="w"> </span>pytest
+</code></pre></div>
+</li>
+</ul>
+<p>For more details, refer to the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/uv/">UV Guide</a>.</p>
+<h3 id="ruff-lightning-fast-linting-and-formatting"><strong>Ruff: Lightning-Fast Linting and Formatting</strong><a class="headerlink" href="#ruff-lightning-fast-linting-and-formatting" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/astral-sh/ruff">Ruff</a> is an incredibly fast Python linter and formatter, also written in Rust. It can replace multiple tools like Flake8, isort, and Black, dramatically speeding up code quality checks.</p>
+<ul>
+<li><strong>Comprehensive Code Quality</strong>: Enforces style consistency, identifies potential bugs, and sorts imports automatically.</li>
+<li><strong>Pre-Commit Integration</strong>: Ensures code is linted and formatted <em>before</em> it even gets committed.</li>
+<li>
+<p><strong>Usage</strong>: Keep your codebase clean and consistent with simple commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Check for linting errors</span>
+uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>.
+
+<span class="c1"># Format the codebase</span>
+uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>format<span class="w"> </span>.
+</code></pre></div>
+</li>
+</ul>
+<p>For configuration details, see the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/ruff/">Ruff Guide</a>.</p>
+<h3 id="pyright-robust-type-checking"><strong>Pyright: Robust Type Checking</strong><a class="headerlink" href="#pyright-robust-type-checking" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/microsoft/pyright">Pyright</a>, developed by Microsoft, is a fast static type checker for Python. Catching type errors early saves debugging time down the line.</p>
+<ul>
+<li><strong>Static Analysis</strong>: Verifies type annotations for functions, variables, and data structures, preventing runtime errors.</li>
+<li>
+<p><strong>Usage</strong>: Integrated into the CI pipeline and runnable locally:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>pyright
+</code></pre></div>
+</li>
+</ul>
+<p>Learn more in the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/pyright/">Pyright Guide</a>.</p>
+<h3 id="pytest-and-coveragepy-ensuring-reliability"><strong>Pytest and Coverage.py: Ensuring Reliability</strong><a class="headerlink" href="#pytest-and-coveragepy-ensuring-reliability" title="Permanent link">&para;</a></h3>
+<p>Reliable code requires thorough testing. <a href="https://pytest.org">Pytest</a> makes writing tests simple and powerful, while <a href="https://coverage.readthedocs.io/">Coverage.py</a> measures your test coverage.</p>
+<ul>
+<li><strong>Effective Testing</strong>: Write and run unit, integration, or functional tests with Pytest's intuitive framework.</li>
+<li><strong>Code Coverage Insights</strong>: Identify which parts of your code aren't covered by tests, guiding further testing efforts.</li>
+<li>
+<p><strong>Usage</strong>: Execute tests and get a coverage report:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>--cov
+</code></pre></div>
+</li>
+</ul>
+<p>For detailed instructions, refer to the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/pytest/">Pytest Guide</a>.</p>
+<h3 id="pre-commit-hooks-quality-control-at-commit-time"><strong>Pre-Commit Hooks: Quality Control at Commit Time</strong><a class="headerlink" href="#pre-commit-hooks-quality-control-at-commit-time" title="Permanent link">&para;</a></h3>
+<p><a href="https://pre-commit.com/">Pre-commit</a> hooks run checks on your code <em>before</em> you commit it, catching issues early and enforcing standards across the team.</p>
+<ul>
+<li><strong>Automated Checks</strong>: The template includes hooks for Ruff (linting/formatting) and Pyright (type checking).</li>
+<li>
+<p><strong>Usage</strong>: Install once, and it runs automatically on <code>git commit</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="c1"># Install the hooks</span>
+uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+
+<span class="c1"># Run hooks manually on all files</span>
+uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</code></pre></div>
+</li>
+</ul>
+<p>For setup and customization, refer to the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/pre_commit/">Pre-Commit Guide</a>.</p>
+<h3 id="ci-with-github-actions-automated-workflows"><strong>CI with GitHub Actions: Automated Workflows</strong><a class="headerlink" href="#ci-with-github-actions-automated-workflows" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/features/actions">GitHub Actions</a> automate your CI/CD (Continuous Integration/Continuous Deployment) pipelines directly within your repository.</p>
+<ul>
+<li><strong>Automated Quality Gates</strong>: Automatically run linting, type checking, and tests on every push or pull request.</li>
+<li><strong>Streamlined Deployment</strong>: Automate tasks like building documentation and deploying it to GitHub Pages.</li>
+<li><strong>Usage</strong>: Defined in <code>.github/workflows/</code>, these pipelines run automatically based on repository events.</li>
+</ul>
+<p>For more information, see the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/ci_github/">CI Guide</a>.</p>
+<h3 id="mkdocs-professional-project-documentation"><strong>MkDocs: Professional Project Documentation</strong><a class="headerlink" href="#mkdocs-professional-project-documentation" title="Permanent link">&para;</a></h3>
+<p>Clear documentation is crucial for maintainability and collaboration. <a href="https://www.mkdocs.org/">MkDocs</a> generates a polished static website from your Markdown files.</p>
+<ul>
+<li><strong>Effortless Documentation</strong>: Write docs in familiar Markdown; MkDocs handles the rest.</li>
+<li><strong>Helpful Plugins</strong>: Includes <code>mkdocstrings</code> to generate API documentation directly from your code's docstrings and <code>mkdocs-material</code> for a modern, responsive theme.</li>
+<li>
+<p><strong>Usage</strong>: Keep documentation in the <code>docs/</code> folder and preview changes locally:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+</li>
+</ul>
+<p>For setup and deployment, see the <a href="../guides/mkdocs/">MkDocs Guide</a>.</p>
+<h3 id="docker-production-consistent-environments-anywhere"><strong>Docker Production: Consistent Environments Anywhere</strong><a class="headerlink" href="#docker-production-consistent-environments-anywhere" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.docker.com/">Docker</a> containerizes your application, ensuring it runs identically regardless of the underlying system.</p>
+<ul>
+<li><strong>Development Consistency</strong>: Use the provided <code>docker-compose.yml</code> for an easy-to-set-up, isolated development environment.</li>
+<li><strong>Optimized Production Images</strong>: Leverage the <code>multistage.Dockerfile</code> to build lean, secure images suitable for deployment.</li>
+<li>
+<p><strong>Usage</strong>: Build and run your application within a container:</p>
+<div class="language-bash highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>--build
+</code></pre></div>
+</li>
+</ul>
+<p>For a detailed breakdown, refer to the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/docker_prod/">Docker Production Guide</a>.</p>
+<h3 id="vscode-devcontainer-seamless-development-environments"><strong>VSCode DevContainer: Seamless Development Environments</strong><a class="headerlink" href="#vscode-devcontainer-seamless-development-environments" title="Permanent link">&para;</a></h3>
+<p>The <strong>VSCode DevContainer</strong> setup simplifies development by providing a pre-configured, containerized environment tailored for data science projects. It ensures consistency across different systems and eliminates the "it works on my machine" problem.</p>
+<ul>
+<li><strong>Pre-Configured Environment</strong>: Includes Python, UV, Docker, and essential VSCode extensions like Python, Jupyter, and Ruff.</li>
+<li><strong>Volume Mapping</strong>: Syncs your local files with the container, enabling real-time updates without rebuilding the image.</li>
+<li><strong>Multi-Stage Build</strong>: Optimizes the container size while maintaining all necessary tools for development.</li>
+</ul>
+<h4 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Install Prerequisites</strong>:</p>
+<ul>
+<li>Install Docker Desktop.</li>
+<li>Install VSCode and the Remote - Containers extension.</li>
+</ul>
+</li>
+<li>
+<p><strong>Start the DevContainer</strong>:</p>
+<ul>
+<li>Open the project in VSCode.</li>
+<li>Use the command palette (<code>F1</code>) and select "Open Folder in Container...".</li>
+</ul>
+</li>
+<li>
+<p><strong>Run the Application</strong>:</p>
+<ul>
+<li>Run demo.py in the Python virtual environment: <code>uv run main.py</code>.</li>
+<li>The FastAPI application is available at <code>http://localhost:8000</code>.</li>
+<li>
+<p>Test endpoints using <code>curl</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:8000/
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/train
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/embed<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;n_fake_images&quot;: 1}&#39;</span>
+</code></pre></div>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Consistency</strong>: Ensures all team members work in the same environment.</li>
+<li><strong>Customization</strong>: Easily extend the setup with additional tools or configurations.</li>
+<li><strong>Integration</strong>: Works seamlessly with Docker Compose and GitHub Actions.</li>
+</ul>
+<p>For more details, refer to the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/docker_vscode_devcontainer/">DevContainer Guide</a>.</p>
+<h2 id="project-structure-a-place-for-everything">Project Structure: A Place for Everything<a class="headerlink" href="#project-structure-a-place-for-everything" title="Permanent link">&para;</a></h2>
+<p>The UV Data Science Project Template provides a logical and extensible directory structure:</p>
+<ul>
+<li><strong><code>src/</code></strong>: Contains your core Python source code. The example includes:</li>
+<li>A PyTorch Lightning-based autoencoder model (<code>src/lit_auto_encoder.py</code>).</li>
+<li>Training logic (<code>src/train_autoencoder.py</code>).</li>
+<li>A FastAPI application (<code>src/app_fastapi_autoencoder.py</code>) to serve the ML model.</li>
+<li><strong><code>tests/</code></strong>: Houses unit and integration tests written using Pytest.</li>
+<li><strong><code>docs/</code></strong>: Holds your project documentation in Markdown format, ready for MkDocs.</li>
+<li><strong>Configuration Files</strong>: Root directory contains pre-configured files like <code>pyproject.toml</code> (for UV, Ruff, Pytest, Pyright), <code>.pre-commit-config.yaml</code>, etc.</li>
+<li><strong>Docker Support</strong>: <code>Dockerfile</code>, <code>multistage.Dockerfile</code>, and <code>docker-compose.yml</code> provide containerization setups for development and production.</li>
+<li><strong>CI/CD Workflows</strong>: <code>.github/workflows/</code> defines the automated GitHub Actions pipelines.</li>
+<li><strong>Cookiecutter Template</strong>: The template structure is designed to be used with Cookiecutter, allowing you to create new projects based on this template easily. Including a Makefile to simplify common tasks like installing dependencies, running tests, and starting the FastAPI server.</li>
+</ul>
+<h2 id="example-use-case-autoencoder-for-image-compression">Example Use Case: Autoencoder for Image Compression<a class="headerlink" href="#example-use-case-autoencoder-for-image-compression" title="Permanent link">&para;</a></h2>
+<p>To demonstrate the template's practical application, it includes a machine learning use case: training an autoencoder on the MNIST dataset using PyTorch Lightning and serving it via FastAPI.</p>
+<h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
+<p>The autoencoder learns a compressed representation (encoding) of handwritten digit images and reconstructs them, showcasing unsupervised feature learning.</p>
+<h3 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h3>
+<p>The classic <a href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a> of 28x28 grayscale handwritten digits.</p>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>LitAutoEncoder</code></strong>: A <code>pytorch_lightning.LightningModule</code> defining the encoder, decoder, and training/validation logic, simplifying PyTorch boilerplate.</li>
+<li><strong><code>train_litautoencoder</code></strong>: A function orchestrating the data loading and model training process.</li>
+</ul>
+<h3 id="fastapi-integration">FastAPI Integration<a class="headerlink" href="#fastapi-integration" title="Permanent link">&para;</a></h3>
+<p>A simple API built with <a href="https://fastapi.tiangolo.com/">FastAPI</a> allows interaction with the model:</p>
+<ul>
+<li>Train the autoencoder via an API endpoint.</li>
+<li>Generate embeddings (compressed representations) for new image data.</li>
+</ul>
+<p>This demonstrates how the template structure supports integrating model training and API deployment within a single, organized project.</p>
+<h2 id="automate-project-kick-off-with-cookiecutter">Automate Project Kick-off with Cookiecutter<a class="headerlink" href="#automate-project-kick-off-with-cookiecutter" title="Permanent link">&para;</a></h2>
+<p>Manually copying templates is error-prone. This template leverages <strong>Cookiecutter</strong> to automate the creation of new projects based on its structure.</p>
+<ul>
+<li><strong>Consistency</strong>: Every new project starts with the same proven structure and tooling.</li>
+<li><strong>Speed</strong>: Skip the repetitive setup and jump straight into development.</li>
+<li><strong>Customization</strong>: Tailor essential project metadata during creation.</li>
+</ul>
+<p>Cookiecutter turns starting a best-practice data science project into a simple command-line interaction.</p>
+<h3 id="how-to-use">How to Use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Install Cookiecutter</strong> (if you haven't already):</p>
+<div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>cookiecutter
+</code></pre></div>
+</li>
+<li>
+<p><strong>Generate Your Project</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code>cookiecutter<span class="w"> </span>gh:tiefenthaler/uv-datascience-project-template
+</code></pre></div>
+</li>
+<li>
+<p><strong>Customize</strong>: Cookiecutter will prompt you for details like project name, author, Python version, etc.</p>
+</li>
+<li><strong>Get Started</strong>: <code>cd</code> into your newly created project directory and follow the setup instructions in its <code>README.md</code>.</li>
+<li>Use the <strong><code>Makefile</code></strong> to manage the project:</li>
+<li>
+<p>Create virtual environment and install dependencies:</p>
+<div class="language-bash highlight"><pre><span></span><code>make<span class="w"> </span>install
+</code></pre></div>
+</li>
+<li>
+<p>Run checks for code quality:</p>
+<div class="language-bash highlight"><pre><span></span><code>make<span class="w"> </span>check
+</code></pre></div>
+</li>
+<li>
+<p>Run the FastAPI application:</p>
+<div class="language-bash highlight"><pre><span></span><code>make<span class="w"> </span>run
+</code></pre></div>
+</li>
+<li>
+<p>Run help command to see available <code>Makefile</code> options:</p>
+<div class="language-bash highlight"><pre><span></span><code>make<span class="w"> </span><span class="nb">help</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run additional commands like "test", "build", and others as needed.</p>
+</li>
+<li>Happy coding!</li>
+</ol>
+<p>For more details, see the <a href="../guides/cookiecutter/">Cookiecutter Guide</a>.</p>
+<h2 id="conclusion-build-better-faster">Conclusion: Build Better, Faster<a class="headerlink" href="#conclusion-build-better-faster" title="Permanent link">&para;</a></h2>
+<p>The <strong>UV Data Science Project Template</strong> offers a robust, modern foundation for your data science endeavors. By integrating fast, efficient tools like UV and Ruff, promoting best practices like reproducibility and automated testing, and simplifying setup with Cookiecutter, it empowers you to focus on innovation rather than infrastructure.</p>
+<p>Stop reinventing the project setup wheel. Give your next data science project a significant head start with this template and experience a more streamlined, collaborative, and production-ready workflow.</p>
+<p><strong>Ready to try it out? Find the template on <a href="https://github.com/tiefenthaler/uv-datascience-project-template">GitHub</a>.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 David Tiefenthaler
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.expand", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

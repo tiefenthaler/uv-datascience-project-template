@@ -1,0 +1,1627 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../docker_prod/">
+      
+      
+        <link rel="next" href="../cookiecutter/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Docker-VSCode-DevContainer - UV Data Science Project Template</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vscode-dev-container-setup-for-data-science-projects-using-uv" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="UV Data Science Project Template" class="md-header__button md-logo" aria-label="UV Data Science Project Template" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UV Data Science Project Template
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Docker-VSCode-DevContainer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tiefenthaler/uv-datascience-project-template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Source Code API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../notebooks/app_without_fastapi/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Notebooks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UV Data Science Project Template" class="md-nav__button md-logo" aria-label="UV Data Science Project Template" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    UV Data Science Project Template
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tiefenthaler/uv-datascience-project-template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogpost_uv_data_science_project_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blogpost
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ruff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ruff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PyRight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PyTest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre_commit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-Commit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI-GitHub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_prod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker-Production
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Docker-VSCode-DevContainer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker-VSCode-DevContainer
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dev-container-main-configurations-and-installations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dev Container Main Configurations and Installations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dev Container Main Configurations and Installations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-organization-within-dockerfiledebug-docker-composeyml-devcontainerjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-extensions-for-data-science-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code Extensions for Data Science Projects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VS Code Extensions for Data Science Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-python-packages-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional python packages for development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-python-packages-for-project-and-code-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional python packages for project and code documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-tools-to-support-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional tools to support development
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookiecutter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookiecutter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Source Code API Reference
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Source Code API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/autoencoder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autoencoder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Training
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/fastapi_app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Notebooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notebooks/app_without_fastapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jupyter Notebook - App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dev-container-main-configurations-and-installations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dev Container Main Configurations and Installations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dev Container Main Configurations and Installations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-organization-within-dockerfiledebug-docker-composeyml-devcontainerjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-extensions-for-data-science-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code Extensions for Data Science Projects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VS Code Extensions for Data Science Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-python-packages-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional python packages for development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-python-packages-for-project-and-code-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional python packages for project and code documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-tools-to-support-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional tools to support development
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!-- markdownlint-disable MD041 -->
+
+<!-- Using PyMdown Snippets for inclusion -->
+<h1 id="vscode-dev-container-setup-for-data-science-projects-using-uv">VSCode Dev-Container Setup for Data Science Projects using UV<a class="headerlink" href="#vscode-dev-container-setup-for-data-science-projects-using-uv" title="Permanent link">&para;</a></h1>
+<p>This is a <a href="https://code.visualstudio.com/docs/devcontainers/containers"><strong>containerized dev setup</strong></a> respectively related for using <a href="https://code.visualstudio.com/docs/remote/containers"><strong>remote containers</strong></a> to work on data science / machine learning projects using <strong><a href="https://docs.astral.sh/uv/">UV</a>, <a href="https://git-scm.com/">Git</a></strong> with <strong><a href="https://code.visualstudio.com/">VSCode</a></strong>.</p>
+<p>The repository contains a setup of a local development container using docker compose and VS Code to develop data science projects with UV in a consistent and robust but yet in a simple and customizable way. The Repo provides the configurations and installations for your container, so you can straight get started with your data science work while enjoying the benefits of using docker containers.</p>
+<p>Find the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/guides/docker_vscode_devcontainer/"><strong>Documentation</strong></a> about this VSCode Dev-Container for Data Science.</p>
+<ul>
+<li><a href="#vscode-dev-container-setup-for-data-science-projects-using-uv">VSCode Dev-Container Setup for Data Science Projects using UV</a></li>
+<li><a href="#dev-container-main-configurations-and-installations">Dev Container Main Configurations and Installations</a><ul>
+<li><a href="#setup-organization-within-dockerfiledebug--docker-composeyml--devcontainerjson">Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json</a></li>
+</ul>
+</li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#vs-code-extensions-for-data-science-projects">VS Code Extensions for Data Science Projects</a><ul>
+<li><a href="#additional-python-packages-for-development">Additional python packages for development</a></li>
+<li><a href="#additional-python-packages-for-project-and-code-documentation">Additional python packages for project and code documentation</a></li>
+<li><a href="#additional-tools-to-support-development">Additional tools to support development</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="dev-container-main-configurations-and-installations">Dev Container Main Configurations and Installations<a class="headerlink" href="#dev-container-main-configurations-and-installations" title="Permanent link">&para;</a></h2>
+<p>Using a Python image with UV pre-installed, which includes Python, as well as a Debian base image including the VS Code devcontainer base image.
+Multi-Stage Build: Despite using two base images, only one container is built. The final container is based on the second image, while copying content from the UV stage into the final stage.</p>
+<ul>
+<li><strong>UV</strong>, an extremely fast Python package, virtual environment and project manager.<ul>
+<li>🚀 A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and more.</li>
+<li>⚡️ 10-100x faster than pip.</li>
+<li>🐍 Installs and manages Python versions.</li>
+<li>🛠️ Runs and installs Python applications.</li>
+<li>❇️ Runs single-file scripts, with support for inline dependency metadata.</li>
+<li>🗂️ Provides comprehensive project management, with a universal lockfile.</li>
+<li>🔩 Includes a pip-compatible interface for a performance boost with a familiar CLI.</li>
+<li>🏢 Supports Cargo-style workspaces for scalable projects.</li>
+</ul>
+</li>
+<li><strong>Volume Mapping</strong>: A volume will be used to map a directory on your local file system to a directory inside the Docker container. This way, any changes you make to your code locally will be immediately reflected inside the container, where you can run and test the code.</li>
+<li><strong>Git:</strong> A distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.</li>
+<li><strong>VS Code</strong>, including extensions like Python, Jupyter Notebooks, Docker, PyLance, Ruff and more. Find my list of VS Code <strong>Extensions</strong> for Data Science Projects in <a href="#vs-code-extensions-for-data-science-projects">this section</a> below.</li>
+</ul>
+<h3 id="setup-organization-within-dockerfiledebug-docker-composeyml-devcontainerjson">Setup organization within: Dockerfile.debug | docker-compose.yml | devcontainer.json<a class="headerlink" href="#setup-organization-within-dockerfiledebug-docker-composeyml-devcontainerjson" title="Permanent link">&para;</a></h3>
+<p>Those files define the dev container setup for data science projects. The list below gives a short overview of the single files. Details can be found in the comments in the single files.</p>
+<ul>
+<li>
+<p><strong>Dockerfile.debug:</strong> This file defines the base image for your development container and the steps needed to configure it. Think of it as the blueprint for your container's operating system, dependencies, and tools. It's the foundation upon which everything else is built.</p>
+<details class="example" open="open">
+<summary>Click to toggle contents of the <code>Dockerfile</code></summary>
+<div class="language-Dockerfile highlight"><pre><span></span><code><span class="c"># Dockerfile for development purposes.</span>
+<span class="c"># ------------------------------------</span>
+<span class="c"># Use a python image with uv pre-installed and a Debian base image including the VS Code devcontainer base image.</span>
+<span class="c"># To use the image without VS CODE IDE, add lines as indicated (adjust docker-compose.yml as well as documented).</span>
+<span class="c"># ---------------------------------</span>
+
+<span class="c"># Define a build-time argument with a default value for base container images.</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">UV_VER</span><span class="o">=</span><span class="m">0</span>.5.24
+<span class="k">ARG</span><span class="w"> </span><span class="nv">DEBIAN_VER</span><span class="o">=</span>bookworm
+<span class="k">ARG</span><span class="w"> </span><span class="nv">WORKSPACE_NAME_</span><span class="o">=</span>workspace
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PROJECT_NAME_</span><span class="o">=</span><span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
+
+<span class="c"># Multi-Stage Build: Despite using two base images, only one container is built and run.</span>
+<span class="c"># The final container is based on the second image, while copying content from the uv stage into the final stage.</span>
+<span class="c"># FROM ghcr.io/astral-sh/uv:python3.12-bookworm</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ghcr.io/astral-sh/uv:$UV_VER</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">uv</span>
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">mcr.microsoft.com/vscode/devcontainers/base:$DEBIAN_VER</span>
+
+<span class="c"># Install/Update linux packages; install common dev tools like: git, process tools, ...</span>
+<span class="c"># hadolint ignore=DL3008</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="se">\</span>
+<span class="w">    </span>procps<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>swig<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>#<span class="w"> </span>To<span class="w"> </span>reduce<span class="w"> </span>the<span class="w"> </span>image<span class="w"> </span>size,<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>recommended<span class="w"> </span>refresh<span class="w"> </span>the<span class="w"> </span>package<span class="w"> </span>cache<span class="w"> </span>as<span class="w"> </span>follows.
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="c"># Copies files or directories from the uv stage into the final stage,</span>
+<span class="c"># and ensures that the ownership of the copied files is adjusted to the user and group in the final image,</span>
+<span class="c"># and making its functionality or binaries available in the final container.</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>uv<span class="w"> </span>--chown<span class="o">=</span>vscode:<span class="w"> </span>/uv<span class="w"> </span>/uvx<span class="w"> </span>/bin/
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/vscode/${WORKSPACE_NAME_}</span>
+
+<span class="c"># The code to run when container is started:</span>
+<span class="c"># Common practice to keep the Docker container running without performing any significant action.</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tail&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/dev/null&quot;</span><span class="p">]</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p><strong>docker-compose.yml:</strong> (Optional, but often used) This file is used when you have multiple containers that need to work together for your development environment. It defines how these containers interact, their dependencies, and their network configuration. Even if only a single service is used, it defines the additional configuration specific for your data science projects like volume mapping or ports which is optional and therefore not defined in the Dockerfile.debug. This enables the dev container setup to be used with other IDEs then VS Code.</p>
+<details class="example" open="open">
+<summary>Click to toggle contents of the <code>docker-compose.yml</code></summary>
+<div class="language-yaml highlight"><pre><span></span><code><span class="c1"># Dev Container Configuration File.</span>
+<span class="c1"># ---------------------------------</span>
+<span class="c1"># Standard Configuration for the service to be used to develop data science applications.</span>
+<span class="c1"># Using bind mounts instead of watch for development to sync changes made in the container back to the host.</span>
+<span class="c1"># This file depends on a .env file in the root directory of the dev container for dynamic variable interpolation.</span>
+<span class="c1"># - The .env file is automatically loaded per default by Docker Compose and is not passed to the container during build.</span>
+<span class="c1"># ---------------------------------</span>
+
+<span class="c1"># The x-args section defines a reusable set of arguments using YAML anchors.</span>
+<span class="c1"># - BUILD arguments (&quot;UV_VER&quot;, &quot;DEBIAN_VER&quot; and &quot;WORKSPACE_NAME&quot;) to pass to Dockerfile.</span>
+<span class="nt">x-args</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;default-args</span>
+<span class="w">  </span><span class="nt">UV_VER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.5&quot;</span>
+<span class="w">  </span><span class="nt">DEBIAN_VER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bookworm&quot;</span>
+<span class="w">  </span><span class="nt">WORKSPACE_NAME_</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${WORKSPACE_NAME}</span>
+<span class="w">  </span><span class="nt">PROJECT_NAME_</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${PROJECT_NAME}</span>
+
+<span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="c1"># Top level element to configure the arguments of multiple services.</span>
+<span class="w">  </span><span class="nt">myproject</span><span class="p">:</span><span class="w"> </span><span class="c1"># &quot;project&quot; refers to the name of your project/application for which configurations are defined.</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="c1"># Tells Docker Compose to build the Docker image using the Dockerfile in the specified directory.</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./Dockerfile.debug</span>
+<span class="w">      </span><span class="c1"># Build argument (passed to Dockerfile only)</span>
+<span class="w">      </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*default-args</span><span class="w"> </span><span class="c1"># The &lt;&lt;: *default-args syntax merges the default-args into the args section of the build configuration.</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${DEV_USER}.dev-container-uv.${PROJECT_NAME}&quot;</span><span class="w"> </span><span class="c1"># Explicit way to define the image name</span>
+
+<span class="w">    </span><span class="c1"># Host the FastAPI application on port 8000.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+
+<span class="w">    </span><span class="c1"># Volumes are persistent data stores (outside container), mounted to be usable by the container.</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Mount the current directory to ${WORKSPACE_NAME} so code changes don&#39;t require an image rebuild. .venv is excluded in the .dockerignore file.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
+<span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..</span>
+<span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/vscode/${WORKSPACE_NAME}</span>
+<span class="w">      </span><span class="c1"># Mount the virtual environment separately, so the developer&#39;s environment doesn&#39;t end up in the container.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">venv</span>
+<span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/vscode/${WORKSPACE_NAME}/.venv</span>
+
+<span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/vscode/${WORKSPACE_NAME}</span>
+
+<span class="w">    </span><span class="c1"># Runtime environment variable, passed to devcontainer.json. Not available for volumes, networks, or build arguments.</span>
+<span class="w">    </span><span class="c1"># Since docker detects a .env file during build per default, the .env file will be loaded anyways.</span>
+<span class="w">    </span><span class="c1"># Set explicitly for clarity to indicate that the environment variables are used.</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="c1"># Default command to start the dev container.</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sh -c &quot;chmod -R 777 /vscode/${WORKSPACE_NAME} &amp;&amp; tail -f /dev/null&quot;</span><span class="w"> </span><span class="c1"># Set permissions on the working directory for root user.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-compose down</span><span class="w"> </span><span class="c1"># Remove the container after exiting.</span>
+
+<span class="c1"># Define the volumes of the docker container.</span>
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">venv</span><span class="p">:</span><span class="w"> </span><span class="c1"># Volume for the virtual environment for persistent in the container.</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p><strong>devcontainer.json:</strong> It configures VS Code (or other supporting IDEs) to use the Docker container as your development environment. It links the Dockerfile (or docker-compose.yml) to VS Code and defines various settings like VS Code extensions or the default environment used by VS Code that are only related to use the given IDE.</p>
+<details class="example" open="open">
+<summary>Click to toggle contents of the <code>devcontainer.json</code></summary>
+<div class="language-json highlight"><pre><span></span><code><span class="c1">// UV | VS Code - Setup.</span>
+<span class="c1">//---------------------</span>
+<span class="c1">// This config is set up to be only specific to VS Code.</span>
+<span class="c1">// Other configs that do not relate to VS Code are defined in the docker-compose.yml file.</span>
+<span class="c1">// This enables the dev container setup to be used with other IDEs, ignoring this file.</span>
+<span class="c1">//---------------------</span>
+<span class="c1">// Default and dynamic properties for the devcontainer setup:</span>
+<span class="c1">// - Default service: &quot;myproject&quot;, relates to the service defined in the docker-compose.yml.</span>
+<span class="c1">// - Default &quot;workspaceFolder&quot; is set to &quot;workspace&quot; (within the &quot;/vscode/&quot; folder in the container).</span>
+<span class="c1">// For format details, see https://aka.ms/devcontainer.json.</span>
+<span class="c1">//---------------------</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${localEnv:LOGNAME}.dev-container-uv.${localWorkspaceFolderBasename}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// Build image using docker compose based on build specs in docker-compose.yml</span>
+<span class="w">  </span><span class="nt">&quot;dockerComposeFile&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./docker-compose.yml&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myproject&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;runServices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;myproject&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;workspaceFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/vscode/workspace&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;postCreateCommand&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uv-sync--frozen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv sync --frozen --no-binary-package ${localWorkspaceFolderBasename}&quot;</span><span class="w"> </span><span class="c1">// By default, uv installs projects and workspace members in editable mode, such that changes to the source code are immediately reflected in the environment.</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;postStartCommand&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Optional: If applicable, add the following lines for installations.</span>
+<span class="w">    </span><span class="nt">&quot;uv-run-pre-commit-install&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv run pre-commit install&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;ghcr.io/dhoeric/features/hadolint:1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;customizations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// When connecting to a docker container your local VS Code starts an instance without extensions to ensure isolation and consistency.</span>
+<span class="w">    </span><span class="c1">// Therefore extensions can be specified here for automatic installation when connecting.</span>
+<span class="w">    </span><span class="nt">&quot;vscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Define terminal shell for Dev Container.</span>
+<span class="w">        </span><span class="nt">&quot;terminal.integrated.profiles.linux&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;bash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/bin/bash&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;jupyter.notebookFileRoot&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceRoot}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/vscode/workspace/.venv/bin/python&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="c1">// Use the VS Code Extensions &quot;Identifier&quot; to define extensions.</span>
+<span class="w">      </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// Python</span>
+<span class="w">        </span><span class="s2">&quot;ms-python.python&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-toolsai.jupyter&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Docker</span>
+<span class="w">        </span><span class="s2">&quot;ms-azuretools.vscode-docker&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-vscode-remote.remote-containers&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-vscode-remote.remote-ssh-edit&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-vscode-remote.remote-ssh&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;exiasr.hadolint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Formatting and Linting</span>
+<span class="w">        </span><span class="s2">&quot;charliermarsh.ruff&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;davidanson.vscode-markdownlint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;xshrim.txt-syntax&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;tamasfe.even-better-toml&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;streetsidesoftware.code-spell-checker&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-pyright.pyright&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-python.vscode-pylance&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Data</span>
+<span class="w">        </span><span class="s2">&quot;alexcvzz.vscode-sqlite&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;grapecity.gc-excelviewer&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;mechatroner.rainbow-csv&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;zainchen.json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;yzane.markdown-pdf&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ms-toolsai.datawrangler&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;yzhang.markdown-all-in-one&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Cloud</span>
+<span class="w">        </span><span class="c1">//&quot;ms-azuretools.vscode-docker&quot;,</span>
+<span class="w">        </span><span class="c1">// Git</span>
+<span class="w">        </span><span class="s2">&quot;github.remotehub&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// AI Coding Assistant</span>
+<span class="w">        </span><span class="s2">&quot;github.copilot&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github.copilot-chat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Other</span>
+<span class="w">        </span><span class="s2">&quot;richie5um2.vscode-sort-json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;oliversen.chatgpt-docstrings&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;remoteUser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vscode&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ul>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Install Docker Desktop.</li>
+<li>Install VSCode.</li>
+<li>Install VSCode Extensions.<ul>
+<li>Install VSCode remote container extension: <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">ms-vscode-remote.remote-containers</a>.</li>
+</ul>
+</li>
+<li>Start dev container:  F1 + "Open folder in container ...".</li>
+<li>
+<p>To try the setup:</p>
+<ul>
+<li>Clone the repository.</li>
+<li>Run demo.py in the Python virtual environment (<code>uv run main.py</code>).</li>
+<li>
+<p>Your application will be available at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
+<ul>
+<li>
+<p>Welcome root request of the FastAPI app, providing an app description.</p>
+<div class="language-bash highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:8000/
+</code></pre></div>
+</li>
+<li>
+<p>Test the machine learning endpoints with curl:</p>
+<div class="language-bash highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/train<span class="w"> </span><span class="se">\</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/embed<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;n_fake_images&quot;: 1}&#39;</span>
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>For more information about the application, see the <a href="https://tiefenthaler.github.io/uv-datascience-project-template/">README</a> in the root directory of the repository.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Optional Steps:</p>
+<ul>
+<li>Change the Docker Container in Dockerfile and/or docker-compose.yml.</li>
+<li>Add/remove VSCode settings and extensions in .devcontainer/devcontainer.json.</li>
+<li>Update .gitignore and other config files to match your setup.</li>
+</ul>
+<h2 id="vs-code-extensions-for-data-science-projects">VS Code Extensions for Data Science Projects<a class="headerlink" href="#vs-code-extensions-for-data-science-projects" title="Permanent link">&para;</a></h2>
+<p>The below extensions are installed for VS Code in the dev container, as defined in <code>devcontainer.json</code>.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">alexcvzz.vscode-sqlite</span><span class="w"> </span><span class="c1"># SQLite query execution and browsing</span>
+<span class="l l-Scalar l-Scalar-Plain">charliermarsh.ruff</span><span class="w"> </span><span class="c1"># Python linter and code formatter</span>
+<span class="l l-Scalar l-Scalar-Plain">davidanson.vscode-markdownlint</span><span class="w"> </span><span class="c1"># Markdown linter</span>
+<span class="l l-Scalar l-Scalar-Plain">exiasr.hadolint</span><span class="w"> </span><span class="c1"># A Dockerfile linter</span>
+<span class="l l-Scalar l-Scalar-Plain">github.copilot</span><span class="w"> </span><span class="c1"># AI-powered code completion</span>
+<span class="l l-Scalar l-Scalar-Plain">github.copilot-chat</span><span class="w"> </span><span class="c1"># Chat with your AI coding assistant</span>
+<span class="l l-Scalar l-Scalar-Plain">github.remotehub</span><span class="w"> </span><span class="c1"># Manage your GitHub repositories</span>
+<span class="l l-Scalar l-Scalar-Plain">grapecity.gc-excelviewer</span><span class="w"> </span><span class="c1"># Excel file viewer</span>
+<span class="l l-Scalar l-Scalar-Plain">hediet.vscode-drawio</span><span class="w"> </span><span class="c1"># Draw.io integration</span>
+<span class="l l-Scalar l-Scalar-Plain">jeff-hykin.polacode-2019</span><span class="w"> </span><span class="c1"># Generate code blocks from images</span>
+<span class="l l-Scalar l-Scalar-Plain">mechatroner.rainbow-csv</span><span class="w"> </span><span class="c1"># Colorizes CSV files for better readability</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-azuretools.vscode-docker</span><span class="w"> </span><span class="c1"># Docker extension for VS Code</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-pyright.pyright</span><span class="w"> </span><span class="c1"># Static type checker</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-python.python</span><span class="w"> </span><span class="c1"># Python language support</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-python.vscode-pylance</span><span class="w"> </span><span class="c1"># Python language server for enhanced code analysis</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-toolsai.datawrangler</span><span class="w"> </span><span class="c1"># Data transformation and cleaning tool</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-toolsai.jupyter</span><span class="w"> </span><span class="c1"># Jupyter Notebooks</span>
+<span class="l l-Scalar l-Scalar-Plain">ms-pyright.pyright</span><span class="w"> </span><span class="c1"># Static type checker</span>
+<span class="l l-Scalar l-Scalar-Plain">oliversen.chatgpt-docstrings</span>
+<span class="l l-Scalar l-Scalar-Plain">richie5um2.vscode-sort-json</span><span class="w"> </span><span class="c1"># Sorts JSON objects</span>
+<span class="l l-Scalar l-Scalar-Plain">streetsidesoftware.code-spell-checker</span><span class="w"> </span><span class="c1"># Spell checker for multiple languages</span>
+<span class="l l-Scalar l-Scalar-Plain">tamasfe.even-better-toml</span><span class="w"> </span><span class="c1"># Enhanced TOML language support</span>
+<span class="l l-Scalar l-Scalar-Plain">tomoki1207.pdf</span><span class="w"> </span><span class="c1"># PDF viewer</span>
+<span class="l l-Scalar l-Scalar-Plain">xshrim.txt-syntax</span><span class="w"> </span><span class="c1"># Syntax highlighting for plain text files</span>
+<span class="l l-Scalar l-Scalar-Plain">zainchen.json</span><span class="w"> </span><span class="c1"># JSON language support (likely provides syntax highlighting, validation, etc.)</span>
+<span class="l l-Scalar l-Scalar-Plain">yzane.markdown-pdf</span><span class="w"> </span><span class="c1"># Generate PDF from Markdown files</span>
+<span class="l l-Scalar l-Scalar-Plain">yzhang.markdown-all-in-one</span><span class="w"> </span><span class="c1"># All-in-one Markdown extension</span>
+</code></pre></div>
+<h3 id="additional-python-packages-for-development">Additional python packages for development<a class="headerlink" href="#additional-python-packages-for-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li>uv</li>
+<li>ruff</li>
+<li>pytest</li>
+<li>pytest-cov</li>
+<li>pre-commit</li>
+<li>pyright</li>
+<li>ipykernel</li>
+<li>jupyterlab</li>
+<li>toml-sort</li>
+</ul>
+<h3 id="additional-python-packages-for-project-and-code-documentation">Additional python packages for project and code documentation<a class="headerlink" href="#additional-python-packages-for-project-and-code-documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>mkdocs</li>
+<li>mkdocs-include-markdown-plugin</li>
+<li>mkdocs-jupyter</li>
+<li>mkdocs-material</li>
+<li>mkdocstrings[python]</li>
+</ul>
+<h3 id="additional-tools-to-support-development">Additional tools to support development<a class="headerlink" href="#additional-tools-to-support-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li>GitHub</li>
+<li>GitHub Actions and Workflows for CI</li>
+<li>GitHub Pages (to host your documentation)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 David Tiefenthaler
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.expand", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1500 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../ruff/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>UV - UV Data Science Project Template</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uv-an-extremely-fast-python-package-and-project-manager-written-in-rust" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="UV Data Science Project Template" class="md-header__button md-logo" aria-label="UV Data Science Project Template" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UV Data Science Project Template
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UV
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tiefenthaler/uv-datascience-project-template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Source Code API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../notebooks/app_without_fastapi/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Notebooks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UV Data Science Project Template" class="md-nav__button md-logo" aria-label="UV Data Science Project Template" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    UV Data Science Project Template
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tiefenthaler/uv-datascience-project-template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blogpost_uv_data_science_project_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blogpost
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    UV
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    UV
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-with-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started with UV
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started with UV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install uv
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install uv">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-and-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS and Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-python-packages-and-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Python packages and dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-python-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Python code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-jupyterlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launching JupyterLab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-manage-virtual-environments-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Manage virtual environments manually
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uv-self-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV self update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uv-update-packages-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV update packages (dependencies)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ruff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ruff
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PyRight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PyTest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre_commit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pre-Commit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI-GitHub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_prod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker-Production
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker_vscode_devcontainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker-VSCode-DevContainer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookiecutter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookiecutter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Source Code API Reference
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Source Code API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/autoencoder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autoencoder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Training
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/fastapi_app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FastAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Notebooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notebooks/app_without_fastapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jupyter Notebook - App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-with-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started with UV
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started with UV">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install uv
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install uv">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-and-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS and Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-python-packages-and-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Python packages and dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-python-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Python code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-jupyterlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launching JupyterLab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-manage-virtual-environments-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Manage virtual environments manually
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uv-self-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV self update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uv-update-packages-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV update packages (dependencies)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="uv-an-extremely-fast-python-package-and-project-manager-written-in-rust">UV, an extremely fast Python package and project manager, written in Rust<a class="headerlink" href="#uv-an-extremely-fast-python-package-and-project-manager-written-in-rust" title="Permanent link">&para;</a></h1>
+<p><a href="https://docs.astral.sh/uv/">UV</a> is used as a fast and efficient package manager for this project, replacing tools like pip, virtualenv, and pip-tools. It significantly speeds up the installation of dependencies and management of the virtual environment, making the development process smoother and faster. UV ensures consistent dependency resolution and environment setup across different development environments.</p>
+<ul>
+<li><a href="#uv-an-extremely-fast-python-package-and-project-manager-written-in-rust">UV, an extremely fast Python package and project manager, written in Rust</a></li>
+<li><a href="#getting-started-with-uv">Getting Started with UV</a><ul>
+<li><a href="#install-uv">Install uv</a></li>
+<li><a href="#macos-and-linux">macOS and Linux</a></li>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#install-python">Install Python</a></li>
+<li><a href="#install-python-packages-and-dependencies">Install Python packages and dependencies</a></li>
+<li><a href="#run-python-code">Run Python code</a></li>
+<li><a href="#launching-jupyterlab">Launching JupyterLab</a></li>
+<li><a href="#optional-manage-virtual-environments-manually">Optional: Manage virtual environments manually</a></li>
+<li><a href="#uv-self-update">UV self update</a></li>
+<li><a href="#uv-update-packages-dependencies">UV update packages (dependencies)</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>UV</strong>, an extremely fast Python package, virtual environment and project manager.</p>
+<ul>
+<li>🚀 A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, and more.</li>
+<li>⚡️ 10-100x faster than pip.</li>
+<li>🐍 Installs and manages Python versions.</li>
+<li>🛠️ Runs and installs Python applications.</li>
+<li>❇️ Runs single-file scripts, with support for inline dependency metadata.</li>
+<li>🗂️ Provides comprehensive project management, with a universal lockfile.</li>
+<li>🔩 Includes a pip-compatible interface for a performance boost with a familiar CLI.</li>
+<li>🏢 Supports Cargo-style workspaces for scalable projects.</li>
+</ul>
+<p><strong>Specifically, UV is utilized for:</strong></p>
+<ul>
+<li><strong>Dependency Management:</strong> UV manages both project dependencies and development dependencies, ensuring that all necessary packages are installed quickly and efficiently. This includes <code>pydantic-settings</code> for robust configuration management.</li>
+<li><strong>Virtual Environment Creation:</strong> UV creates and manages the project's virtual environment, isolating project dependencies from the global Python environment.</li>
+<li><strong>Speed and Efficiency:</strong> UV's speed advantage over traditional tools like <code>pip</code> significantly reduces the time spent on environment setup and dependency installation, especially in projects with many dependencies.</li>
+<li><strong>Consistency:</strong> By using UV, the project ensures that the development environment is consistent across different machines and platforms, reducing the risk of "it works on my machine" issues.</li>
+<li><strong>Integration with pyproject.toml:</strong> UV leverages the <code>pyproject.toml</code> file for project configuration, making it easy to define and manage dependencies, scripts, and other project settings.</li>
+<li><strong>Running Tools:</strong> UV is used to run development tools like <code>ruff</code>, <code>pytest</code>, and <code>toml-sort</code> directly from the command line, ensuring that the correct versions of these tools are used and that they are isolated from other projects. Example: <code>uv run ruff .</code></li>
+<li><strong>Packaging:</strong> UV can be used to package the project for distribution, creating a <code>wheel</code> file that can be uploaded to PyPI or installed directly.</li>
+<li><strong>Lockfile Management:</strong> UV uses a <code>uv.lock</code> file to ensure that all dependencies are installed at the exact versions specified, preventing compatibility issues and ensuring reproducibility.</li>
+</ul>
+<p><strong>Key features of UV include:</strong></p>
+<ul>
+<li><strong>Written in Rust:</strong> UV is written in Rust, which provides excellent performance and memory safety.</li>
+<li><strong>Compatibility:</strong> UV is compatible with <code>pip</code> and <code>virtualenv</code>, so it can be used with existing Python projects without requiring major changes.</li>
+<li><strong>pyproject.toml Support:</strong> UV fully supports the <code>pyproject.toml</code> file, which is the recommended way to configure Python projects.</li>
+<li><strong>Speed:</strong> UV is significantly faster than <code>pip</code> for most operations, especially when installing dependencies from scratch.</li>
+<li><strong>Global Cache:</strong> UV uses a global cache to store downloaded packages, so they don't need to be downloaded again for each project.</li>
+</ul>
+<h2 id="getting-started-with-uv">Getting Started with UV<a class="headerlink" href="#getting-started-with-uv" title="Permanent link">&para;</a></h2>
+<p>Refer to the official <a href="https://docs.astral.sh/uv/getting-started/">UV - Getting Started - Documentation</a> for detailed instructions on installing and using UV.</p>
+<p>This section guides you through the Python setup and package installation procedure using <code>uv</code> native commands over the <code>uv pip</code> interface and is based on the content of <strong>Sebastian Raschka</strong>'s <a href="https://github.com/rasbt/LLMs-from-scratch/tree/main">GitHub repository</a>.</p>
+<blockquote>
+<p>[!NOTE]
+There are alternative ways to install Python and use <code>uv</code>. For example, you can install Python directly via <code>uv</code> and use <code>uv add</code> instead of <code>uv pip install</code> for even faster package management.</p>
+<p>If you prefer the <code>uv pip</code> commands, I recommend checking the official <a href="https://docs.astral.sh/uv/"><code>uv</code> documentation</a>.</p>
+<p>While <code>uv add</code> offers additional speed advantages, <code>uv pip</code> might be slightly more user-friendly for with your existing habits. However, if you're new to Python package management, the native <code>uv</code> interface is also a great opportunity to learn it from the start. It's also how I use <code>uv</code>, but I realized the barrier to entry is a bit higher if you are coming from <code>pip</code> and <code>conda/mamba</code>.</p>
+</blockquote>
+<h3 id="install-uv">Install uv<a class="headerlink" href="#install-uv" title="Permanent link">&para;</a></h3>
+<p>Uv can be installed as follows, depending on your operating system.</p>
+<h4 id="macos-and-linux">macOS and Linux<a class="headerlink" href="#macos-and-linux" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</code></pre></div>
+<p>or</p>
+<div class="language-bash highlight"><pre><span></span><code>wget<span class="w"> </span>-qO-<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</code></pre></div>
+<h4 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;irm https://astral.sh/uv/install.ps1 | more&quot;</span>
+</code></pre></div>
+<h3 id="install-python">Install Python<a class="headerlink" href="#install-python" title="Permanent link">&para;</a></h3>
+<p>You can install Python using uv:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>python<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.10
+</code></pre></div>
+<h3 id="install-python-packages-and-dependencies">Install Python packages and dependencies<a class="headerlink" href="#install-python-packages-and-dependencies" title="Permanent link">&para;</a></h3>
+<p>To install all required packages from a <code>pyproject.toml</code> file (such as the one located at the top level of this GitHub repository), run the following command, assuming the file is in the same directory as your terminal session:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span>--group<span class="w"> </span>dev
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+If you have problems with the following commands above due to certain dependencies (for example, if you are using Windows), you can always fall back to regular pip:
+<code>uv add pip</code>
+<code>uv run python -m pip install -U -r requirements.txt</code></p>
+</blockquote>
+<p>Note that the <code>uv add</code> command above will create a separate virtual environment via the <code>.venv</code> subfolder. (In case you want to delete your virtual environment to start from scratch, you can simply delete the <code>.venv</code> folder.)</p>
+<p>You can install new packages, that are not specified in the <code>pyproject.toml</code> via <code>uv add</code>, for example:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>packaging
+</code></pre></div>
+<p>And you can remove packages via <code>uv remove</code>, for example:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>remove<span class="w"> </span>packaging
+</code></pre></div>
+<h3 id="run-python-code">Run Python code<a class="headerlink" href="#run-python-code" title="Permanent link">&para;</a></h3>
+<p>Your environment should now be ready to run the code in the repository. You can test it by running the following command to run a python script:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>main.py
+</code></pre></div>
+<p>Or, if you don't want to type <code>uv run python</code> every time you execute code, manually activate the virtual environment first.</p>
+<p>On macOS/Linux:</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p>On Windows (PowerShell):</p>
+<div class="language-bash highlight"><pre><span></span><code>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
+<p>Then, run:</p>
+<div class="language-bash highlight"><pre><span></span><code>python<span class="w"> </span>main.py
+</code></pre></div>
+<h3 id="launching-jupyterlab">Launching JupyterLab<a class="headerlink" href="#launching-jupyterlab" title="Permanent link">&para;</a></h3>
+<p>You can launch a JupyterLab instance via:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>jupyter<span class="w"> </span>lab
+</code></pre></div>
+<h3 id="optional-manage-virtual-environments-manually">Optional: Manage virtual environments manually<a class="headerlink" href="#optional-manage-virtual-environments-manually" title="Permanent link">&para;</a></h3>
+<p>Alternatively, you can still install the dependencies directly from the repository using <code>uv pip install</code>. But note that this doesn't record dependencies in a <code>uv.lock</code> file as <code>uv add</code> does. Also, it requires creating and activating the virtual environment manually:</p>
+<ol>
+<li>Create a new virtual environment</li>
+</ol>
+<p>Run the following command to manually create a new virtual environment, which will be saved via a new <code>.venv</code> subfolder:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>venv<span class="w"> </span>--python<span class="o">=</span>python3.12
+</code></pre></div>
+<ol>
+<li>Activate virtual environment</li>
+</ol>
+<p>Next, we need to activate this new virtual environment.</p>
+<p>On macOS/Linux:</p>
+<div class="language-bash highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p>On Windows (PowerShell):</p>
+<div class="language-bash highlight"><pre><span></span><code>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
+<ol>
+<li>Install dependencies</li>
+</ol>
+<p>To install the required dependencies from your local <code>requirements.txt</code> file, use the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<h3 id="uv-self-update">UV self update<a class="headerlink" href="#uv-self-update" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>self<span class="w"> </span>update
+</code></pre></div>
+<h3 id="uv-update-packages-dependencies">UV update packages (dependencies)<a class="headerlink" href="#uv-update-packages-dependencies" title="Permanent link">&para;</a></h3>
+<p>You can update all Python packages to the latest versions of the <code>uv.lock</code> file and sync the environment using the command below.
+This will update all packages to their latest versions, which may not always be desirable.
+If you want to update only specific packages, you can use <code>uv lock --upgrade &lt;package_name&gt;</code> instead.
+This also does <strong>not update</strong> the specified dependencies <strong>within the <code>pyproject.toml</code> file</strong>. As of uv version 0.7.22 there is no way to update the dependencies in the <code>pyproject.toml</code> file automatically. Draft pull request: <a href="https://github.com/astral-sh/uv/pull/13934">#13934</a>.
+You can update individual packages manually to the latest compatible version within the <code>pyproject.toml</code> file by using <code>uv add --upgrade &lt;package_name&gt;</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code>uv<span class="w"> </span>lock<span class="w"> </span>--upgrade
+uv<span class="w"> </span>sync<span class="w"> </span>--all-groups
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+Upgrade dependencies within the <code>pyproject.toml</code> file with the script <code>scripts/uv_upgrade_dependencies.py</code> respectively the Makefile (project root directory) target <code>update-packages</code>, <a href="https://gist.github.com/yhoiseth/c80c1e44a7036307e424fce616eed25e">source</a>:</p>
+<div class="language-bash highlight"><pre><span></span><code>make<span class="w"> </span>update-packages
+</code></pre></div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 David Tiefenthaler
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.expand", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
