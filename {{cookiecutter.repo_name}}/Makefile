@@ -99,6 +99,13 @@ clean: ## Clean all artifacts and remove virtual environment
 	shutil.rmtree('.ruff_cache') if os.path.exists('.ruff_cache') else None"
 	@uv run python -c "import shutil; shutil.rmtree('.venv', ignore_errors=True)"
 
+.PHONY: update-packages
+update-packages: ## Update all Python packages to the latest versions of the `uv.lock` file and sync the environment
+	@echo "⬆️  Updating all Python packages..."
+	@uv lock --upgrade
+	@uv sync --all-groups
+	@echo "✅ Packages updated and environment is in sync."
+
 .PHONY: help
 help:
 	@uv run python -c "import re; \
